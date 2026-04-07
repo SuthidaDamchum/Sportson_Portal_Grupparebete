@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ivGI/FHVFXA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\diego\\source\\repos\\BästaProjektetMedFika\\sportson-view-backend_folder\\SportsonView.API\\SportsonView.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.3\\microsoft.aspnetcore.openapi.10.0.3.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
