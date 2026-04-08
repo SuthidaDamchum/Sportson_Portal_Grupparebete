@@ -5,6 +5,8 @@ namespace SportsonView.API.Data.Interfaces
     public interface INewsArticleRepo
     {
         Task<List<NewsArticle>> GetNewsAsync();
-        Task<bool> DeleteNewsAsync(int id);
+        Task<bool> DeleteNewsAsync(Guid id);
+
+        void AddNewsArticleAsync(NewsArticle newsArticle);
     }
 }
