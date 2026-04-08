@@ -1,8 +1,9 @@
-﻿using SportsonView.API.Data.Entities;
+﻿using System.Globalization;
+using SportsonView.API.Data.Entities;
 
-namespace SportsonView.API.Data.Interfaces
+namespace SportsonView.API.Core.Interfaces
 {
-    public interface INewsArticleRepo
+    public interface INewsArticleService
     {
         Task<List<NewsArticle>> GetNewsAsync();
         Task<bool> DeleteNewsAsync(int id);

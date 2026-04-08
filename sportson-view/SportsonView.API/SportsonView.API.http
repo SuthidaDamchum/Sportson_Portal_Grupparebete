@@ -1,6 +1,6 @@
 @SportsonView.API_HostAddress = http://localhost:5178
 
-GET {{SportsonView.API_HostAddress}}/weatherforecast/
+GET {{SportsonView.API_HostAddress}}/NewsArticle/
 Accept: application/json
 
 ###
