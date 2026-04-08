@@ -7,13 +7,13 @@ using SportsonView.API.Repos;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers()
+builder.Services.AddControllers();
 
-.AddJsonOptions(options =>
- {
+//Automapper sätts upp som en tjänst som kan injectas
+builder.Services.AddAutoMapper(typeof(Program));
 
-     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
- });
+
+
 
 builder.Services.AddCors();
 

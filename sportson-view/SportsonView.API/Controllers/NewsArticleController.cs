@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using SportsonView.API.Controllers.Response;
 using SportsonView.API.Core.Interfaces;
 using SportsonView.API.Data.Entities;
 
@@ -19,10 +19,9 @@ namespace SportsonView.API.Controllers
         }
 
         [HttpGet("")]
-        public async Task<IActionResult> GetNews()
+        public async Task<IActionResult> GetNewsAsync()
         {
-            var newsList = await _newsService.GetNewsAsync();
-            return Ok(newsList);
+            return Ok(new NewsArticleResponse { NewsArticles = await _newsService.GetNewsAsync() });
         }
 
         [HttpPost("")]
@@ -36,7 +35,7 @@ namespace SportsonView.API.Controllers
             
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteNews(int id)
+        public async Task<IActionResult> DeleteNews(Guid id)
         {
             var result = await _newsService.DeleteNewsAsync(id);
 
