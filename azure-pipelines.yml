@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 trigger:  
   branches:
     include:
@@ -55,3 +56,19 @@ stages:
                 appType: 'webApp'
                 appName: 'sportsonAPI'
                 package: $(Pipeline.Workspace)/drop
+=======
+trigger:
+- dev
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+>>>>>>> dev

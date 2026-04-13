@@ -8,6 +8,7 @@ import NewsPage from "./pages/NewsPage";
 import ManualsPage from "./pages/ManualsPage";
 import OrderCentralPage from "./pages/OrderCentralPage";
 import SupportPage from "./pages/SupportPage";
+import Contacts from "./pages/ContactsPage";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           element={<OrderCentralPage />}
         ></Route>
         <Route path={routePaths.SupportPage} element={<SupportPage />}></Route>
-        <Route path={routePaths.contacts} element={<SupportPage />}></Route>
+        <Route path={routePaths.contacts} element={<Contacts />}></Route>
       </Routes>
     </>
   );
