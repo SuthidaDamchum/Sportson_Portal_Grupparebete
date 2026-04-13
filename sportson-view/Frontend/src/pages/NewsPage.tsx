@@ -28,7 +28,6 @@ const NewsPage = () => {
   return (
     <div className="view" style={{ padding: "28px", maxWidth: "1160px" }}>
       <h1>Nyheter</h1>
-
       <div
         style={{
           display: "grid",
@@ -44,6 +43,7 @@ const NewsPage = () => {
           />
         ))}
       </div>
+      +{" "}
     </div>
   );
 };
