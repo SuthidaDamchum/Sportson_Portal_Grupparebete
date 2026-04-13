@@ -10,16 +10,21 @@ namespace SportsonView.API.Profiles
 
         public NewsArticleProfile()
         {
-            //Destination här är PersonDTO och origin är Person
-            //dvs vi mappar från Person till PersonDTO
-
+            // Från Databas-Entitet till DTO (för GET-anrop)
             CreateMap<NewsArticle, NewsArticleDto>();
-            CreateMap<NewsArticleDto, NewsArticle>();
-
+            // Från DTO till Databas-Entitet (för POST/PUT-anrop)
+            CreateMap<NewsArticleDto, NewsArticle>().ConstructUsing(dto => new NewsArticle(
+                dto.Id,
+                dto.Title,
+                dto.Body,
+                dto.Author,
+                dto.PublishedDate,
+                dto.Category,
+                dto.ImageUrl 
+            ));
 
 
         }
-
     }
 }
 

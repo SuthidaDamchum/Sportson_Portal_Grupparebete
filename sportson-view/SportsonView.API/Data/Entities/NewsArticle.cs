@@ -1,8 +1,10 @@
-﻿namespace SportsonView.API.Data.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SportsonView.API.Data.Entities
 {
     public class NewsArticle
     {
-        public NewsArticle(Guid id, string title, string body, string author, int publishedDate, string category)
+        public NewsArticle(int id, string title, string body, string author, DateOnly publishedDate, string category, string imageUrl)
         {
             Id = id;
             Title = title;
@@ -10,14 +12,19 @@
             Author = author;
             PublishedDate = publishedDate;
             Category = category;
+            ImageUrl = imageUrl;
+
         }
 
-        // guid är mer industristandard nu förtiden, säkrare //Int mindre säkert och är begränsat i antal 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
+
+        [Column(TypeName = "nvarchar(max)")]
         public string Body { get; set; }
         public string Author { get; set; }
-        public int PublishedDate { get; set; }
+        public DateOnly PublishedDate { get; set; }
         public string Category { get; set; }
+        public string? ImageUrl { get; set; }
+
     }
 }

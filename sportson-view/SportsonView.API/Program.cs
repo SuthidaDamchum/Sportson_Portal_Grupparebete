@@ -1,32 +1,44 @@
-using System.Text.Json.Serialization;
-using Swashbuckle.AspNetCore.SwaggerUI;
+using Microsoft.EntityFrameworkCore;
 using SportsonView.API.Core.Interfaces;
 using SportsonView.API.Core.Services;
+using SportsonView.API.Data.Entities;
 using SportsonView.API.Data.Interfaces;
+using SportsonView.API.Profiles;
 using SportsonView.API.Repos;
 
+
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddControllers();
-
-//Automapper sätts upp som en tjänst som kan injectas
-builder.Services.AddAutoMapper(typeof(Program));
-
-
-
-
 builder.Services.AddCors();
-
 builder.Services.AddSwaggerGen();
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<NewsArticleDbContext>(options =>
+    options.UseSqlServer(connectionString));
+
+
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<NewsArticleProfile>());
+
+
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<NewsArticleProfile>());
+
 builder.Services.AddScoped<INewsArticleService, NewsArticleService>();
-builder.Services.AddScoped<INewsArticleRepo, NewsArticleRepo>();
+builder.Services.AddScoped<INewsArticleRepository, NewsArticleRepository>();
+builder.Services.AddScoped<FileService>();
+
+
 
 
 var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 
 app.UseRouting();
-
 
 app.UseCors(options =>
     options.AllowAnyOrigin()
@@ -38,7 +50,9 @@ app.UseCors(options =>
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseStaticFiles();
 
+app.UseHttpsRedirection();
 
 app.UseEndpoints(endpoints =>
 {
@@ -46,11 +60,6 @@ app.UseEndpoints(endpoints =>
 });
 
 
-app.UseSwagger();
-
-
-app.UseSwaggerUI();
-
-
-
+app.MapControllers();
 app.Run();
+

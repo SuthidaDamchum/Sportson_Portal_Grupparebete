@@ -7,3 +7,5 @@ namespace SportsonView.API.Controllers.Response
         public List<NewsArticleDto> NewsArticles { get; set; }
     }
 }
+
+

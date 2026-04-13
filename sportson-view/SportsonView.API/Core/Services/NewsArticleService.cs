@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using SportsonView.API.Controllers;
 using SportsonView.API.Core.Interfaces;
 using SportsonView.API.Data.Entities;
 using SportsonView.API.Data.Interfaces;
@@ -9,34 +8,46 @@ namespace SportsonView.API.Core.Services
 {
     public class NewsArticleService : INewsArticleService
 
-    { 
+    {
         private readonly IMapper _mapper;
-        private readonly INewsArticleRepo _newsRepo;
+        private readonly INewsArticleRepository _newsRepo;
 
-        public NewsArticleService(INewsArticleRepo newsRepo, IMapper mapper)
+        public NewsArticleService(INewsArticleRepository newsRepo, IMapper mapper)
         {
             _mapper = mapper;
             _newsRepo = newsRepo;
         }
 
-        public async Task<List<NewsArticleDto>> GetNewsAsync()
+        public async Task<List<NewsArticleDto>> GetNewsArticlesAsync()
         {
-             var newsarticles = await _newsRepo.GetNewsAsync();
-            return newsarticles.Select(article => _mapper.Map<NewsArticleDto>(article)).ToList();
+            var newsarticles = await _newsRepo.GetNewsArticlesAsync();
+            return _mapper.Map<List<NewsArticleDto>>(newsarticles);
         }
 
-        public async Task<bool> DeleteNewsAsync(Guid id)
+        public async Task<bool> DeleteNewsArticleAsync(int id)
         {
-            var success = await _newsRepo.DeleteNewsAsync(id);
+            var success = await _newsRepo.DeleteNewsArticleAsync(id);
             return success;
         }
 
-        public void AddNewsArticleAsync(NewsArticle newsArticle)
+        public async Task AddNewsArticleAsync(NewsArticleDto newsArticleDto)
         {
-            _newsRepo.AddNewsArticleAsync(newsArticle);
+            var entity = _mapper.Map<NewsArticle>(newsArticleDto);
+            await _newsRepo.AddNewsArticleAsync(entity);
         }
 
+        public async Task<NewsArticleDto?> UpdateNewsArticleAsync(int id, NewsArticleDto updatedArticleDto)
+        {
+     
+            var entity = _mapper.Map<NewsArticle>(updatedArticleDto);
 
+            var updatedEntity = await _newsRepo.UpdateNewsArticleAsync(id, entity);
+            if (updatedEntity == null) return null;
+            return _mapper.Map<NewsArticleDto>(updatedEntity);
+
+        }
 
     }
 }
+
+
