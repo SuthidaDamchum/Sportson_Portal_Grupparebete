@@ -1,57 +1,14 @@
-trigger:  
-  branches:
-    include:
-      - main 
-      - dev
+trigger:
+- dev
 
-stages: 
+pool:
+  vmImage: ubuntu-latest
 
-- stage: Build
-  jobs:
-   - job: Build
-     displayName: 'Build job'
-     pool:
-      vmImage:  'windows-latest'
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
 
-# Build Stage
-     steps:
-        - task: UseDotNet@2
-          inputs:
-            packageType: 'sdk'
-            version: '10.x'
-            installationPath: $(Agent.ToolsDirectory)/dotnet
-
-        - script: |
-              dotnet build --configuration Release
-          displayName: "Build Solution"
-
-        - script: | 
-            dotnet publish -c Release -o $(Build.ArtifactStagingDirectory)
-          displayName: 'Publish Artifacts'
-
-        - task: PublishBuildArtifacts@1
-          inputs:
-            PathtoPublish: $(Build.ArtifactStagingDirectory)
-            ArtifactName: drop
-            publishLocation: 'Container'
-          
-
-
-- stage: Deploy 
-  jobs:
-    - deployment: DeployWebApp
-      displayName: "Deploy to Azure app service"
-      environment: 'production'
-      strategy:
-        runOnce:         
-          deploy:
-            steps:
-            - download: current
-              artifact: drop
-
-            - task: AzureWebApp@1
-              inputs:
-                azureSubscription: 'sportsonAPI'
-                appType: 'webApp'
-                appName: 'sportsonAPI'
-                package: $(Pipeline.Workspace)/drop
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'

@@ -5,18 +5,22 @@ import genericBikeImage from "../assets/images/genericbike.webp";
 
 const placeholderArticles: Article[] = [
   {
+    id: 1,
     title: "Nya vårkampanjen är live sammarbete med Dogge, Cykel på köpet!!!",
     body: "Detta är en placeholder-text för nyhetsinnehåll. När backend och databas är anslutna ersätts den här artikeln med riktig data.",
     author: "Sportson kampanjteam",
-    image: DoggeMedCykel,
     publishDate: Date.now(),
+    category: "inköp",
+    imageUrl: DoggeMedCykel,
   },
   {
+    id: 2,
     title: "KOLLA VILKEN FIN CYKEL!!!!",
     body: "Här kan en kort beskrivning visas.",
     author: "Sportson",
-    image: genericBikeImage,
     publishDate: Date.now(),
+    category: "Inköp",
+    imageUrl: genericBikeImage,
   },
 ];
 
