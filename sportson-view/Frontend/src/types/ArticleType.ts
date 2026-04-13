@@ -1,9 +1,11 @@
 export type Article = {
+  id: number;
   title: string;
   body: string;
   author: string;
-  image: string;
   publishDate: number;
+  category: string;
+  imageUrl: string;
 };
 
 export async function getArticles(): Promise<Article[]> {
