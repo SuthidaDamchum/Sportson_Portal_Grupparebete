@@ -14,14 +14,15 @@ const formatPublishDate = (publishDate: number) => {
 };
 
 const ArticleCard = ({ article }: ArticleCardProps) => {
-  const hasImage = article.image.trim().length > 0;
+  const imageUrl = article.imageUrl ?? "";
+  const hasImage = imageUrl.trim().length > 0;
 
   return (
     <article className="article-card">
       <div className="article-image-wrap">
         {hasImage && (
           <img
-            src={article.image}
+            src={imageUrl}
             alt={article.title}
             className="article-image"
           />
