@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './SupportPage.css';
+import emailjs from '@emailjs/browser';
 //Placeholder email
 const departmentEmails: Record<string, string> = {
   "IT": "kevin.spehling@iths.se",
@@ -20,18 +21,32 @@ const handleSubmit = () => {
     alert("Fyll i alla fält");
     return;
   }
-  console.log({ name, email, department, message }); //<- Replace here
-  alert("Ditt meddelande har skickats!");
-  setName("");
-  setEmail("");
-  setDepartment("");
-  setMessage("");
+    emailjs.send(
+        "service_wjjx8qh", //IDKEY
+        "template_ckjywh9", //TEMPLATEKEY
+        {
+          from_name: name,
+          from_email: email,
+          department: department,
+          message: message,
+          to_email: departmentEmails[department], //Unused due to emailjs free package limitations, sends to kevin.spehling@iths.se currently
+          department_name: department
+        },
+        "4qDKbbtSPS3-VqLTl" //PASSKEY
+      ).then(() => {
+        alert("Ditt meddelande har skickats!");
+        setName("");
+        setEmail("");
+        setDepartment("");
+        setMessage("");
+      }).catch(() => {
+        alert("Något gick fel, försök igen.");
+      });
 };
 
   return (
   <div className="support-wrapper">
     <h1>Support</h1>
-      
       <div className="support-form">
         {/* Name */}     
         <input
@@ -64,8 +79,9 @@ const handleSubmit = () => {
         {/* Send it */}     
         <button onClick={handleSubmit}>Skicka</button>
       </div>
-    
+      
     </div>
+    
   );
 };
 
