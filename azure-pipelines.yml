@@ -52,6 +52,6 @@ stages:
             - task: AzureWebApp@1
               inputs:
                 azureSubscription: 'sportsonAPI'
-                appType: 'WebApp'
+                appType: 'webApp'
                 appName: 'sportsonAPI'
-                package: $(Pipeline.Workspace)drop
+                package: $(Pipeline.Workspace)/drop
