@@ -1,11 +1,9 @@
-import SearchBar from "../components/SearchBar/Searchbar";
-
 const ManualsPage = () => {
   return (
     <div className="view">
-      <SearchBar />
       <h1>
-        Resultat av manualer i pdf-format och youtube videos dyker upp här
+        Manualer, embeds till youtube videos, länkar till handböcker i
+        pdf-format osv
       </h1>
       <p></p>
     </div>
