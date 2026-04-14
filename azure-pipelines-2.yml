@@ -1,0 +1,41 @@
+trigger:
+- main
+- dev
+
+pool:
+  vmImage: windows-latest
+
+variables:
+  azureSubscription: 'sportsonAPI'
+  webAppName: 'SportsonFrontend'
+  projectPath: 'sportson-view/Frontend'
+  artifactName: 'frontend-build'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    cd $(projectPath)
+    npm install
+    npm run build
+  displayName: 'Install dependencies and build frontend'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(projectPath)/dist'
+    includeRootFolder: false
+    archiveType: zip
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(artifactName).zip'
+    replaceExistingArchive: true
+  displayName: 'Archive build output'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: '$(azureSubscription)'
+    appType: 'webAppLinux'
+    appName: '$(webAppName)'
+    package: '$(Build.ArtifactStagingDirectory)/$(artifactName).zip'
+  displayName: 'Deploy to Azure Web App'
