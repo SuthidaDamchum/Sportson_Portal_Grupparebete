@@ -1,6 +1,5 @@
 trigger:
 - main
-- dev
 
 pool:
   vmImage: windows-latest
@@ -12,7 +11,7 @@ variables:
   artifactName: 'frontend-build'
 
 steps:
-- task: NodeTool@0
+- task: NodeTool@1
   inputs:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
@@ -20,12 +19,24 @@ steps:
 - script: |
     cd $(projectPath)
     npm install
+  displayName: 'Install dependencies'
+
+- script: |
+    cd $(projectPath)
     npm run build
-  displayName: 'Install dependencies and build frontend'
+  displayName: 'Build frontend'
+
+- script: |
+    cd $(projectPath)
+    echo ===== FRONTEND CONTENTS =====
+    dir
+    echo ===== DIST CONTENTS =====
+    dir dist
+  displayName: 'Inspect build output'
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(projectPath)/build'
+    rootFolderOrFile: '$(projectPath)/dist'
     includeRootFolder: false
     archiveType: zip
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(artifactName).zip'
@@ -35,7 +46,7 @@ steps:
 - task: AzureWebApp@1
   inputs:
     azureSubscription: '$(azureSubscription)'
-    appType: 'webAppLinux'
+    appType: 'webApp'
     appName: '$(webAppName)'
     package: '$(Build.ArtifactStagingDirectory)/$(artifactName).zip'
   displayName: 'Deploy to Azure Web App'
