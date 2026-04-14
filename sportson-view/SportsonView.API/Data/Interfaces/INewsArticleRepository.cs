@@ -8,7 +8,5 @@ namespace SportsonView.API.Data.Interfaces
         Task<bool> DeleteNewsArticleAsync(int id);
         Task AddNewsArticleAsync(NewsArticle newsArticle);
         Task<NewsArticle?> UpdateNewsArticleAsync(int id, NewsArticle newsArticle);
-     Task SeedDataAsync();
-
     }
 }
