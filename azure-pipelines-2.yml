@@ -13,8 +13,13 @@ variables:
 steps:
 - task: UseNode@1
   inputs:
-    versionSpec: '24.x'
-  displayName: 'Install Node.js'
+    version: '24.x'
+  displayName: 'Use Node.js 24'
+
+- script: |
+    node -v
+    npm -v
+  displayName: 'Check Node and npm versions'
 
 - script: |
     cd $(projectPath)
