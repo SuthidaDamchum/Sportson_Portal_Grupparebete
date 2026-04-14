@@ -5,53 +5,23 @@ pool:
   vmImage: windows-latest
 
 variables:
-  azureSubscription: 'sportsonAPI'
-  webAppName: 'SportsonFrontend'
   projectPath: 'sportson-view/Frontend'
-  artifactName: 'frontend-build'
 
 steps:
 - task: UseNode@1
   inputs:
     version: '24.x'
-  displayName: 'Use Node.js 24'
-
-- script: |
-    node -v
-    npm -v
-  displayName: 'Check Node and npm versions'
 
 - script: |
     cd $(projectPath)
     npm install
-  displayName: 'Install dependencies'
-
-- script: |
-    cd $(projectPath)
     npm run build
-  displayName: 'Build frontend'
+  displayName: Build frontend
 
-- script: |
-    cd $(projectPath)
-    echo ===== FRONTEND CONTENTS =====
-    dir
-    echo ===== DIST CONTENTS =====
-    dir dist
-  displayName: 'Inspect build output'
-
-- task: ArchiveFiles@2
+- task: AzureStaticWebApp@0
   inputs:
-    rootFolderOrFile: '$(projectPath)/dist'
-    includeRootFolder: false
-    archiveType: zip
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(artifactName).zip'
-    replaceExistingArchive: true
-  displayName: 'Archive build output'
-
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: '$(azureSubscription)'
-    appType: 'webApp'
-    appName: '$(webAppName)'
-    package: '$(Build.ArtifactStagingDirectory)/$(artifactName).zip'
-  displayName: 'Deploy to Azure Web App'
+    app_location: 'sportson-view/Frontend'
+    output_location: 'dist'
+    skip_app_build: true
+    azure_static_web_apps_api_token: $(deployment_token)
+  displayName: Deploy Static Web App
