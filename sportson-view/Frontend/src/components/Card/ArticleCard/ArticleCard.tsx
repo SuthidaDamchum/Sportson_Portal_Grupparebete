@@ -20,12 +20,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
   return (
     <article className="article-card">
       <div className="article-image-wrap">
-        {hasImage && (
-          <img
-            src={imageUrl}
-            className="article-image"
-          />
-        )}
+        {hasImage && <img src={imageUrl} className="article-image" />}
       </div>
 
       <div className="article-content">
@@ -37,7 +32,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         </div>
 
         <h2 className="article-title">{article.title}</h2>
-        <p className="article-body">{article.body}</p>
+        <p className="article-description">{article.description}</p>
 
         <div className="article-meta">
           <span>{article.author}</span>
