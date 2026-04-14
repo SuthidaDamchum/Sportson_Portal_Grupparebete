@@ -23,7 +23,6 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         {hasImage && (
           <img
             src={imageUrl}
-            alt={article.title}
             className="article-image"
           />
         )}
