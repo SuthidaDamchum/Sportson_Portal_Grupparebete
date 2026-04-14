@@ -10,7 +10,7 @@ const Header = () => {
       <nav className="header-nav">
         <div>
           <NavLink to={routePaths.home}>
-            <img src={sportssonLogo} alt="Sportsson" className="logo" />
+            <img src={sportssonLogo} className="logo" />
             <span>Portalen</span>
           </NavLink>
 
