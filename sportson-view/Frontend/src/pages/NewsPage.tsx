@@ -7,7 +7,8 @@ const placeholderArticles: Article[] = [
   {
     id: 1,
     title: "Nya vårkampanjen är live sammarbete med Dogge, Cykel på köpet!!!",
-    body: "Detta är en placeholder-text för nyhetsinnehåll. När backend och databas är anslutna ersätts den här artikeln med riktig data.",
+    description:
+      "Detta är en placeholder-text för nyhetsinnehåll. När backend och databas är anslutna ersätts den här artikeln med riktig data.",
     author: "Sportson kampanjteam",
     publishDate: Date.now(),
     category: "inköp",
@@ -16,7 +17,7 @@ const placeholderArticles: Article[] = [
   {
     id: 2,
     title: "KOLLA VILKEN FIN CYKEL!!!!",
-    body: "Här kan en kort beskrivning visas.",
+    description: "Här kan en kort beskrivning visas.",
     author: "Sportson",
     publishDate: Date.now(),
     category: "Inköp",
