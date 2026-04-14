@@ -4,24 +4,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  projectPath: 'sportson-view/Frontend'
-
 steps:
-- task: UseNode@1
-  inputs:
-    version: '24.x'
-
-- script: |
-    cd $(projectPath)
-    npm install
-    npm run build
-  displayName: Build frontend
-
 - task: AzureStaticWebApp@0
   inputs:
     app_location: 'sportson-view/Frontend'
     output_location: 'dist'
-    skip_app_build: true
     azure_static_web_apps_api_token: $(deployment_token)
-  displayName: Deploy Static Web App
+  displayName: 'Deploy Static Web App'
