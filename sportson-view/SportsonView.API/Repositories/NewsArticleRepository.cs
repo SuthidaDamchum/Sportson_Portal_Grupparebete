@@ -1,49 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SportsonView.API.Data;
+using SportsonView.API.Data.Configurations;
 using SportsonView.API.Data.Entities;
 using SportsonView.API.Data.Interfaces;
 
-
-namespace SportsonView.API.Repos
+namespace SportsonView.API.Repositories
 {
     public class NewsArticleRepository : INewsArticleRepository
     {
-        private readonly NewsArticleDbContext _context;
-
-        public async Task SeedDataAsync()
-        {
-            var articles = new List<NewsArticle>
-    {
-        new NewsArticle(0, "Uppdatering av intranätet",
-            "Vi har uppgraderat säkerheten i vår inloggning...",
-            "Daniel Andersson", new DateOnly(2026, 04, 01), "IT", "https://sportsonsbilder.blob.core.windows.net/news-images/IT.png"),
-
-        new NewsArticle(0, "Leveransförseningar elcyklar",
-            "På grund av globala logistikproblem...",
-            "Sara Lindberg", new DateOnly(2026, 04, 02), "Inköp", "https://sportsonsbilder.blob.core.windows.net/news-images/Inköp.png"),
-
-        new NewsArticle(0, "Vårkampanjen drar igång!",
-            "Nu är det officiellt...",
-            "Erik Markström", new DateOnly(2026, 04, 03), "Marknad", "https://sportsonsbilder.blob.core.windows.net/news-images/Marknad.png"),
-
-        new NewsArticle(0, "Nya krav på certifiering",
-            "Från 1 maj inför vi nya krav...",
-            "Mikael Verkstadsson", new DateOnly(2026, 04, 04), "Verkstad", "https://sportsonsbilder.blob.core.windows.net/news-images/Verkstad.png"),
-            
-        new NewsArticle(0, "Vårkampanj: 20% på alla Elcyklar!",
-            "Gör dig redo för cykelsäsongen!...",
-            "Marknadsteamet", new DateOnly(2026, 04, 12), "Campaign", "https://sportsonsbilder.blob.core.windows.net/news-images/Campaign.png")
-    };
-
-            _context.NewsArticles.AddRange(articles);
-
-            await _context.SaveChangesAsync();
-    }
-
-        public NewsArticleRepository(NewsArticleDbContext context)
+        private readonly ApplicationDbContext _context;
+        public NewsArticleRepository(ApplicationDbContext context)
         {
             _context = context;
         }
-
         public async Task<List<NewsArticle>> GetNewsArticlesAsync()
         {
             return await _context.NewsArticles.ToListAsync();

@@ -2,9 +2,7 @@
 using SportsonView.API.Controllers.Response;
 using SportsonView.API.Core.Interfaces;
 using SportsonView.API.Core.Services;
-using SportsonView.API.Data.Interfaces;
 using SportsonView.API.Dto;
-
 namespace SportsonView.API.Controllers
 {
     [Route("api/[controller]")]
@@ -13,24 +11,11 @@ namespace SportsonView.API.Controllers
     {
         private readonly INewsArticleService _newsService;
         private readonly FileService _fileService;
-        private readonly INewsArticleRepository _repository;
-
-        public NewsArticleController(INewsArticleService newsService, FileService fileService, INewsArticleRepository repository)
+        public NewsArticleController(INewsArticleService newsService, FileService fileService)
         {
             _newsService = newsService;
             _fileService = fileService;
-            _repository = repository;
-
         }
-
-          [HttpPost("seed")]
-     public async Task<IActionResult> SeedData()
-     {
-        await _repository.SeedDataAsync();
-         return Ok("Databasen har fyllts med testdata!");
-     }
-
-
 
         [HttpGet("")]
         public async Task<IActionResult> GetNewsArticlesAsync()
