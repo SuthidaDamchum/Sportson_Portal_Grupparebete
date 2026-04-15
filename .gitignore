@@ -23,6 +23,7 @@ out/
 *.nupkg
 *.snupkg
 packages/
+packages-lock.json
 .nuget/
 
 # Test results
