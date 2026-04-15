@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportsonView.API.Data;
 
@@ -11,9 +12,11 @@ using SportsonView.API.Data;
 namespace SportsonView.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260414202834_importantdateDb01")]
+    partial class importantdateDb01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,65 +53,6 @@ namespace SportsonView.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ImportantDates");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IsReminderActive = true,
-                            StartDate = new DateTime(2026, 5, 4, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            TimeLabel = "08.00 - 09.00",
-                            Title = "Frukostmöte: Nytt förmånspaket"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IsReminderActive = false,
-                            StartDate = new DateTime(2026, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TimeLabel = "Hela dagen",
-                            Title = "Kampanjstart: Sommarcyklar 2026"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IsReminderActive = true,
-                            StartDate = new DateTime(2026, 5, 15, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            TimeLabel = "13.00 - 15.00",
-                            Title = "Personalmöte - Volvo tjänstebilar"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            EndDate = new DateTime(2026, 5, 29, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsReminderActive = true,
-                            StartDate = new DateTime(2026, 5, 26, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            TimeLabel = "09.00 - 17.00",
-                            Title = "Utbildning: Service av elmotorer"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            IsReminderActive = true,
-                            StartDate = new DateTime(2026, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TimeLabel = "Senast kl 16.00",
-                            Title = "Deadline: Beställning Volvo-kläder"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            IsReminderActive = false,
-                            StartDate = new DateTime(2026, 6, 19, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            TimeLabel = "17.00 - Sent",
-                            Title = "Sommarfest med teamet"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            IsReminderActive = true,
-                            StartDate = new DateTime(2026, 6, 25, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            TimeLabel = "07.00 - 12.00",
-                            Title = "Inventering av butikslager"
-                        });
                 });
 
             modelBuilder.Entity("SportsonView.API.Data.Entities.NewsArticle", b =>

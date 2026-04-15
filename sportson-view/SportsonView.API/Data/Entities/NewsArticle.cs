@@ -4,11 +4,6 @@ namespace SportsonView.API.Data.Entities
 {
     public class NewsArticle
     {
-        public NewsArticle()
-        {
-       
-        }
-
         public int Id { get; set; }
         public string Title { get; set; }
         [Column(TypeName = "nvarchar(max)")]

@@ -11,12 +11,14 @@ namespace SportsonView.API.Data
         {
         }
         public DbSet<NewsArticle> NewsArticles { get; set; }
+        public DbSet<ImportantDate> ImportantDates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new NewsArticleConfiguration());
+            modelBuilder.ApplyConfiguration(new ImportantDateConfiguration());
         }
     }
 }

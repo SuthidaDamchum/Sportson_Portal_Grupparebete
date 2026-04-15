@@ -17,8 +17,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<NewsArticleProfile>());
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ImportantDateProfile>());
+
 builder.Services.AddScoped<INewsArticleService, NewsArticleService>();
 builder.Services.AddScoped<INewsArticleRepository, NewsArticleRepository>();
+builder.Services.AddScoped<IImportantDateRepository, ImportantDateRepository>();
+builder.Services.AddScoped<IImportantDatesService, ImportantDateService>();
 builder.Services.AddScoped<FileService>();
 
 var app = builder.Build();
