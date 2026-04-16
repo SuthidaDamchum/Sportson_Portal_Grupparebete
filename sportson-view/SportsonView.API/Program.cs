@@ -39,6 +39,9 @@ app.UseCors(options =>
     .AllowAnyHeader()
 );
 
+app.UseCors("AllowAll");
+;
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();
@@ -50,4 +53,3 @@ app.UseEndpoints(endpoints =>
 
 app.MapControllers();
 app.Run();
-
