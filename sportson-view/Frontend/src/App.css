@@ -182,3 +182,20 @@
     border-right-color: var(--border);
   }
 }
+
+.layout-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.right-side-pusher {
+  display: flex;
+  justify-content: flex-end; 
+  width: 100%;
+}
+
+.right-side-pusher > div {
+  width: 330px; 
+}
