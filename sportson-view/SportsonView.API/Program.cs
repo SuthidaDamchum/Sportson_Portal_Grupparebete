@@ -42,6 +42,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
+app.UseCors("AllowAll");
 app.UseCors(options =>
     options.AllowAnyOrigin()
     .AllowAnyMethod()

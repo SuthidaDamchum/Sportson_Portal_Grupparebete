@@ -6,7 +6,6 @@ namespace SportsonView.API.Data.Entities
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        [Column(TypeName = "nvarchar(max)")]
         public string Body { get; set; }
         public string Author { get; set; }
         public DateOnly PublishedDate { get; set; }

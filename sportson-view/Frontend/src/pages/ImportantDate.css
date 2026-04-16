@@ -1,0 +1,100 @@
+.compact-side-container {
+  background-color: rgba(12, 10, 10, 0.774);
+  color: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  width: 320px;
+  box-sizing: border-box;
+}
+
+.side-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #f5da5e;
+  padding-bottom: 15px;
+}
+
+.side-header h2 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.view-all-btn {
+  background: none;
+  border: none;
+  color: #f5da5e;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.month-label {
+  color: #fff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin: 15px 0 8px 5px;
+  letter-spacing: 1px;
+}
+
+.event-card-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.date-box-black {
+  background-color: rgba(0, 0, 0, 0);
+  color: #f5da5e;
+  border: 1px solid #f5da5e;
+  min-width: 55px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.event-info-box {
+  flex: 1;
+  padding: 4px 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 38px;
+}
+
+.new-bg-yellow {
+  background-color: #f5da5e;
+}
+.new-bg-white {
+  background-color: #ffffff;
+}
+
+.event-name {
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.time-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.time-text {
+  font-size: 0.7rem;
+  color: #333;
+  font-weight: 600;
+}

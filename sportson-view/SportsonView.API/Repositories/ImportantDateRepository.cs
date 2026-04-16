@@ -15,6 +15,7 @@ namespace SportsonView.API.Repositories
         }
         public async Task<List<ImportantDate>> GetAllImportantDatesAsync()
         {
+
             return await _context.ImportantDates.ToListAsync();
         }
     }
