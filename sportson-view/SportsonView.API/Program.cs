@@ -11,6 +11,15 @@ builder.Services.AddControllers();
 builder.Services.AddCors();
 builder.Services.AddSwaggerGen();
 
+if (!builder.Environment.IsDevelopment())
+{
+    var keyVaultUri = new Uri("https://sportson.vault.azure.net/");
+
+    builder.Configuration.AddAzureKeyVault(
+        keyVaultUri,
+        new DefaultAzureCredential());
+}
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
