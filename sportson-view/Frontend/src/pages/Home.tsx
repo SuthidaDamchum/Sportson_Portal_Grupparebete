@@ -52,11 +52,23 @@ const heroSlides: HeroSlide[] = [
 
 const Home = () => {
   return (
-    <section className="home-hero">
+    <section className="home-hero" id="home-hero-section">
+      <button id="home-hero-prev-button" type="button">
+        Prev
+      </button>
+
+      <button id="home-hero-next-button" type="button">
+        Next
+      </button>
+
       <Swiper
         className="home-hero-swiper"
+        id="home-hero-swiper"
         modules={[Navigation, Autoplay, A11y]}
-        navigation
+        navigation={{
+          prevEl: "#home-hero-prev-button",
+          nextEl: "#home-hero-next-button",
+        }}
         loop
         centeredSlides
         slidesPerView={1.2}
@@ -72,7 +84,7 @@ const Home = () => {
       >
         {heroSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <article className="home-hero-card">
+            <article className="home-hero-card" id={`home-hero-slide-${slide.id}`}>
               <img className="home-hero-image" src={slide.imageUrl} />
               <div className="home-hero-overlay" />
               <div className="home-hero-content">

@@ -50,6 +50,7 @@ const handleSubmit = () => {
       <div className="support-form">
         {/* Name */}     
         <input
+          id="support-name-input"
           type="text"
           placeholder="Ditt namn"
           value={name}
@@ -57,13 +58,14 @@ const handleSubmit = () => {
         />
         {/* Email */}           
         <input
+          id="support-email-input"
           type="email"
           placeholder="Din e-post"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         {/* Dropdown for department selection */}
-        <select value={department} onChange={(e) => setDepartment(e.target.value)}>
+        <select id="support-department-select" value={department} onChange={(e) => setDepartment(e.target.value)}>
           <option value="">Välj avdelning</option>
           {Object.keys(departmentEmails).map((dept) => (
             <option key={dept} value={dept}>{dept}</option>
@@ -71,18 +73,17 @@ const handleSubmit = () => {
         </select>
         {/* Message */}     
         <textarea
+          id="support-message-textarea"
           placeholder="Ditt meddelande"
           className='messageArea'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
         {/* Send it */}     
-        <button onClick={handleSubmit}>Skicka</button>
+        <button id="support-submit-button" onClick={handleSubmit}>Skicka</button>
       </div>
-      
     </div>
     
   );
 };
-
 export default SupportPage;
