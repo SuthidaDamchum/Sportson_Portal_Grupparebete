@@ -1,3 +1,4 @@
+using Azure.Identity;
 using Microsoft.EntityFrameworkCore;
 using SportsonView.API.Core.Interfaces;
 using SportsonView.API.Core.Services;
