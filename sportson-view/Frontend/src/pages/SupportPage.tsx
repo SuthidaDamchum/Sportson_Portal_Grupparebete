@@ -14,33 +14,89 @@ const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [department, setDepartment] = useState("");
 const [message, setMessage] = useState("");
+const [error, setError] = useState("");
+const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,63}$/;
 
-//TODO: Replace with actual email sending logic - EmailJS or similar
+const validateForm = (): boolean => {
+  // Reset error
+  setError("");
+
+  if (!name.trim()) {
+    setError("Fyll i namn");
+    return false;
+  }
+
+  if (name.trim().length < 2) {
+    setError("Namn måste innehålla minst 2 tecken.");
+    return false;
+  }
+
+  if (!email.trim()) {
+    setError("Fyll i e-postadress");
+    return false;
+  }
+
+  if (!emailRegex.test(email.trim())) {
+    setError("Vänligen ange en giltig e-postadress.");
+    return false;
+  }
+
+  if (!department) {
+    setError("Välj en avdelning");
+    return false;
+  }
+
+  if (!message.trim()) {
+    setError("Fyll i meddelande");
+    return false;
+  }
+
+  if (message.trim().length < 10) {
+    setError("Meddelande måste innehålla minst 10 tecken.");
+    return false;
+  }
+
+  return true;
+};
+
+const isFormValid = (): boolean => {
+  return !!(
+    name.trim() &&
+    name.length >= 2 &&
+    email.trim() &&
+    emailRegex.test(email) &&
+    department &&
+    message.trim() &&
+    message.length >= 10
+  );
+};
+
 const handleSubmit = () => {
-  if (!name || !email || !department || !message) {
-    alert("Fyll i alla fält");
+  if (!validateForm()) {
     return;
   }
-    emailjs.send(
-        "service_wjjx8qh", //IDKEY
-        "template_ckjywh9", //TEMPLATEKEY
+
+  emailjs.send(
+        "service_wjjx8qh",
+        "template_ckjywh9",
         {
           from_name: name,
           from_email: email,
           department: department,
           message: message,
-          to_email: departmentEmails[department], //Unused due to emailjs free package limitations, sends to kevin.spehling@iths.se currently
+          to_email: departmentEmails[department],
           department_name: department
         },
-        "4qDKbbtSPS3-VqLTl" //PASSKEY
+        "4qDKbbtSPS3-VqLTl"
       ).then(() => {
         alert("Ditt meddelande har skickats!");
         setName("");
         setEmail("");
         setDepartment("");
         setMessage("");
+        setError("");
       }).catch(() => {
-        alert("Något gick fel, försök igen.");
+        setError("Något gick fel, försök igen.");
       });
 };
 
@@ -64,7 +120,7 @@ const handleSubmit = () => {
         />
         {/* Dropdown for department selection */}
         <select value={department} onChange={(e) => setDepartment(e.target.value)}>
-          <option value="">Välj avdelning</option>
+          <option value="">Välj en avdelning</option>
           {Object.keys(departmentEmails).map((dept) => (
             <option key={dept} value={dept}>{dept}</option>
           ))}
@@ -78,6 +134,26 @@ const handleSubmit = () => {
         />
         {/* Send it */}     
         <button onClick={handleSubmit}>Skicka</button>
+
+        {/* Error Display */}
+        {error && (
+          <textarea
+            readOnly
+            value={error}
+            className='messageArea'
+            placeholder="test"
+            style={
+              { 
+                color: '#f0c000',
+                textAlign: 'center',
+                maxWidth: '100%', 
+                minHeight: '50px', 
+                backgroundColor: '#1a1a1a', 
+                marginTop: '5px', 
+                resize: 'none' 
+              }}
+          />
+        )}
       </div>
       
     </div>

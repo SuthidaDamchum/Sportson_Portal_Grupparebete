@@ -15,61 +15,66 @@ const ImportantDate = () => {
     { id: 7, title: "Inventering av butikslager", month: "Juni", dateDisplay: "25", time: "07.00 - 12.00" }
   ];
 
-  //Kör mockdatan annars det blir tomt utan koppla till API 
+
   const [dates, setDates] = useState<ImportantDateDto[]>(mockData);
+  //Ingenting bör visas fören användaren är inloggad, så jag har lagt till en state för det också.
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   useEffect(() => {
     getImportantDate()
       .then((result) => {
-        // Om databasen svarar och inte är tom, använd den datan istället
         if (result && result.length > 0) {
           setDates(result);
+          console.debug("Hämtade viktiga datum från API:", result);
+          setIsSignedIn(true);
         }
       })
-      .catch((err) => {
-        console.error("Kunde inte nå databasen, använder mock-data:", err);
+      .catch(() => {
+        console.error("Användare inte inloggad");
       });
   }, []);
 
   const months = Array.from(new Set(dates.map((d) => d.month)));
 
+if (isSignedIn) {
   return (
-    <div className="compact-side-container">
-      <div className="side-header">
-        <h2>Viktiga datum</h2>
-        <button className="view-all-btn">Visa alla →</button>
-      </div>
+      <div className="compact-side-container">
+        <div className="side-header">
+          <h2>Viktiga datum</h2>
+          <button className="view-all-btn">Visa alla →</button>
+        </div>
 
-      <div className="scroll-content">
-        {months.map((monthName) => (
-          <div key={monthName} className="month-block">
-            <h3 className="month-label">{monthName}</h3>
+        <div className="scroll-content">
+          {months.map((monthName) => (
+            <div key={monthName} className="month-block">
+              <h3 className="month-label">{monthName}</h3>
 
-            {dates
-              .filter((d) => d.month === monthName)
-              .map((item, index) => (
-                <div key={item.id} className="event-card-row">
-                  <div className="date-box-black">{item.dateDisplay}</div>
-                  <div
-                    className={`event-info-box ${
-                      index % 2 === 0 ? "new-bg-yellow" : "new-bg-white"
-                    }`}
-                  >
-                    <p className="event-name">{item.title}</p>
-                    <div className="time-row">
-                      <span style={{ fontSize: "0.65rem" }}>🕒</span>
-                      <span className="time-text">
-                        {item.time || "Hela dagen"}
-                      </span>
+              {dates
+                .filter((d) => d.month === monthName)
+                .map((item, index) => (
+                  <div key={item.id} className="event-card-row">
+                    <div className="date-box-black">{item.dateDisplay}</div>
+                    <div
+                      className={`event-info-box ${
+                        index % 2 === 0 ? "new-bg-yellow" : "new-bg-white"
+                      }`}
+                    >
+                      <p className="event-name">{item.title}</p>
+                      <div className="time-row">
+                        <span style={{ fontSize: "0.65rem" }}>🕒</span>
+                        <span className="time-text">
+                          {item.time || "Hela dagen"}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-          </div>
-        ))}
+                ))}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default ImportantDate;
