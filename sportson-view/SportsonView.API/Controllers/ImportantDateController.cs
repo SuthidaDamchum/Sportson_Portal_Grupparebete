@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SportsonView.API.Controllers.Response;
 using SportsonView.API.Core.Interfaces;
 
@@ -15,7 +14,7 @@ namespace SportsonView.API.Controllers
             _importantDatesService = importantDatesService;
         }
 
-        [HttpGet("")]
+        [HttpGet("All")]
         public async Task<IActionResult> GetAllImportantDatesAsync()
         {
             var importantDates = await _importantDatesService.GetAllImportantDatesAsync();

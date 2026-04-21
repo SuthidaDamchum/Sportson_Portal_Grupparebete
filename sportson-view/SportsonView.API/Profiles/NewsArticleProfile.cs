@@ -7,8 +7,7 @@ namespace SportsonView.API.Profiles
     {
         public NewsArticleProfile()
         {
-            CreateMap<NewsArticle, NewsArticleDto>();
-            CreateMap<NewsArticleDto, NewsArticle>();
+            CreateMap<NewsArticle, NewsArticleDto>(); //Omvandla NewsArticle till NewsArticleDto 
         }
     }
 }
