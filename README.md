@@ -14,27 +14,23 @@ Efter Sprint 1 hade vi en retrospektiv där vi pratade om vad som gick bra och v
 
 ---
 
-## Vad jag lärde mig tekniskt
-
-**API-struktur**
+Vad jag lärde mig tekniskt
+API-struktur
 En av mina största lärdomar var att förstå hur backend hänger ihop:
-```
 Controller → Service → Repository → Entity (Databas)
-```
-Det är en sak att lära sig det på lektioner – en helt annan sak att bygga det själv. Nu förstår jag hur varje del har ett eget ansvar.
+Det är en sak att lära sig det på lektioner – en helt annan sak att bygga det själv från grunden. Nu förstår jag hur varje del har ett eget ansvar och hur de kommunicerar med varandra.
 
-**Azure**
-Jag lärde mig att sätta upp Azure Blob Storage för att spara bilder och PDF-filer via API. Det väckte mitt intresse för Azure – speciellt CI/CD, Pipelines och Azure App Service.
+Azure
+Jag lärde mig att sätta upp SQL Azure och skapa databasen via Entity Framework migrations. Jag satte också upp Azure Blob Storage för att spara bilder och PDF-filer som frontend kan hämta via API. Det väckte mitt intresse för Azure – speciellt CI/CD, Pipelines och Azure App Service.
 
-**Git**
-Innan grupparbetet jobbade jag mest direkt mot main lokalt. Nu jobbar vi med:
-```
+Git
+Innan grupparbetet jobbade jag mest direkt mot main lokalt. Nu jobbar vi med en tydlig branch-struktur:
 Main → Development → Feature branches
-```
-Jag lärde mig att alltid göra PULL innan man skapar en ny branch för att undvika konflikter. Det är väldigt kul att många kan jobba i samma repository samtidigt.
+Jag lärde mig hur viktigt det är att alltid göra en PULL innan man skapar en ny branch för att undvika konflikter. Det är imponerande hur många utvecklare kan jobba i samma repository samtidigt när man har bra struktur och kommunikation.
+Utöver det tog jag också initiativ att lära mig hur man anropar Sportson API som en extern klient. Jag skapade en separat branch för detta eftersom gruppmedlemmarna ville ha en skärmbild istället – men jag tyckte det var så pass intressant att jag ville utforska det på egen hand.
 
-**Frontend**
-Jag jobbade också lite i frontend. Jag byggde designen för Viktiga Datum och kopplade den mot backend med Axios. Det gav mig en bättre helhetsbild av hur frontend och backend kommunicerar.
+Frontend
+Jag jobbade också en del i frontend. Jag byggde designen för Viktiga Datum och kopplade den mot backend med Axios. Det gav mig en bättre helhetsbild av hur frontend och backend kommunicerar och hur viktigt det är att båda sidor använder samma fältnamn och struktur. 
 
 ---
 
