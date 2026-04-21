@@ -50,7 +50,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 if (!builder.Environment.IsDevelopment())
 {
     var keyVaultUri = new Uri("https://sportson.vault.azure.net/");
-    builder.Configuration.AddAzureKeyVault(keyVaultUri, new DefaultAzureCredential());
+
+    builder.Configuration.AddAzureKeyVault(
+        keyVaultUri,
+        new DefaultAzureCredential());
 }
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -77,16 +80,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
 /* Vi kan inte hasha lösenord i UserConfiguration.cs eftersom det körs varje gång vi migrerar, vilket skulle resultera i olika hashvärden varje gång.
 Det orsakar problem för migration och seedning av användare, eftersom de hashade lösenorden inte skulle matcha de som används i autentiseringstester.
 Därför har jag hashat lösenorden en gång och lagt in de hashade värdena direkt i UserConfiguration.cs. 
-Detta gör att vi kan ha fasta hashvärden för våra seedade användare, hindrar att lösenorden ändras vid varje migration.*/
+Detta gör att vi kan ha fasta hashvärden för våra seedade användare, hindrar att lösenorden ändras vid varje migration. */
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-    db.Database.Migrate(); // säkerställer att DB + tabeller finns
+    db.Database.Migrate();
 
     if (!db.Users.Any())
     {

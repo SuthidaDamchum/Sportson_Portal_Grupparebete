@@ -7,6 +7,7 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+<<<<<<< HEAD
   server: {
     proxy: {
       '/api': {
@@ -16,6 +17,8 @@ export default defineConfig({
       },
     },
   },
+=======
+>>>>>>> origin/dev
   test: {
     globals: true,
     environment: 'jsdom',

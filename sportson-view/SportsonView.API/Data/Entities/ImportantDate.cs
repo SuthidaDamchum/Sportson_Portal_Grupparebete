@@ -7,6 +7,6 @@
         public DateTime StartDate { get; set; } 
         public DateTime? EndDate { get; set; }   
         public string TimeLabel { get; set; } = string.Empty; 
-        public bool IsReminderActive { get; set; }
+        public bool IsReminderActive { get; set; } 
     }
 }

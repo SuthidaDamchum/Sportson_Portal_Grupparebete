@@ -17,13 +17,14 @@ namespace SportsonView.API.Controllers
             _fileService = fileService;
         }
 
-        [HttpGet("")]
+        [HttpGet("All")]
         public async Task<IActionResult> GetNewsArticlesAsync()
         {
             var articles = await _newsService.GetNewsArticlesAsync();
             return Ok(new NewsArticleResponse { NewsArticles = articles });
         }
 
+        //De här nere är Fullständig CRUD, vi behöver bara Get eller Post 
         [HttpPost("")]
         public async Task<IActionResult> AddNewsArticleAsync([FromForm] NewsArticleDto newsArticleDto, IFormFile imageFile)
         {

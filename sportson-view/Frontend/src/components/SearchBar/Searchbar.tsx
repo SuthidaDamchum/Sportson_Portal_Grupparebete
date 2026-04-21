@@ -5,8 +5,9 @@ const SearchBar = () => {
   const [query, setQuery] = useState("");
 
   return (
-    <section id="search">
+    <section id="search-section">
       <input
+        id="search-input"
         type="search"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
