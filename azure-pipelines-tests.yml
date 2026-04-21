@@ -16,7 +16,7 @@ stages:
               versionSpec: '22.x'
             displayName: 'Use Node 22'
 
-          - script: npm ci
+          - script: npm install
             workingDirectory: sportson-view/Frontend
             displayName: 'Install dependencies'
 
