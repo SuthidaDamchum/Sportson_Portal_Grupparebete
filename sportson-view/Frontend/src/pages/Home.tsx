@@ -54,9 +54,10 @@ const heroSlides: HeroSlide[] = [
 const Home = () => {
   return (
     <>
-      <section className="home-hero">
+      <section className="home-hero" id="home-hero-section">
         <Swiper
           className="home-hero-swiper"
+          id="home-hero-swiper"
           modules={[Navigation, Autoplay, A11y]}
           navigation
           loop
@@ -74,7 +75,7 @@ const Home = () => {
         >
           {heroSlides.map((slide) => (
             <SwiperSlide key={slide.id}>
-              <article className="home-hero-card">
+              <article className="home-hero-card" id={`home-hero-slide-${slide.id}`}>
                 <img className="home-hero-image" src={slide.imageUrl} />
                 <div className="home-hero-overlay" />
                 <div className="home-hero-content">
@@ -86,11 +87,11 @@ const Home = () => {
           ))}
         </Swiper>
       </section>
-            <div className="layout-wrapper">
-                  <div className="right-side-pusher">
-                    <ImportantDate />
-                  </div>
-    </div>
+      <div className="layout-wrapper">
+        <div className="right-side-pusher">
+          <ImportantDate />
+        </div>
+      </div>
     </>
   );
 };
