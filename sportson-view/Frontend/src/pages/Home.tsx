@@ -86,11 +86,11 @@ const Home = () => {
           ))}
         </Swiper>
       </section>
-            <div className="layout-wrapper">
-                  <div className="right-side-pusher">
-                    <ImportantDate />
-                  </div>
-    </div>
+      <div className="layout-wrapper">
+        <div className="right-side-pusher">
+          <ImportantDate />
+        </div>
+      </div>
     </>
   );
 };
