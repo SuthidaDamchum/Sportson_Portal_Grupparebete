@@ -46,7 +46,7 @@ namespace SportsonView.API.Data.Configurations
                     Author = "Sara Lindberg",
                     PublishedDate = new DateOnly(2026, 04, 02),
                     Category = "Inköp",
-                    ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Inköp.png"
+                    ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Inköp.webp"
                 },
                 new NewsArticle
                 {
@@ -70,17 +70,11 @@ namespace SportsonView.API.Data.Configurations
         new NewsArticle
         {
             Id = 4,
-            Title = "Nya strikta krav på Shimano-certifiering",
-            Body = "För att bibehålla vår status som auktoriserad servicepartner för Shimano, inför vi nu skärpta krav på certifiering för all verkstadspersonal. \n" +
-                    "Den tekniska utvecklingen går snabbt, särskilt inom elsystem och digital diagnostik, vilket kräver att vi ständigt uppdaterar vår kunskap. \n" +
-                    "Från och med den 1 maj kommer endast certifierade mekaniker att få utföra garantiarbeten på de nya EP8- och STEPS-systemen i våra verkstäder. \n" +
-                    "Vi har därför bokat in en serie obligatoriska utbildningsdagar som kommer att hållas digitalt samt fysiskt på tre olika platser i Sverige. \n" +
-                    "Anmälan görs via länken i personalportalen och vi ser gärna att minst två mekaniker från varje butik deltar i de första omgångarna i vår. \n" +
-                    "Utbildningen täcker allt från avancerad felsökning till korrekt hantering av batterier och mjukvaruuppdateringar för framtidens elcyklar. \n" +
-                    "Efter avslutad och godkänd kurs får varje deltagare ett personligt certifikat och butiken får en dekal att sätta upp som visar vår expertis. \n" +
-                    "Vi investerar i denna utbildning för att vi vet att vår kunskap är det som gör att kunderna känner sig trygga med att lämna in sin cykel hos oss. \n" +
-                    "Varje utbildningstillfälle tar en hel dag och vi ersätter butikerna för den tid som personalen är borta från den ordinarie produktionen. \n" +
-                    "Se till att boka in era platser redan idag då antalet fysiska platser är begränsade för att säkerställa högsta kvalitet på undervisningen.",
+            Title = "Ny verktygspark installerad i samtliga butiker",
+            Body = "Vi är glada att kunna meddela att Sportson nu har investerat i en helt ny och modern verktygspark till samtliga av våra verkstäder runt om i landet. \n" +
+           "Investeringen är en del av vår långsiktiga satsning på att hålla högsta möjliga servicekvalitet för våra kunder och deras cyklar. \n" +
+           "De nya verktygen inkluderar avancerade diagnostikverktyg för elcyklar, kalibrerade momentnycklar och specialverktyg för Shimano Di2- och EP8-systemen. \n" +
+           "Med den nya utrustningen kan våra mekaniker utföra service och reparationer snabbare, säkrare och med ännu högre precision än tidigare",
             Author = "Mikael Verkstadsson",
             PublishedDate = new DateOnly(2026, 04, 04),
             Category = "Verkstad",
@@ -104,7 +98,57 @@ namespace SportsonView.API.Data.Configurations
             PublishedDate = new DateOnly(2026, 04, 12),
             Category = "Campaign",
             ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Campaign.png"
-        }
+        },
+            new NewsArticle
+            {
+                Id = 6,
+                Title = "Årets resultat överträffar alla förväntningar",
+                Body = "Vi är glada att meddela att Sportson redovisar ett rekordresultat för det första kvartalet 2026. Omsättningen ökade med 18% jämfört med samma period förra året tack vare starka cykelförsäljningar och ökad efterfrågan på service.",
+                Author = "CFO Anna Bergström",
+                PublishedDate = new DateOnly(2026, 04, 05),
+                Category = "Ekonomi",
+                ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Ekonomi6.jpeg"
+            },
+            new NewsArticle
+            {
+                Id = 7,
+                Title = "Budgetgenomgång inför hösten 2026",
+                Body = "Ekonomiavdelningen bjuder in alla butikschefer till en digital budgetgenomgång den 25 april. Vi går igenom prognos för Q2 och planerar inför den viktiga höstsäsongen med fokus på lönsamhet och kostnadseffektivitet.",
+                Author = "Anna Bergström",
+                PublishedDate = new DateOnly(2026, 04, 08),
+                Category = "Ekonomi",
+                ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Ekonomi7.png"
+            },
+            new NewsArticle
+            {
+                Id = 8,
+                Title = "Min butik: Så ökar vi kundnöjdheten",
+                Body = "Under mars månad genomförde vi en stor kundundersökning i alla våra butiker. Resultaten visar att bemötandet och kunskapen hos vår personal är det som kunderna uppskattar allra mest hos Sportson.",
+                Author = "Butiksutvecklare Lisa Svensson",
+                PublishedDate = new DateOnly(2026, 04, 09),
+                Category = "Min butik",
+                ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Minbutik8.jpg"
+            },
+            new NewsArticle
+            {
+                Id = 9,
+                Title = "Nya öppettider inför sommarsäsongen",
+                Body = "Från och med den 1 maj utökar vi öppettiderna i samtliga butiker för att möta den ökade efterfrågan under sommarmånaderna. Lördagar och söndagar kommer att ha förlängda öppettider fram till slutet av augusti.",
+                Author = "Butikschef Per Nilsson",
+                PublishedDate = new DateOnly(2026, 04, 10),
+                Category = "Min butik",
+                ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Minbutik9.jpg"
+            },
+            new NewsArticle
+            {
+                Id = 10,
+                Title = "Sommarkampanj: Gratis cykelhjälm vid köp av elcykel",
+                Body = "Under maj och juni erbjuder vi en gratis cykelhjälm värd upp till 599 kr vid köp av valfri elcykel. Kampanjen gäller i samtliga Sportson-butiker och är ett sätt att uppmuntra säkrare cykling.",
+                Author = "Marknadsteamet",
+                PublishedDate = new DateOnly(2026, 04, 11),
+                Category = "Campaign",
+                ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Campaign10.png"
+            }
             );
         }
     }

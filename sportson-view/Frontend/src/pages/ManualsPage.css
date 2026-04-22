@@ -1,0 +1,154 @@
+.manuals-view {
+  width: 100%;
+  min-height: calc(100vh - 79px);
+  background: #1a1a1a;
+  padding: 8px 0 56px;
+  color: #fff;
+}
+
+.manuals-controls-panel {
+  max-width: 1200px;
+  margin: 8px auto 0;
+  border: none;
+  border-radius: 0;
+  background: #1a1a1a;
+  padding: 12px 12px 16px;
+}
+
+.manuals-filter-panel {
+  margin-top: 12px;
+}
+
+.manuals-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.manuals-filter-group + .manuals-filter-group {
+  margin-top: 18px;
+}
+
+.manuals-filter-title {
+  margin: 0;
+  min-width: 98px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f0c000;
+  text-align: left;
+}
+
+.manuals-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.manuals-chip {
+  border: 1px solid #444;
+  background: #2a2a2a;
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 0.92rem;
+  line-height: 1;
+  font-weight: 600;
+  cursor: default;
+}
+
+.manuals-chip-active {
+  background: #f0c000;
+  border-color: #f0c000;
+  color: #000;
+  font-weight: 700;
+}
+
+.manuals-empty-state {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #d2d2d2;
+  gap: 10px;
+}
+
+.manuals-empty-icon {
+  width: 56px;
+  height: 56px;
+  border: 3px solid #444;
+  border-radius: 50%;
+  position: relative;
+  opacity: 0.9;
+}
+
+.manuals-empty-icon::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 4px;
+  border-radius: 999px;
+  background: #444;
+  right: -12px;
+  bottom: 4px;
+  transform: rotate(40deg);
+  transform-origin: left center;
+}
+
+.manuals-empty-state h3 {
+  margin: 8px 0 0;
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: #f0c000;
+}
+
+.manuals-empty-state p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #b2b2b2;
+}
+
+@media (max-width: 768px) {
+  .manuals-view {
+    padding: 8px 0 40px;
+  }
+
+  .manuals-controls-panel {
+    margin: 8px 12px 0;
+    padding: 12px 10px 16px;
+  }
+
+  .manuals-empty-state {
+    padding: 0 12px;
+  }
+
+  .manuals-filter-group {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .manuals-filter-title {
+    min-width: 72px;
+    padding-top: 3px;
+    font-size: 1.05rem;
+  }
+
+  .manuals-chip {
+    padding: 8px 11px;
+    font-size: 0.88rem;
+  }
+
+  .manuals-empty-state h3 {
+    font-size: 1.3rem;
+  }
+
+  .manuals-empty-state p {
+    font-size: 1rem;
+  }
+}
