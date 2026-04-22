@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportsonView.API.Data;
 
@@ -11,9 +12,11 @@ using SportsonView.API.Data;
 namespace SportsonView.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260421211351_AddMoreNews")]
+    partial class AddMoreNews
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,11 +183,11 @@ namespace SportsonView.API.Migrations
                         {
                             Id = 4,
                             Author = "Mikael Verkstadsson",
-                            Body = "Vi är glada att kunna meddela att Sportson nu har investerat i en helt ny och modern verktygspark till samtliga av våra verkstäder runt om i landet. \nInvesteringen är en del av vår långsiktiga satsning på att hålla högsta möjliga servicekvalitet för våra kunder och deras cyklar. \nDe nya verktygen inkluderar avancerade diagnostikverktyg för elcyklar, kalibrerade momentnycklar och specialverktyg för Shimano Di2- och EP8-systemen. \nMed den nya utrustningen kan våra mekaniker utföra service och reparationer snabbare, säkrare och med ännu högre precision än tidigare",
+                            Body = "För att bibehålla vår status som auktoriserad servicepartner för Shimano, inför vi nu skärpta krav på certifiering för all verkstadspersonal. \nDen tekniska utvecklingen går snabbt, särskilt inom elsystem och digital diagnostik, vilket kräver att vi ständigt uppdaterar vår kunskap. \nFrån och med den 1 maj kommer endast certifierade mekaniker att få utföra garantiarbeten på de nya EP8- och STEPS-systemen i våra verkstäder. \nVi har därför bokat in en serie obligatoriska utbildningsdagar som kommer att hållas digitalt samt fysiskt på tre olika platser i Sverige. \nAnmälan görs via länken i personalportalen och vi ser gärna att minst två mekaniker från varje butik deltar i de första omgångarna i vår. \nUtbildningen täcker allt från avancerad felsökning till korrekt hantering av batterier och mjukvaruuppdateringar för framtidens elcyklar. \nEfter avslutad och godkänd kurs får varje deltagare ett personligt certifikat och butiken får en dekal att sätta upp som visar vår expertis. \nVi investerar i denna utbildning för att vi vet att vår kunskap är det som gör att kunderna känner sig trygga med att lämna in sin cykel hos oss. \nVarje utbildningstillfälle tar en hel dag och vi ersätter butikerna för den tid som personalen är borta från den ordinarie produktionen. \nSe till att boka in era platser redan idag då antalet fysiska platser är begränsade för att säkerställa högsta kvalitet på undervisningen.",
                             Category = "Verkstad",
                             ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Verkstad.png",
                             PublishedDate = new DateOnly(2026, 4, 4),
-                            Title = "Ny verktygspark installerad i samtliga butiker"
+                            Title = "Nya strikta krav på Shimano-certifiering"
                         },
                         new
                         {
@@ -222,7 +225,7 @@ namespace SportsonView.API.Migrations
                             Author = "Butiksutvecklare Lisa Svensson",
                             Body = "Under mars månad genomförde vi en stor kundundersökning i alla våra butiker. Resultaten visar att bemötandet och kunskapen hos vår personal är det som kunderna uppskattar allra mest hos Sportson.",
                             Category = "Min butik",
-                            ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Minbutik8.jpg",
+                            ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/MinButik8.png",
                             PublishedDate = new DateOnly(2026, 4, 9),
                             Title = "Min butik: Så ökar vi kundnöjdheten"
                         },
@@ -232,7 +235,7 @@ namespace SportsonView.API.Migrations
                             Author = "Butikschef Per Nilsson",
                             Body = "Från och med den 1 maj utökar vi öppettiderna i samtliga butiker för att möta den ökade efterfrågan under sommarmånaderna. Lördagar och söndagar kommer att ha förlängda öppettider fram till slutet av augusti.",
                             Category = "Min butik",
-                            ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Minbutik9.jpg",
+                            ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/MinButik9.png",
                             PublishedDate = new DateOnly(2026, 4, 10),
                             Title = "Nya öppettider inför sommarsäsongen"
                         },
@@ -246,35 +249,6 @@ namespace SportsonView.API.Migrations
                             PublishedDate = new DateOnly(2026, 4, 11),
                             Title = "Sommarkampanj: Gratis cykelhjälm vid köp av elcykel"
                         });
-                });
-
-            modelBuilder.Entity("SportsonView.API.Data.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Store")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

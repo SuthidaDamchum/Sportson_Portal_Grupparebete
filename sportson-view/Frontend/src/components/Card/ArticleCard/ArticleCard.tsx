@@ -5,8 +5,8 @@ type ArticleCardProps = {
   article: Article;
 };
 
-const formatPublishDate = (publishDate: number) => {
-  return new Date(publishDate).toLocaleDateString("sv-SE", {
+const formatPublishDate = (publishedDate: string) => {
+  return new Date(publishedDate).toLocaleDateString("sv-SE", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -25,14 +25,14 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
 
       <div className="article-content">
         <div className="article-kicker">
-          <span>Internnyhet</span>
-          <time dateTime={new Date(article.publishDate).toISOString()}>
-            {formatPublishDate(article.publishDate)}
+          <span>{article.category}</span> 
+          <time dateTime={new Date(article.publishedDate).toISOString()}>
+            {formatPublishDate(article.publishedDate)}
           </time>
         </div>
 
         <h2 className="article-title">{article.title}</h2>
-        <p className="article-description">{article.description}</p>
+        <p className="article-description">{article.body}</p>
 
         <div className="article-meta">
           <span>{article.author}</span>

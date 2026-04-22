@@ -1,15 +1,16 @@
 export type Article = {
   id: number;
   title: string;
-  description: string;
+  body: string;
   author: string;
-  publishDate: number;
+  publishedDate: string;
   category: string;
   imageUrl: string;
 };
 
-export async function getArticles(): Promise<Article[]> {
-  const res = await fetch("/api/articles");
-  if (!res.ok) throw new Error("Failed to fetch articles");
-  return res.json();
-}
+// export async function getArticles(): Promise<Article[]> {
+//   const res = await fetch("/api/articles");
+//   if (!res.ok) throw new Error("Failed to fetch articles");
+//   return res.json();
+// }
+

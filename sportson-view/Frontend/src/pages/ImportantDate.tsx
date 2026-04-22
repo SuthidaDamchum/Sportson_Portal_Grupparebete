@@ -6,13 +6,55 @@ import "./ImportantDate.css";
 const ImportantDate = () => {
   //Mockdata
   const mockData: ImportantDateDto[] = [
-    { id: 1, title: "Frukostmöte: Nytt förmånspaket", month: "Maj", dateDisplay: "04", time: "08.00 - 09.00" },
-    { id: 2, title: "Kampanjstart: Sommarcyklar 2026", month: "Maj", dateDisplay: "11", time: "Hela dagen" },
-    { id: 3, title: "Personalmöte - Volvo tjänstebilar", month: "Maj", dateDisplay: "15", time: "13.00 - 15.00" },
-    { id: 4, title: "Utbildning: Service av elmotorer", month: "Maj", dateDisplay: "26", time: "09.00 - 17.00" },
-    { id: 5, title: "Deadline: Beställning Volvo-kläder", month: "Juni", dateDisplay: "02", time: "Senast kl 16.00" },
-    { id: 6, title: "Sommarfest med teamet", month: "Juni", dateDisplay: "19", time: "17.00 - Sent" },
-    { id: 7, title: "Inventering av butikslager", month: "Juni", dateDisplay: "25", time: "07.00 - 12.00" }
+    {
+      id: 1,
+      title: "Frukostmöte: Nytt förmånspaket",
+      month: "Maj",
+      dateDisplay: "04",
+      time: "08.00 - 09.00",
+    },
+    {
+      id: 2,
+      title: "Kampanjstart: Sommarcyklar 2026",
+      month: "Maj",
+      dateDisplay: "11",
+      time: "Hela dagen",
+    },
+    {
+      id: 3,
+      title: "Kampanj: Cykelhjälmar REA",
+      month: "Maj",
+      dateDisplay: "15",
+      time: "13.00 - 15.00",
+    },
+    {
+      id: 4,
+      title: "Utbildning: Service av elmotorer",
+      month: "Maj",
+      dateDisplay: "26",
+      time: "09.00 - 17.00",
+    },
+    {
+      id: 5,
+      title: "Servicedag: Bromsar och växlar",
+      month: "Juni",
+      dateDisplay: "02",
+      time: "Senast kl 17.00",
+    },
+    {
+      id: 6,
+      title: "Sommarfest med teamet",
+      month: "Juni",
+      dateDisplay: "19",
+      time: "17.00 - Sent",
+    },
+    {
+      id: 7,
+      title: "Inventering av butikslager",
+      month: "Juni",
+      dateDisplay: "25",
+      time: "07.00 - 12.00",
+    },
   ];
 
 
@@ -24,6 +66,7 @@ const ImportantDate = () => {
     getImportantDate()
       .then((result) => {
         if (result && result.length > 0) {
+          console.log("✅ Viktiga datum från backend:", result); // ← lägg till
           setDates(result);
           console.debug("Hämtade viktiga datum från API:", result);
           setIsSignedIn(true);
