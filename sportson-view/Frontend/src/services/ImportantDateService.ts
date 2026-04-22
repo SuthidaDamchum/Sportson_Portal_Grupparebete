@@ -10,7 +10,7 @@ export const getImportantDate = async (): Promise<ImportantDateDto[]> => {
     const token = authService.getToken();
 
     const response = await axios.get<ImportantDateResponse>(
-      "/api/ImportantDate",
+      "/api/ImportantDate/All",
       {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       }

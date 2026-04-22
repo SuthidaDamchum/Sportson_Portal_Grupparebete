@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './SupportPage.css';
 import emailjs from '@emailjs/browser';
+import { getUserData } from "../services/UserService";
+import type { UserType } from "../types/UserType";
 
 // Placeholder email
 const departmentEmails: Record<string, string> = {
@@ -18,7 +20,25 @@ const SupportPage = () => {
   const [error, setError] = useState("");
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,63}$/;
+  const [user, setUser] = useState<UserType | null>(null);
 
+  const capitalize = (str: string) =>
+    str[0].toLocaleUpperCase("sv-SE") + str.slice(1);
+
+    useEffect(() => {
+      const fetchUser = async () => {
+        try {
+          const data = await getUserData();
+          setUser(data);
+          setName(capitalize(data.username));
+          setEmail(data.email);  
+        } catch {
+          setUser(null);
+        }
+      };
+
+      fetchUser();
+    }, []);
   const validateForm = (): boolean => {
     setError("");
 
@@ -97,7 +117,8 @@ const SupportPage = () => {
         <input
           id="support-name-input"
           type="text"
-          placeholder="Ditt namn"
+          placeholder={user?.username || "Ditt namn"}
+          disabled={!!user?.username}
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -105,8 +126,9 @@ const SupportPage = () => {
         <input
           id="support-email-input"
           type="email"
-          placeholder="Din e-post"
           value={email}
+          placeholder={user?.email || "Ditt e-post"}
+          disabled={!!user?.email}
           onChange={(e) => setEmail(e.target.value)}
         />
 
@@ -143,7 +165,8 @@ const SupportPage = () => {
               color: '#f0c000',
               textAlign: 'center',
               maxWidth: '100%',
-              minHeight: '50px',
+              minHeight: '25px',
+              maxHeight: '35px',
               backgroundColor: '#1a1a1a',
               marginTop: '5px',
               resize: 'none'
