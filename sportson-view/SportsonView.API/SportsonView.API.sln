@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsonView.API", "SportsonView.API.csproj", "{07E4DEC6-9B0A-BFDB-5966-98259D68EF01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsonView.API.Tests", "SportsonView.API.Tests\SportsonView.API.Tests.csproj", "{197B70BB-5430-BF4F-8A7D-3DEC5E2B068D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07E4DEC6-9B0A-BFDB-5966-98259D68EF01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07E4DEC6-9B0A-BFDB-5966-98259D68EF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07E4DEC6-9B0A-BFDB-5966-98259D68EF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07E4DEC6-9B0A-BFDB-5966-98259D68EF01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{197B70BB-5430-BF4F-8A7D-3DEC5E2B068D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{197B70BB-5430-BF4F-8A7D-3DEC5E2B068D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{197B70BB-5430-BF4F-8A7D-3DEC5E2B068D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{197B70BB-5430-BF4F-8A7D-3DEC5E2B068D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D8E106D-4E98-4927-B255-3620E7604B5E}
+	EndGlobalSection
+EndGlobal

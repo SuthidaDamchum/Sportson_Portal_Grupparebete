@@ -25,14 +25,14 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
 
       <div className="article-content">
         <div className="article-kicker">
-          <span>{article.category}</span> 
+          <span>{article.category}</span>
           <time dateTime={new Date(article.publishedDate).toISOString()}>
             {formatPublishDate(article.publishedDate)}
           </time>
         </div>
 
         <h2 className="article-title">{article.title}</h2>
-        <p className="article-description">{article.body}</p>
+        <p className="article-body">{article.body}</p>
 
         <div className="article-meta">
           <span>{article.author}</span>
