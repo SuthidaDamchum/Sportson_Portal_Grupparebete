@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sportson-view", "sportson-v
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsonView.API", "sportson-view\SportsonView.API\SportsonView.API.csproj", "{29371F1C-ACB8-D104-D707-83E88441B21F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SportsonView.API", "SportsonView.API", "{ECBBFB6F-F549-E15E-7C90-868ADC93D05B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsonView.API.Tests", "sportson-view\SportsonView.API\SportsonView.API.Tests\SportsonView.API.Tests.csproj", "{BCC55053-30CA-44F4-9C95-ACF1ECBE3367}"
 EndProject
 Global
@@ -51,8 +49,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{29371F1C-ACB8-D104-D707-83E88441B21F} = {E95F8371-1062-706C-F39C-F801E4315673}
-		{ECBBFB6F-F549-E15E-7C90-868ADC93D05B} = {E95F8371-1062-706C-F39C-F801E4315673}
-		{BCC55053-30CA-44F4-9C95-ACF1ECBE3367} = {ECBBFB6F-F549-E15E-7C90-868ADC93D05B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {708AFAA1-A9E9-47C9-A446-4EF62C54BD06}
