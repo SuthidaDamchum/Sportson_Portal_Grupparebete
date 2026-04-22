@@ -18,6 +18,7 @@ const OrderCentralPage = () => {
           display: "flex",
           borderBottom: "0.5px solid rgba(255,255,255,0.08)",
           marginBottom: "26px",
+          overflowX: "auto",
         }}
       >
         {[
