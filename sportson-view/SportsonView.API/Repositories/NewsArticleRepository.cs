@@ -17,6 +17,12 @@ namespace SportsonView.API.Repositories
         {
             return await _context.NewsArticles.ToListAsync();
         }
+
+        /// <summary>
+        /// Används ej
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<bool> DeleteNewsArticleAsync(int id)
         {
             var articleToRemove = await _context.NewsArticles.FirstOrDefaultAsync(a => a.Id == id);

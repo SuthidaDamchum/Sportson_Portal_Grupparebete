@@ -1,10 +1,30 @@
 import { NavLink } from "react-router";
 import "./Header.css";
-
+import { getUserData } from "../../services/UserService";
+import type { UserType } from "../../types/UserType";
 import { routePaths } from "../../services/RouteService";
 import sportssonLogo from "../../assets/logos/SportsonLogo.png";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const capitalize = (str: string) =>
+    str[0].toLocaleUpperCase("sv-SE") + str.slice(1);
+
+  const [user, setUser] = useState<UserType | null>(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const data = await getUserData();
+        setUser(data);
+      } catch {
+        setUser(null);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
   return (
     <header className="header">
       <nav className="header-nav" id="header-navigation">
@@ -15,9 +35,19 @@ const Header = () => {
           </NavLink>
 
           <div>
-            <button type="button" className="store-button" id="header-store-button">
-              <span>Min butik</span>
-              <span>Göteborg</span>
+            <button
+              type="button"
+              className="store-button"
+              id="header-store-button"
+            >
+              {!user ? (
+                <p>Ej inloggad</p>
+              ) : (
+                <>
+                  <h2>{capitalize(user.username)}</h2>
+                  <h3>Butik: {user.store}</h3>
+                </>
+              )}
             </button>
 
             <ul role="menu" id="header-user-menu">
@@ -31,6 +61,10 @@ const Header = () => {
         </div>
 
         <ul className="nav-links">
+          <li>
+            <NavLink to={routePaths.login}>Login</NavLink>
+          </li>
+
           <li>
             <NavLink to={routePaths.news} id="header-news-link">
               Nyheter

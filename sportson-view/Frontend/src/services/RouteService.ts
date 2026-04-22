@@ -1,5 +1,6 @@
 export const routePaths = {
-  home: "/",
+  home: "/", 
+  login: "/login",
   news: "/Nyheter",
   manuals: "/Manualer",
   orderCentral: "/OrderCentral",
