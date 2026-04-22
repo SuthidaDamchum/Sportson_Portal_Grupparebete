@@ -1,7 +1,7 @@
 #search-section {
   width: 100%;
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 0px auto;
   padding: 0 20px;
   position: relative;
 }
@@ -21,7 +21,7 @@
 }
 
 #search-section input:focus {
-  border-color: #646cff;
+  border-color: #f0c000;
 }
 
 #search-section input::placeholder {
