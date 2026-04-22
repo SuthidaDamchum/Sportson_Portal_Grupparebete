@@ -1,0 +1,216 @@
+* {
+  box-sizing: border-box;
+}
+
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("https://media1.turiststockholm.se/2024/06/mountainbike-skog.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.login-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  color: white;
+}
+
+.login-left {
+  max-width: 500px;
+}
+
+.login-left h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.login-left p {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 430px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: #e87722;
+  border-color: #e87722;
+}
+
+.login-right {
+  width: 100%;
+  max-width: 430px;
+  justify-self: end;
+}
+
+.login-right h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.login-form {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.form-group input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #222;
+  font-size: 1rem;
+}
+
+.form-group input::placeholder {
+  color: #777;
+}
+
+.login-options {
+  margin-bottom: 1.2rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: white;
+}
+
+.login-btn {
+  background: #e87722;
+  color: white;
+  border: none;
+  padding: 0.9rem 1.4rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.login-btn:hover {
+  background: #cf6519;
+}
+
+.error-text {
+  margin-top: 1rem;
+  color: #ffb3b3;
+  font-size: 0.95rem;
+}
+
+.forgot-password {
+  display: inline-block;
+  margin-top: 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.terms-text {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.terms-text a {
+  color: white;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .login-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .login-left {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .login-left p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .login-right {
+    justify-self: center;
+    width: 100%;
+  }
+
+  .login-left h1 {
+    font-size: 3rem;
+  }
+
+  .login-right h2 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+}
