@@ -1,4 +1,5 @@
 export type YouTubeVideo = {
   title: string;
-  url: string;
+  type: string;
+  URL: string;
 };
