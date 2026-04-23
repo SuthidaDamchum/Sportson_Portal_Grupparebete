@@ -27,7 +27,7 @@ namespace SportsonView.API.Data.Configurations
                     Author = "Daniel Andersson",
                     PublishedDate = new DateOnly(2026, 04, 01),
                     Category = "IT",
-                    ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/IT.png"
+                    ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/It1.png"
                 },
                 new NewsArticle
                 {
@@ -46,7 +46,7 @@ namespace SportsonView.API.Data.Configurations
                     Author = "Sara Lindberg",
                     PublishedDate = new DateOnly(2026, 04, 02),
                     Category = "Inköp",
-                    ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Inköp.webp"
+                    ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Inkop2.webp"
                 },
                 new NewsArticle
                 {
@@ -65,7 +65,7 @@ namespace SportsonView.API.Data.Configurations
                     Author = "Erik Markström",
                     PublishedDate = new DateOnly(2026, 04, 03),
                     Category = "Marknad",
-                    ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Marknad.png"
+                    ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Marknad3.png"
                 },
         new NewsArticle
         {
@@ -78,7 +78,7 @@ namespace SportsonView.API.Data.Configurations
             Author = "Mikael Verkstadsson",
             PublishedDate = new DateOnly(2026, 04, 04),
             Category = "Verkstad",
-            ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Verkstad.png"
+            ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Verkstad4.png"
         },
         new NewsArticle
         {
@@ -97,7 +97,7 @@ namespace SportsonView.API.Data.Configurations
             Author = "Marknadsteamet",
             PublishedDate = new DateOnly(2026, 04, 12),
             Category = "Campaign",
-            ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Campaign.png"
+            ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Kampanj5.png"
         },
             new NewsArticle
             {
@@ -107,7 +107,7 @@ namespace SportsonView.API.Data.Configurations
                 Author = "CFO Anna Bergström",
                 PublishedDate = new DateOnly(2026, 04, 05),
                 Category = "Ekonomi",
-                ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Ekonomi6.jpeg"
+                ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Ekonomi6.jpeg"
             },
             new NewsArticle
             {
@@ -117,7 +117,7 @@ namespace SportsonView.API.Data.Configurations
                 Author = "Anna Bergström",
                 PublishedDate = new DateOnly(2026, 04, 08),
                 Category = "Ekonomi",
-                ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Ekonomi7.png"
+                ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Ekonomi7.png"
             },
             new NewsArticle
             {
@@ -127,7 +127,7 @@ namespace SportsonView.API.Data.Configurations
                 Author = "Butiksutvecklare Lisa Svensson",
                 PublishedDate = new DateOnly(2026, 04, 09),
                 Category = "Min butik",
-                ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Minbutik8.jpg"
+                ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Minbutik8.jpg"
             },
             new NewsArticle
             {
@@ -137,7 +137,7 @@ namespace SportsonView.API.Data.Configurations
                 Author = "Butikschef Per Nilsson",
                 PublishedDate = new DateOnly(2026, 04, 10),
                 Category = "Min butik",
-                ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Minbutik9.jpg"
+                ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Minbutik9.jpg"
             },
             new NewsArticle
             {
@@ -147,7 +147,7 @@ namespace SportsonView.API.Data.Configurations
                 Author = "Marknadsteamet",
                 PublishedDate = new DateOnly(2026, 04, 11),
                 Category = "Campaign",
-                ImageUrl = "https://sportsonsbilder.blob.core.windows.net/news-images/Campaign10.png"
+                ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Campaign10.png"
             }
             );
         }
