@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ArticleCard from "../components/Card/ArticleCard/ArticleCard";
 import type { Article } from "../types/ArticleType";
 import { getNews } from "../services/NewsService";
+import { authService } from "../services/AuthService";
 
 const placeholderArticles: Article[] = [
   {
@@ -106,13 +107,18 @@ const placeholderArticles: Article[] = [
 ];
 
 const NewsPage = () => {
-  const [articles, setArticles] = useState<Article[]>(placeholderArticles);
+  const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
+    if (!authService.isAuthenticated()) {
+      console.log("Inte inloggad, använder mockdata");
+      return;
+    }
     getNews()
       .then((data) => {
         if (data && data.length > 0) {
           console.log("Data från backend:", data);
+          console.log("Första artikeln:", JSON.stringify(data[0]));
           setArticles(data);
         } else {
           console.log("Backend tom , använder mockdata");

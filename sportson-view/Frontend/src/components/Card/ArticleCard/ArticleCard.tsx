@@ -32,7 +32,9 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         </div>
 
         <h2 className="article-title">{article.title}</h2>
-        <p className="article-body">{article.body}</p>
+        <p className="article-body" style={{ whiteSpace: "pre-line" }}>
+          {article.body}
+        </p>
 
         <div className="article-meta">
           <span>{article.author}</span>

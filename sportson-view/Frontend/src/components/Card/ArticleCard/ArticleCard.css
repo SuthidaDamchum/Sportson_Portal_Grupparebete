@@ -63,6 +63,7 @@
   -webkit-line-clamp: 3;
   line-clamp: 3;
   overflow: hidden;
+  white-space: pre-line;
 }
 
 .article-meta {
