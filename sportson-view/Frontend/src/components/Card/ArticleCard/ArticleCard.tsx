@@ -33,7 +33,7 @@ const ArticleCard = ({ article, onClick }: ArticleCardProps) => {
         </div>
 
         <h2 className="article-title">{article.title}</h2>
-        <p className="article-body" style={{ whiteSpace: "pre-line" }}>
+        <p className="article-description" style={{ whiteSpace: "pre-line" }}>
           {article.body}
         </p>
 

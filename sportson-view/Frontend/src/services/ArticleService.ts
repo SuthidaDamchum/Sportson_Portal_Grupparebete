@@ -2,7 +2,7 @@ import axios from "axios";
 import type { Article } from "../types/ArticleType";
 import { authService } from "./AuthService";
 
-export type NewsResponse = { Articles: Article[] };
+export type NewsResponse = { newsArticles: Article[] };
 
 export const getArticle = async (): Promise<Article[]> => {
   try {
@@ -11,7 +11,7 @@ export const getArticle = async (): Promise<Article[]> => {
         Authorization: `Bearer ${authService.getToken()}`,
       },
     });
-    return response.data.Articles || [];
+    return response.data.newsArticles || [];
   } catch (error) {
     console.error("Kunde inte nå NewsAPI:", error);
     return [];
