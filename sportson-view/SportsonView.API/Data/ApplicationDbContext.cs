@@ -17,7 +17,6 @@ namespace SportsonView.API.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             modelBuilder.ApplyConfiguration(new NewsArticleConfiguration());
             modelBuilder.ApplyConfiguration(new ImportantDateConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportsonView.API.Data;
 
@@ -11,9 +12,11 @@ using SportsonView.API.Data;
 namespace SportsonView.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260424073819_NewsDB-AddDescription")]
+    partial class NewsDBAddDescription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -158,7 +161,7 @@ namespace SportsonView.API.Migrations
                             Category = "IT",
                             Description = "Från måndag krävs tvåfaktorsautentisering för alla anställda. Ladda ner Microsoft Authenticator redan idag.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/It1.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 1),
                             Title = "Uppdatering av intranätet och IT-säkerhet"
                         },
                         new
@@ -169,7 +172,7 @@ namespace SportsonView.API.Migrations
                             Category = "Inköp",
                             Description = "Leveransen av årets elcyklar från Crescent och Monark försenas med två till tre veckor på grund av störningar i fraktkedjan.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Inkop2.webp",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 2),
                             Title = "Leveransförseningar av årets elcyklar"
                         },
                         new
@@ -180,7 +183,7 @@ namespace SportsonView.API.Migrations
                             Category = "Marknad",
                             Description = "Vårkampanjen startar 15 april med TV, radio och sociala medier. Nytt butiksmaterial levereras under veckan.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Marknad3.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 3),
                             Title = "Vårkampanjen 2026 drar äntligen igång!"
                         },
                         new
@@ -191,7 +194,7 @@ namespace SportsonView.API.Migrations
                             Category = "Verkstad",
                             Description = "Samtliga verkstäder har fått ny modern utrustning, inklusive diagnostikverktyg för elcyklar och specialverktyg för Shimano.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Verkstad4.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 4),
                             Title = "Ny verktygspark installerad i samtliga butiker"
                         },
                         new
@@ -202,7 +205,7 @@ namespace SportsonView.API.Migrations
                             Category = "Campaign",
                             Description = "Just nu 20% rabatt på alla elcyklar i lager. Gäller Scott, Specialized, Trek och Crescent så långt lagret räcker.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Kampanj5.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 12),
                             Title = "Vårkampanj: 20% rabatt på alla Elcyklar i lager!"
                         },
                         new
@@ -213,7 +216,7 @@ namespace SportsonView.API.Migrations
                             Category = "Ekonomi",
                             Description = "Sportson redovisar rekordresultat för Q1 2026 med 18% ökad omsättning jämfört med samma period förra året.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Ekonomi6.jpeg",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 5),
                             Title = "Årets resultat överträffar alla förväntningar"
                         },
                         new
@@ -224,7 +227,7 @@ namespace SportsonView.API.Migrations
                             Category = "Ekonomi",
                             Description = "Butikschefer bjuds in till digital budgetgenomgång den 25 april inför höstens planering och Q2-prognos.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Ekonomi7.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 8),
                             Title = "Budgetgenomgång inför hösten 2026"
                         },
                         new
@@ -235,7 +238,7 @@ namespace SportsonView.API.Migrations
                             Category = "Min butik",
                             Description = "Kundundersökningen visar att bemötande och personalkännedom är det kunderna uppskattar mest hos Sportson.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Minbutik8.jpg",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 9),
                             Title = "Min butik: Så ökar vi kundnöjdheten"
                         },
                         new
@@ -246,7 +249,7 @@ namespace SportsonView.API.Migrations
                             Category = "Min butik",
                             Description = "Från 1 maj utökas öppettiderna i alla butiker med förlängda helgöppettider fram till slutet av augusti.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Minbutik9.jpg",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 10),
                             Title = "Nya öppettider inför sommarsäsongen"
                         },
                         new
@@ -257,7 +260,7 @@ namespace SportsonView.API.Migrations
                             Category = "Campaign",
                             Description = "Gratis cykelhjälm värd upp till 599 kr vid köp av valfri elcykel under maj och juni i samtliga butiker.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Campaign10.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 11),
                             Title = "Sommarkampanj: Gratis cykelhjälm vid köp av elcykel"
                         });
                 });

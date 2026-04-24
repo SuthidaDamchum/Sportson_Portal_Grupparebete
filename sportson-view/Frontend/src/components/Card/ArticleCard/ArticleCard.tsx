@@ -3,6 +3,7 @@ import "./ArticleCard.css";
 
 type ArticleCardProps = {
   article: Article;
+  onClick: () => void;
 };
 
 const formatPublishDate = (publishedDate: string) => {
@@ -13,12 +14,12 @@ const formatPublishDate = (publishedDate: string) => {
   });
 };
 
-const ArticleCard = ({ article }: ArticleCardProps) => {
+const ArticleCard = ({ article, onClick }: ArticleCardProps) => {
   const imageUrl = article.imageUrl ?? "";
   const hasImage = imageUrl.trim().length > 0;
 
   return (
-    <article className="article-card">
+    <article className="article-card" onClick={onClick}>
       <div className="article-image-wrap">
         {hasImage && <img src={imageUrl} className="article-image" />}
       </div>
