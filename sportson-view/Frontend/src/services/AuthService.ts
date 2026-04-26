@@ -1,4 +1,4 @@
-const API_URL = '/api';
+const API_URL = "/api";
 
 type LoginResponse = {
   token?: string;
@@ -8,37 +8,38 @@ type LoginResponse = {
 export const authService = {
   login: async (username: string, password: string): Promise<LoginResponse> => {
     const response = await fetch(`${API_URL}/auth/login`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, password }),
     });
 
     if (!response.ok) {
-      throw new Error('Login failed');
+      throw new Error("Login failed");
     }
 
     const data: LoginResponse = await response.json();
     const token = data.token || data.Token;
 
     if (!token) {
-      throw new Error('Token not found in response');
+      throw new Error("Token not found in response");
     }
 
-    localStorage.setItem('token', token);
+    localStorage.setItem("token", token);
+    window.dispatchEvent(new Event("authChange"));
     return data;
   },
 
   logout: (): void => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
   },
 
   getToken: (): string | null => {
-    return localStorage.getItem('token');
+    return localStorage.getItem("token");
   },
 
   isAuthenticated: (): boolean => {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem("token");
   },
 };

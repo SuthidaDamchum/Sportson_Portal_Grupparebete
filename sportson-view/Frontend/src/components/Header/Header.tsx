@@ -5,24 +5,38 @@ import type { UserType } from "../../types/UserType";
 import { routePaths } from "../../services/RouteService";
 import sportssonLogo from "../../assets/logos/SportsonLogo.png";
 import { useEffect, useState } from "react";
+import { authService } from "../../services/AuthService";
 
 const Header = () => {
   const capitalize = (str: string) =>
     str[0].toLocaleUpperCase("sv-SE") + str.slice(1);
 
   const [user, setUser] = useState<UserType | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    authService.isAuthenticated(),
+  );
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const data = await getUserData();
         setUser(data);
+        setIsAuthenticated(true);
       } catch {
         setUser(null);
+        setIsAuthenticated(false);
       }
     };
-
     fetchUser();
+
+    // Lyssna på authChange event
+    const handleAuth = () => {
+      setIsAuthenticated(authService.isAuthenticated());
+      fetchUser();
+    };
+
+    window.addEventListener("authChange", handleAuth);
+    return () => window.removeEventListener("authChange", handleAuth);
   }, []);
 
   return (
@@ -65,31 +79,38 @@ const Header = () => {
             <NavLink to={routePaths.login}>Login</NavLink>
           </li>
 
-          <li>
-            <NavLink to={routePaths.news} id="header-news-link">
-              Nyheter
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={routePaths.manuals} id="header-manuals-link">
-              Manualer
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={routePaths.orderCentral} id="header-ordercentral-link">
-              Ordercentral
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={routePaths.SupportPage} id="header-support-link">
-              Supportärenden
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={routePaths.contacts} id="header-contacts-link">
-              Kontakter
-            </NavLink>
-          </li>
+          {isAuthenticated && (
+            <>
+              <li>
+                <NavLink to={routePaths.news} id="header-news-link">
+                  Nyheter
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={routePaths.manuals} id="header-manuals-link">
+                  Manualer
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={routePaths.orderCentral}
+                  id="header-ordercentral-link"
+                >
+                  Ordercentral
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={routePaths.SupportPage} id="header-support-link">
+                  Supportärenden
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={routePaths.contacts} id="header-contacts-link">
+                  Kontakter
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>
