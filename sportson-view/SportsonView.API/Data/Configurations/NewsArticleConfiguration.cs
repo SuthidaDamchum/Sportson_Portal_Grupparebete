@@ -12,7 +12,7 @@ namespace SportsonView.API.Data.Configurations
             builder.HasData(
                 new NewsArticle
                 {
-                    Id =1,
+                    Id = 1,
                     Title = "Uppdatering av intranätet och IT-säkerhet",
                     Description = "Från måndag krävs tvåfaktorsautentisering för alla anställda. Ladda ner Microsoft Authenticator redan idag.",
                     Body = "Som en del i vårt kontinuerliga arbete med att stärka säkerheten kring företagets digitala tillgångar, kommer vi att genomföra en stor uppgradering av inloggningssystemet. \n" +
@@ -26,7 +26,7 @@ namespace SportsonView.API.Data.Configurations
                         "Vi tackar för ert tålamod och samarbete i detta viktiga steg för att göra Sportson till en tryggare arbetsplats för oss alla digitalt sett. \n" +
                         "Tillsammans säkerställer vi att vår kunddata och interna information förblir skyddad mot obehöriga intrång och framtida säkerhetshot.",
                     Author = "Daniel Andersson",
-                    PublishedDate = DateOnly.FromDateTime(DateTime.Today),
+                    PublishedDate = new DateOnly(2026, 04, 27),
                     Category = "IT",
                     ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/It1.png"
                 },
@@ -46,7 +46,7 @@ namespace SportsonView.API.Data.Configurations
                         "Håll ett öga på lagersystemet där vi kommer att uppdatera förväntade ankomstdatum så fort vi får nya bekräftelser från våra leverantörer i Asien. \n" +
                         "Vi tackar för er förståelse och för ert hårda arbete med att hålla kundrelationerna goda trots dessa utmaningar utanför vår kontroll.",
                     Author = "Sara Lindberg",
-                    PublishedDate = DateOnly.FromDateTime(DateTime.Today),
+                    PublishedDate = new DateOnly(2026, 04, 27),
                     Category = "Inköp",
                     ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Inkop2.webp"
                 },
@@ -66,7 +66,7 @@ namespace SportsonView.API.Data.Configurations
                         "Säkerställ att butiksutställningen är toppad och att alla kampanjcyklar är monterade och redo för omedelbar provkörning av våra kunder. \n" +
                         "Nu kör vi så det ryker och ser till att våren 2026 blir den mest framgångsrika perioden i Sportsons historia hittills!",
                     Author = "Erik Markström",
-                    PublishedDate = DateOnly.FromDateTime(DateTime.Today),
+                    PublishedDate = new DateOnly(2026, 04, 27),
                     Category = "Marknad",
                     ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Marknad3.png"
                 },
@@ -80,7 +80,7 @@ namespace SportsonView.API.Data.Configurations
            "De nya verktygen inkluderar avancerade diagnostikverktyg för elcyklar, kalibrerade momentnycklar och specialverktyg för Shimano Di2- och EP8-systemen. \n" +
            "Med den nya utrustningen kan våra mekaniker utföra service och reparationer snabbare, säkrare och med ännu högre precision än tidigare",
             Author = "Mikael Verkstadsson",
-            PublishedDate = DateOnly.FromDateTime(DateTime.Today),
+            PublishedDate = new DateOnly(2026, 04, 27),
             Category = "Verkstad",
             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Verkstad4.png"
         },
@@ -100,25 +100,25 @@ namespace SportsonView.API.Data.Configurations
                     "Välkommen in till oss för en provtur som kommer att förändra din syn på vardagsmotion och pendling – känn vinden i håret utan ansträngning. \n" +
                     "Kampanjen pågår under en begränsad tid, så vänta inte för länge med att besöka oss och säkra din favoritmodell innan den tar slut i lager!",
             Author = "Marknadsteamet",
-            PublishedDate = DateOnly.FromDateTime(DateTime.Today),
+            PublishedDate = new DateOnly(2026, 04, 27),
             Category = "Campaign",
             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Kampanj5.png"
         },
             new NewsArticle
             {
-                    Id = 6,
-                    Title = "Årets resultat överträffar alla förväntningar",
-                    Description = "Sportson redovisar rekordresultat för Q1 2026 med 18% ökad omsättning jämfört med samma period förra året.",
-                    Body = "Vi är glada att meddela att Sportson redovisar ett rekordresultat för det första kvartalet 2026. Omsättningen ökade med 18% jämfört med samma period förra året tack vare starka cykelförsäljningar och ökad efterfrågan på service.\n" +
+                Id = 6,
+                Title = "Årets resultat överträffar alla förväntningar",
+                Description = "Sportson redovisar rekordresultat för Q1 2026 med 18% ökad omsättning jämfört med samma period förra året.",
+                Body = "Vi är glada att meddela att Sportson redovisar ett rekordresultat för det första kvartalet 2026. Omsättningen ökade med 18% jämfört med samma period förra året tack vare starka cykelförsäljningar och ökad efterfrågan på service.\n" +
                "Den starkaste tillväxten skedde inom segmentet elcyklar, där vi såg en ökning på hela 34% jämfört med Q1 2025.\n" +
                "Även vår serviceverksamhet visade på god tillväxt, vilket bekräftar att vår satsning på välutbildad verkstadspersonal ger resultat.\n" +
                "Ledningen är mycket nöjd med utvecklingen och ser positivt på resten av 2026 med en stark vårskampanj på gång.\n" +
                "Vi vill tacka all personal för ert hårda arbete och engagemang som gjort detta rekordresultat möjligt.",
-                    Author = "CFO Anna Bergström",
-                    PublishedDate = DateOnly.FromDateTime(DateTime.Today),
+                Author = "CFO Anna Bergström",
+                PublishedDate = new DateOnly(2026, 04, 27),
                 Category = "Ekonomi",
-                    ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Ekonomi6.jpeg"
-                },
+                ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Ekonomi6.jpeg"
+            },
             new NewsArticle
             {
                 Id = 7,
@@ -131,7 +131,7 @@ namespace SportsonView.API.Data.Configurations
                        "Kallelse med länk till Teams-mötet skickas ut till samtliga butikschefer senast den 22 april.\n" +
                        "Förbered gärna frågor och synpunkter kring er butiks utmaningar och möjligheter inför mötet.",
                 Author = "Anna Bergström",
-                PublishedDate = DateOnly.FromDateTime(DateTime.Today),
+                PublishedDate = new DateOnly(2026, 04, 27),
                 Category = "Ekonomi",
                 ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Ekonomi7.png"
             },
@@ -147,7 +147,7 @@ namespace SportsonView.API.Data.Configurations
                        "Vi kommer under Q2 att lansera ett nytt utbildningsprogram för all butikspersonal med fokus på kundmötet.\n" +
                        "Mer information om programmet och hur ni anmäler er personal kommer inom kort från HR-avdelningen.",
                 Author = "Butiksutvecklare Lisa Svensson",
-                PublishedDate = DateOnly.FromDateTime(DateTime.Today),
+                PublishedDate = new DateOnly(2026, 04, 27),
                 Category = "Min butik",
                 ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Minbutik8.jpg"
             },
@@ -163,7 +163,7 @@ namespace SportsonView.API.Data.Configurations
                        "Butikschefer ansvarar för att uppdatera sina respektive butikssidor på Google och sociala medier med de nya tiderna.\n" +
                        "Kontakta HR om ni behöver stöd med schemaläggning inför sommaren.",
                 Author = "Butikschef Per Nilsson",
-                PublishedDate = DateOnly.FromDateTime(DateTime.Today),
+                PublishedDate = new DateOnly(2026, 04, 27),
                 Category = "Min butik",
                 ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Minbutik9.jpg"
             },
@@ -179,10 +179,10 @@ namespace SportsonView.API.Data.Configurations
                        "Erbjudandet gäller inte i kombination med andra rabatter eller kampanjer om inget annat anges.\n" +
                        "Vi hoppas att kampanjen bidrar till ökad försäljning och nöjdare kunder under den viktiga sommarsäsongen.",
                 Author = "Marknadsteamet",
-                PublishedDate = DateOnly.FromDateTime(DateTime.Today),
+                PublishedDate = new DateOnly(2026, 04, 27),
                 Category = "Campaign",
                 ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Campaign10.png"
-}
+            }
             );
         }
     }

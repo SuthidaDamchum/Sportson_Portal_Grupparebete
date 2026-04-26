@@ -1,7 +1,9 @@
+using System.Text;
 using Azure.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using SportsonView.API.Controllers.Clients;
 using SportsonView.API.Core.Interfaces;
 using SportsonView.API.Core.Services;
 using SportsonView.API.Data;
@@ -9,7 +11,6 @@ using SportsonView.API.Data.Entities;
 using SportsonView.API.Data.Interfaces;
 using SportsonView.API.Profiles;
 using SportsonView.API.Repositories;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,8 +71,10 @@ builder.Services.AddScoped<INewsArticleService, NewsArticleService>();
 builder.Services.AddScoped<INewsArticleRepository, NewsArticleRepository>();
 builder.Services.AddScoped<IImportantDateRepository, ImportantDateRepository>();
 builder.Services.AddScoped<IImportantDatesService, ImportantDateService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<SportsonClient>();
 builder.Services.AddScoped<FileService>();
 
 var app = builder.Build();

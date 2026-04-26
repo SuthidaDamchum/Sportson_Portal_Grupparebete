@@ -7,7 +7,7 @@
         public string Body { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Author { get; set; } = string.Empty;
-        public DateOnly PublishedDate { get; set; } = DateOnly.FromDateTime(DateTime.Today);
+        public DateOnly PublishedDate { get; set; } 
         public string Category { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
     }
