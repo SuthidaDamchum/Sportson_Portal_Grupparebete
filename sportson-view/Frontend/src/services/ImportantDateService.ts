@@ -23,7 +23,7 @@ export const getImportantDate = async (): Promise<ImportantDateDto[]> => {
       throw new Error("Du måste vara inloggad för att hämta viktiga datum.");
     }
 
-    console.error("Kunde inte nå API:", error);
-    throw new Error("Kunde inte hämta data. Kontrollera att servern är igång.");
+    console.error("Kunde inte nå ImportantDate API:", error);
+    throw new Error("Kunde inte hämta ImportantDate-data. Kontrollera att servern är igång.");
   }
 };

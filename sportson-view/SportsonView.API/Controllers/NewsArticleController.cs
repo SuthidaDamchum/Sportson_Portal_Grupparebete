@@ -18,56 +18,14 @@ namespace SportsonView.API.Controllers
         }
 
         [HttpGet("All")]
-        public async Task<IActionResult> GetNewsArticlesAsync()
+        public async Task<IActionResult> GetNewsArticlesAsync([FromQuery] string? category)
         {
-            var articles = await _newsService.GetNewsArticlesAsync();
+            var articles = await _newsService.GetNewsArticlesAsync(category);
             return Ok(new NewsArticleResponse { NewsArticles = articles });
         }
 
-        //De här nere är Fullständig CRUD, vi behöver bara Get eller Post 
-        [HttpPost("")]
-        public async Task<IActionResult> AddNewsArticleAsync([FromForm] NewsArticleDto newsArticleDto, IFormFile imageFile)
-        {
-            if (imageFile != null)
-            {
-                string imageUrl = await _fileService.UploadFileAsync(imageFile);
-                newsArticleDto.ImageUrl = imageUrl;
-            }
+     
 
-            await _newsService.AddNewsArticleAsync(newsArticleDto);
-            return Ok(newsArticleDto);
-        }
-
-        [HttpDelete("{id}")]
-
-        public async Task<IActionResult> DeleteNewsArticleAsync(int id)
-        {
-            var result = await _newsService.DeleteNewsArticleAsync(id);
-
-            if (!result)
-            {
-                return NotFound();
-            }
-
-            return NoContent();
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateNewsArticleAsync(int id, [FromForm] NewsArticleDto updatedArticleDto, IFormFile? imageFile)
-        {
-            if (imageFile != null && imageFile.Length > 0)
-            {
-                string newImageUrl = await _fileService.UploadFileAsync(imageFile);
-                updatedArticleDto.ImageUrl = newImageUrl;
-            }
-
-            var result = await _newsService.UpdateNewsArticleAsync(id, updatedArticleDto);
-            if (result == null)
-            {
-                return NotFound();
-            }
-            return Ok(result);
-
-        }
+        
     }
 }

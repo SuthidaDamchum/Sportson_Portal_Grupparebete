@@ -12,7 +12,7 @@ const Header = () => {
   const { user, setUser } = useUser();
 
   const handleLogout = async () => {
-    await authService.logout();
+    authService.logout();
     setUser(null);
     location.reload(); 
   };

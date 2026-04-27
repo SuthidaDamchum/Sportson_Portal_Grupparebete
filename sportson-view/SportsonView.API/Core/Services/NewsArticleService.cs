@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.ComponentModel;
+using AutoMapper;
 using SportsonView.API.Core.Interfaces;
 using SportsonView.API.Data.Entities;
 using SportsonView.API.Data.Interfaces;
@@ -18,35 +19,11 @@ namespace SportsonView.API.Core.Services
             _newsRepo = newsRepo;
         }
 
-        public async Task<List<NewsArticleDto>> GetNewsArticlesAsync()
+        public async Task<List<NewsArticleDto>> GetNewsArticlesAsync(string? category)
         {
-            var newsarticles = await _newsRepo.GetNewsArticlesAsync();
+            var newsarticles = await _newsRepo.GetNewsArticlesAsync(category);
             return _mapper.Map<List<NewsArticleDto>>(newsarticles);
         }
-
-        public async Task<bool> DeleteNewsArticleAsync(int id)
-        {
-            var success = await _newsRepo.DeleteNewsArticleAsync(id);
-            return success;
-        }
-
-        public async Task AddNewsArticleAsync(NewsArticleDto newsArticleDto)
-        {
-            var entity = _mapper.Map<NewsArticle>(newsArticleDto);
-            await _newsRepo.AddNewsArticleAsync(entity);
-        }
-
-        public async Task<NewsArticleDto?> UpdateNewsArticleAsync(int id, NewsArticleDto updatedArticleDto)
-        {
-     
-            var entity = _mapper.Map<NewsArticle>(updatedArticleDto);
-
-            var updatedEntity = await _newsRepo.UpdateNewsArticleAsync(id, entity);
-            if (updatedEntity == null) return null;
-            return _mapper.Map<NewsArticleDto>(updatedEntity);
-
-        }
-
     }
 }
 
