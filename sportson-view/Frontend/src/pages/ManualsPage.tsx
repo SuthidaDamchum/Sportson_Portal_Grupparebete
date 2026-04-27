@@ -14,23 +14,29 @@ const categories = [
 
 const types = ["Alla", "Youtube", "PDF"];
 
-type ManualResult = {
+type SearchResult = {
   id: number;
   type: "Youtube" | "PDF";
   name: string;
   description: string;
   category: string;
+  URL: string;
 };
 
 //Temporär mockdata
 
-const mockManualResults: ManualResult[] = [
+const testYoutubeUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+const testPdfUrl =
+  "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/s/pdf/dummy.pdf";
+
+const mockManualResults: SearchResult[] = [
   {
     id: 1,
     type: "Youtube",
     name: "Hur man lagar en punktering",
     description: "Steg-for-steg guide till att byta slang på din cykel.",
     category: "Verkstad",
+    URL: testYoutubeUrl,
   },
   {
     id: 2,
@@ -38,6 +44,7 @@ const mockManualResults: ManualResult[] = [
     name: "Bromsjustering - V-bromsar",
     description: "Video om hur du ställer in och justerar V-bromsar korrekt.",
     category: "Verkstad",
+    URL: testYoutubeUrl,
   },
   {
     id: 3,
@@ -45,6 +52,7 @@ const mockManualResults: ManualResult[] = [
     name: "Kedjesmörjning och skötsel",
     description: "Guide till regelbunden kedjesmörjning för längre livslängd.",
     category: "Verkstad",
+    URL: testYoutubeUrl,
   },
   {
     id: 4,
@@ -52,6 +60,7 @@ const mockManualResults: ManualResult[] = [
     name: "Monteringsmanual - Shimano växlar",
     description: "Officiell manual för montering av Shimano 7-växlat nav.",
     category: "Handböcker",
+    URL: testPdfUrl,
   },
   {
     id: 5,
@@ -59,6 +68,7 @@ const mockManualResults: ManualResult[] = [
     name: "Förmånscykel - handbok för arbetsgivare",
     description: "Allt du behöver veta om att erbjuda förmånscyklar.",
     category: "Säljhjälp",
+    URL: testPdfUrl,
   },
   {
     id: 6,
@@ -66,6 +76,7 @@ const mockManualResults: ManualResult[] = [
     name: "Snabbguide: däcktryck och ventiler",
     description: "Så väljer du rätt däcktryck för pendling och träning.",
     category: "Verkstad",
+    URL: testYoutubeUrl,
   },
   {
     id: 8,
@@ -74,6 +85,7 @@ const mockManualResults: ManualResult[] = [
     description:
       "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testPdfUrl,
   },
   {
     id: 9,
@@ -82,6 +94,7 @@ const mockManualResults: ManualResult[] = [
     description:
       "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testPdfUrl,
   },
   {
     id: 10,
@@ -90,6 +103,7 @@ const mockManualResults: ManualResult[] = [
     description:
       "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testPdfUrl,
   },
   {
     id: 11,
@@ -98,6 +112,7 @@ const mockManualResults: ManualResult[] = [
     description:
       "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testPdfUrl,
   },
   {
     id: 12,
@@ -106,6 +121,7 @@ const mockManualResults: ManualResult[] = [
     description:
       "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testPdfUrl,
   },
   {
     id: 13,
@@ -114,6 +130,7 @@ const mockManualResults: ManualResult[] = [
     description:
       "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testPdfUrl,
   },
   {
     id: 14,
@@ -122,6 +139,7 @@ const mockManualResults: ManualResult[] = [
     description:
       "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testPdfUrl,
   },
   {
     id: 15,
@@ -130,6 +148,7 @@ const mockManualResults: ManualResult[] = [
     description:
       "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testYoutubeUrl,
   },
   {
     id: 16,
@@ -137,6 +156,7 @@ const mockManualResults: ManualResult[] = [
     name: "Servidsfggfdadfgr säsong",
     description: "Checklistadsgadsfgav cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testPdfUrl,
   },
   {
     id: 17,
@@ -145,6 +165,7 @@ const mockManualResults: ManualResult[] = [
     description:
       "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testPdfUrl,
   },
   {
     id: 18,
@@ -153,6 +174,7 @@ const mockManualResults: ManualResult[] = [
     description:
       "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testYoutubeUrl,
   },
   {
     id: 19,
@@ -161,6 +183,7 @@ const mockManualResults: ManualResult[] = [
     description:
       "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
     category: "Handböcker",
+    URL: testYoutubeUrl,
   },
   {
     id: 20,
@@ -168,6 +191,7 @@ const mockManualResults: ManualResult[] = [
     name: "Servaasgdgdsdsgsäsong",
     description: "Checklistan föasdgsgdsginför vår- och sommarsäsong.",
     category: "Verkstad",
+    URL: testYoutubeUrl,
   },
 ];
 
@@ -341,10 +365,12 @@ const ManualsPage = () => {
 
               <a
                 className="row-action"
-                href="#"
-                onClick={(event) => event.preventDefault()}
+                href={result.URL}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Öppna <span aria-hidden="true">→</span>
+                {result.type === "PDF" ? "Öppna PDF" : "Se video"}{" "}
+                <span aria-hidden="true">→</span>
               </a>
             </article>
           ))}
