@@ -72,7 +72,7 @@ const Header = () => {
           </li>
           <li>
             <NavLink to={routePaths.manuals} id="header-manuals-link">
-              Manualer
+              Butiksservice
             </NavLink>
           </li>
           <li>
