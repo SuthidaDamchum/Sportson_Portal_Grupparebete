@@ -1,7 +1,12 @@
 const API_URL = '/api';
 
+type LoginResponse = {
+  token?: string;
+  Token?: string;
+};
+
 export const authService = {
-  login: async (username: string, password: string) => {
+  login: async (username: string, password: string): Promise<LoginResponse> => {
     const response = await fetch(`${API_URL}/auth/login`, {
       method: 'POST',
       headers: {
@@ -14,20 +19,26 @@ export const authService = {
       throw new Error('Login failed');
     }
 
-    const data = await response.json();
-    localStorage.setItem('token', data.token);
+    const data: LoginResponse = await response.json();
+    const token = data.token || data.Token;
+
+    if (!token) {
+      throw new Error('Token not found in response');
+    }
+
+    localStorage.setItem('token', token);
     return data;
   },
 
-  logout: () => {
+  logout: (): void => {
     localStorage.removeItem('token');
   },
 
-  getToken: () => {
+  getToken: (): string | null => {
     return localStorage.getItem('token');
   },
 
-  isAuthenticated: () => {
+  isAuthenticated: (): boolean => {
     return !!localStorage.getItem('token');
   },
 };
