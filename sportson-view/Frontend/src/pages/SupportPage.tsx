@@ -18,6 +18,30 @@ const SupportPage = () => {
   const [department, setDepartment] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const faqs = [
+  {
+    question: "Hur skapar jag ett supportärende?",
+    answer:
+      "Fyll i formuläret ovan med namn, e-post, avdelning och ditt meddelande. Klicka sedan på Skicka."
+  },
+  {
+    question: "Vilken avdelning ska jag välja?",
+    answer:
+      "Välj den avdelning som bäst passar ditt ärende. Om du är osäker kan du välja Övrigt."
+  },
+  {
+    question: "Vad händer efter att jag skickat in ett ärende?",
+    answer:
+      "Ditt meddelande skickas till rätt avdelning, och du får hjälp så snart som möjligt."
+  },
+  {
+    question: "Vad gör jag om jag inte får något svar?",
+    answer:
+      "Om du inte får svar kan du skicka in ett nytt ärende eller kontakta ansvarig avdelning direkt."
+  }
+];
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,63}$/;
   const [user, setUser] = useState<UserType | null>(null);
@@ -161,8 +185,31 @@ const SupportPage = () => {
             {error}
           </p>
         )}
+     <section className="faq-section">
+  <h2>Vanliga frågor</h2>
+
+  <div className="faq-list">
+    {faqs.map((faq, index) => (
+      <div className="faq-item" key={index}>
+        <button
+          className="faq-question"
+          onClick={() => setOpenFaq(openFaq === index ? null : index)}
+        >
+          <span>{openFaq === index ? "−" : "+"}</span>
+          {faq.question}
+        </button>
+
+        {openFaq === index && (
+          <div className="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        )}
       </div>
-    </div>
+    ))}
+  </div>
+</section>
+      </div>
+          </div>
   );
 };
 

@@ -3,9 +3,10 @@
   background: #f2f2f2;
   color: white;
   padding: 40px 24px;
+  box-sizing: border-box;
 }
 
-/* Header matchar contacts */
+/* Header */
 .support-header {
   max-width: 1200px;
   margin: 0 auto 32px;
@@ -21,8 +22,9 @@
   font-size: 16px;
 }
 
-/* Form container */
+/* Support form */
 .support-form {
+  width: 100%;
   max-width: 900px;
   margin: 0 auto;
   display: grid;
@@ -33,6 +35,24 @@
   border: 1px solid #2a2a2a;
   border-radius: 24px;
   padding: 32px;
+  box-sizing: border-box;
+}
+
+.support-form h1,
+.support-form h3 {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.support-form h1 {
+  color: #facc15;
+  font-size: 36px;
+}
+
+.support-form h3 {
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
 /* Inputs */
@@ -61,24 +81,21 @@
   border-color: #facc15;
 }
 
-/* Full width elements */
 .support-form select,
 .support-form textarea {
   grid-column: 1 / -1;
 }
 
-/* Textarea */
 .support-form textarea {
   min-height: 160px;
   resize: vertical;
 }
 
-/* 🔥 BUTTON FIX (det du bad om) */
+/* Submit button */
 .support-form button {
   grid-column: 1 / -1;
-
   width: 100%;
-  max-width: 50%;
+  max-width: 460px;
   margin: 0 auto;
 
   padding: 12px 18px;
@@ -89,8 +106,9 @@
   color: #facc15;
 
   font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .support-form button:hover {
@@ -98,7 +116,7 @@
   color: #111111;
 }
 
-/* Error */
+/* Error / success message */
 .support-error {
   grid-column: 1 / -1;
   margin: 0;
@@ -110,8 +128,123 @@
   padding: 10px 12px;
 }
 
+/* FAQ section */
+.faq-section {
+  width: 350%;
+  max-width: 830px;
+  margin: 0 auto;
+  margin: 50px auto 0;
+  padding: 32px;
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 24px;
+  box-sizing: border-box;
+}
+
+.faq-section h2 {
+  color: #facc15;
+  text-align: center;
+  margin: 0 0 28px;
+  font-size: 26px;
+}
+
+/* FAQ list */
+.faq-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* FAQ item full width */
+.faq-item {
+  width: 100%;
+  background: #222222;
+  border: 1px solid #f4d366;
+  border-radius: 14px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* FAQ question button */
+.faq-section .faq-question {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 100% !important;
+  box-sizing: border-box;
+
+  background: #222222;
+  border: none;
+  border-radius: 0;
+
+  color: #fcfcfb;
+  padding: 22px 28px;
+
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+
+  transition: background 0.2s ease;
+}
+
+.faq-section .faq-question:hover {
+  background: #2a2a2a;
+}
+
+.faq-section .faq-question span:first-child {
+  color: #faf9f7;
+  font-size: 28px;
+
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+
+/* Use this if you have a text span inside the button */
+.faq-question-text {
+  flex: 1;
+}
+
+/* FAQ answer */
+.faq-answer {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 28px 22px 74px;
+  background: #222222;
+  animation: faqOpen 0.25s ease;
+}
+
+.faq-answer p {
+  color: #dddddd;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 15px;
+}
+
+@keyframes faqOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
+  .support-wrapper {
+    padding: 24px 16px;
+  }
+
   .support-form {
     grid-template-columns: 1fr;
     padding: 24px;
@@ -119,5 +252,18 @@
 
   .support-form button {
     max-width: 100%;
+  }
+
+  .faq-section {
+    padding: 24px;
+  }
+
+  .faq-section .faq-question {
+    padding: 18px 20px;
+    font-size: 16px;
+  }
+
+  .faq-answer {
+    padding: 0 20px 18px 60px;
   }
 }
