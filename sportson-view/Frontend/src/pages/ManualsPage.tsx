@@ -1,6 +1,8 @@
 import SearchBar from "../components/SearchBar/Searchbar";
 import "./ManualsPage.css";
 import { useEffect, useState } from "react";
+import { getSearchResults } from "../services/SearchService";
+import type { SearchResult } from "../types/SearchType";
 
 const categories = [
   "Alla",
@@ -14,194 +16,23 @@ const categories = [
 
 const types = ["Alla", "Youtube", "PDF"];
 
-type SearchResult = {
-  id: number;
-  type: "Youtube" | "PDF";
-  name: string;
-  description: string;
-  category: string;
-  URL: string;
-};
-
-//Temporär mockdata
-
-const testYoutubeUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-const testPdfUrl =
-  "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/s/pdf/dummy.pdf";
-
-const mockManualResults: SearchResult[] = [
-  {
-    id: 1,
-    type: "Youtube",
-    name: "Hur man lagar en punktering",
-    description: "Steg-for-steg guide till att byta slang på din cykel.",
-    category: "Verkstad",
-    URL: testYoutubeUrl,
-  },
-  {
-    id: 2,
-    type: "Youtube",
-    name: "Bromsjustering - V-bromsar",
-    description: "Video om hur du ställer in och justerar V-bromsar korrekt.",
-    category: "Verkstad",
-    URL: testYoutubeUrl,
-  },
-  {
-    id: 3,
-    type: "Youtube",
-    name: "Kedjesmörjning och skötsel",
-    description: "Guide till regelbunden kedjesmörjning för längre livslängd.",
-    category: "Verkstad",
-    URL: testYoutubeUrl,
-  },
-  {
-    id: 4,
-    type: "PDF",
-    name: "Monteringsmanual - Shimano växlar",
-    description: "Officiell manual för montering av Shimano 7-växlat nav.",
-    category: "Handböcker",
-    URL: testPdfUrl,
-  },
-  {
-    id: 5,
-    type: "PDF",
-    name: "Förmånscykel - handbok för arbetsgivare",
-    description: "Allt du behöver veta om att erbjuda förmånscyklar.",
-    category: "Säljhjälp",
-    URL: testPdfUrl,
-  },
-  {
-    id: 6,
-    type: "Youtube",
-    name: "Snabbguide: däcktryck och ventiler",
-    description: "Så väljer du rätt däcktryck för pendling och träning.",
-    category: "Verkstad",
-    URL: testYoutubeUrl,
-  },
-  {
-    id: 8,
-    type: "PDF",
-    name: "Servicechecklista inför säsong",
-    description:
-      "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testPdfUrl,
-  },
-  {
-    id: 9,
-    type: "PDF",
-    name: "Servicechecklista inför säsong",
-    description:
-      "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testPdfUrl,
-  },
-  {
-    id: 10,
-    type: "PDF",
-    name: "Servicechecklista inför säsong",
-    description:
-      "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testPdfUrl,
-  },
-  {
-    id: 11,
-    type: "PDF",
-    name: "Servicechecklista inför säsong",
-    description:
-      "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testPdfUrl,
-  },
-  {
-    id: 12,
-    type: "PDF",
-    name: "Servicechecklista inför säsong",
-    description:
-      "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testPdfUrl,
-  },
-  {
-    id: 13,
-    type: "PDF",
-    name: "Servicechecklista inför säsong",
-    description:
-      "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testPdfUrl,
-  },
-  {
-    id: 14,
-    type: "PDF",
-    name: "Servicechecklista inför säsong",
-    description:
-      "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testPdfUrl,
-  },
-  {
-    id: 15,
-    type: "Youtube",
-    name: "Servsgfddfg",
-    description:
-      "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testYoutubeUrl,
-  },
-  {
-    id: 16,
-    type: "PDF",
-    name: "Servidsfggfdadfgr säsong",
-    description: "Checklistadsgadsfgav cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testPdfUrl,
-  },
-  {
-    id: 17,
-    type: "PDF",
-    name: "Serviasdggdsa inför säsong",
-    description:
-      "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testPdfUrl,
-  },
-  {
-    id: 18,
-    type: "Youtube",
-    name: "Servicasdgsdagista inför säsong",
-    description:
-      "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testYoutubeUrl,
-  },
-  {
-    id: 19,
-    type: "Youtube",
-    name: "Servicasdgsgdng",
-    description:
-      "Checklistan för genomgång av cyklar inför vår- och sommarsäsong.",
-    category: "Handböcker",
-    URL: testYoutubeUrl,
-  },
-  {
-    id: 20,
-    type: "Youtube",
-    name: "Servaasgdgdsdsgsäsong",
-    description: "Checklistan föasdgsgdsginför vår- och sommarsäsong.",
-    category: "Verkstad",
-    URL: testYoutubeUrl,
-  },
-];
-
 const ManualsPage = () => {
   const resultsPerPage = 7;
+  const [manualResults, setManualResults] = useState<SearchResult[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("Alla");
   const [selectedType, setSelectedType] = useState("Alla");
 
-  const filteredResults = mockManualResults.filter((result) => {
+  useEffect(() => {
+    const loadResults = async () => {
+      const results = await getSearchResults();
+      setManualResults(results);
+    };
+
+    void loadResults();
+  }, []);
+
+  const filteredResults = manualResults.filter((result) => {
     const matchesCategory =
       selectedCategory === "Alla" || result.category === selectedCategory;
     const matchesType = selectedType === "Alla" || result.type === selectedType;
@@ -235,7 +66,7 @@ const ManualsPage = () => {
     <div className="manuals-view">
       <section className="manuals-controls-panel search-zone">
         <SearchBar />
-        <section className="manuals-filter-panel" aria-label="Filtrering">
+        <section className="manuals-filter-panel">
           <div className="manuals-filter-group manuals-filter-group-category filter-group">
             <h2 className="manuals-filter-title filter-label">Kategori:</h2>
             <div className="manuals-chip-row">
@@ -248,8 +79,10 @@ const ManualsPage = () => {
                       ? "manuals-chip chip manuals-chip-active active"
                       : "manuals-chip chip"
                   }
-                  aria-pressed={selectedCategory === category}
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => {
+                    setSelectedCategory(category);
+                    setSelectedType("Alla");
+                  }}
                 >
                   {category}
                 </button>
@@ -269,7 +102,6 @@ const ManualsPage = () => {
                       ? "manuals-chip chip type manuals-chip-active active"
                       : "manuals-chip chip type"
                   }
-                  aria-pressed={selectedType === type}
                   onClick={() => setSelectedType(type)}
                 >
                   {type}
@@ -280,20 +112,16 @@ const ManualsPage = () => {
         </section>
       </section>
 
-      <section className="content-area" aria-live="polite">
+      <section className="content-area">
         <div className="table-wrap">
           <div className="result-count">
             <span>{filteredResults.length} resultat</span>
-            <div
-              className="result-pagination"
-              aria-label="Navigera mellan resultatsidor"
-            >
+            <div className="result-pagination">
               <button
                 type="button"
                 className="result-page-btn"
                 onClick={goToPreviousPage}
                 disabled={currentPage === 1}
-                aria-label="Föregående resultatsida"
               >
                 ←
               </button>
@@ -307,7 +135,6 @@ const ManualsPage = () => {
                 className="result-page-btn"
                 onClick={goToNextPage}
                 disabled={currentPage === totalPages}
-                aria-label="Nästa resultatsida"
               >
                 →
               </button>
@@ -318,7 +145,6 @@ const ManualsPage = () => {
             <div>TYP</div>
             <div>NAMN</div>
             <div>KATEGORI</div>
-            <div aria-hidden="true" />
           </div>
 
           {paginatedResults.map((result) => (
@@ -332,7 +158,7 @@ const ManualsPage = () => {
               >
                 {result.type === "Youtube" ? (
                   <>
-                    <span className="manuals-yt-mark" aria-hidden="true">
+                    <span className="manuals-yt-mark">
                       <svg viewBox="0 0 10 10" focusable="false">
                         <path d="M3 2.4 8 5 3 7.6V2.4Z" />
                       </svg>
@@ -341,7 +167,7 @@ const ManualsPage = () => {
                   </>
                 ) : (
                   <>
-                    <span className="manuals-pdf-mark" aria-hidden="true">
+                    <span className="manuals-pdf-mark">
                       <svg viewBox="0 0 20 24" focusable="false">
                         <path
                           fill="#2563eb"
@@ -355,7 +181,7 @@ const ManualsPage = () => {
               </div>
 
               <div>
-                <div className="row-name">{result.name}</div>
+                <div className="row-name">{result.title}</div>
                 <div className="row-desc">{result.description}</div>
               </div>
 
@@ -370,7 +196,7 @@ const ManualsPage = () => {
                 rel="noopener noreferrer"
               >
                 {result.type === "PDF" ? "Öppna PDF" : "Se video"}{" "}
-                <span aria-hidden="true">→</span>
+                <span>→</span>
               </a>
             </article>
           ))}
