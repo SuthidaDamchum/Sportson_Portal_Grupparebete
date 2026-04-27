@@ -34,7 +34,7 @@ const ArticleCard = ({ article, onClick }: ArticleCardProps) => {
 
         <h2 className="article-title">{article.title}</h2>
         <p className="article-description" style={{ whiteSpace: "pre-line" }}>
-          {article.body}
+          {article.description}
         </p>
 
         <div className="article-meta">
