@@ -14,7 +14,7 @@ const Header = () => {
   const handleLogout = async () => {
     authService.logout();
     setUser(null);
-    location.reload(); 
+    location.reload();
   };
 
   return (
@@ -44,34 +44,44 @@ const Header = () => {
         </div>
 
         <ul className="nav-links">
+          {!user && (
           <li>
             <NavLink to={routePaths.login}>Login</NavLink>
           </li>
-          <li>
-            <NavLink to={routePaths.news} id="header-news-link">
-              Nyheter
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={routePaths.manuals} id="header-manuals-link">
-              Butiksservice
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={routePaths.orderCentral} id="header-ordercentral-link">
-              Ordercentral
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={routePaths.SupportPage} id="header-support-link">
-              Supportärenden
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={routePaths.contacts} id="header-contacts-link">
-              Kontakter
-            </NavLink>
-          </li>
+          )}
+
+          {user && (
+            <>
+              <li>
+                <NavLink to={routePaths.news} id="header-news-link">
+                  Nyheter
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={routePaths.manuals} id="header-manuals-link">
+                  Butiksservice
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={routePaths.orderCentral}
+                  id="header-ordercentral-link"
+                >
+                  Ordercentral
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={routePaths.SupportPage} id="header-support-link">
+                  Supportärenden
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={routePaths.contacts} id="header-contacts-link">
+                  Kontakter
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>
