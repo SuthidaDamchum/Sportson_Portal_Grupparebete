@@ -28,7 +28,7 @@ const mockSearchResults: SearchResult[] = [
     type: "Youtube",
     title: "Kedjesmörjning och skötsel",
     description: "Guide till regelbunden kedjesmörjning for längre livslängd.",
-    category: "Kassa",
+    category: "Säljhjälp",
     URL: YoutubeURL,
   },
   {
@@ -44,7 +44,7 @@ const mockSearchResults: SearchResult[] = [
     type: "PDF",
     title: "Formanscykel - handbok för arbetsgivare",
     description: "Allt du behover veta om att erbjuda formanscyklar.",
-    category: "Säljhjälp",
+    category: "Frakt",
     URL: PdfURL,
   },
   {
@@ -124,7 +124,7 @@ const mockSearchResults: SearchResult[] = [
     title: "Servsgfddfg",
     description:
       "Checklistan för genomgång av cyklar info vår- och sommarsäsong.",
-    category: "Handböcker",
+    category: "Kassa",
     URL: YoutubeURL,
   },
   {
@@ -132,7 +132,7 @@ const mockSearchResults: SearchResult[] = [
     type: "PDF",
     title: "Servidsfggfdadfgr säsong",
     description: "Checklistadsgadsfgav cyklar infor vår- och sommarsäsong.",
-    category: "Handböcker",
+    category: "Kassa",
     URL: PdfURL,
   },
   {
@@ -141,7 +141,7 @@ const mockSearchResults: SearchResult[] = [
     title: "Serviasdggdsa infor säsong",
     description:
       "Checklistan for genomgång av cyklar infor vår- och sommarsäsong.",
-    category: "Handböcker",
+    category: "Kommunikation",
     URL: PdfURL,
   },
   {
@@ -150,7 +150,7 @@ const mockSearchResults: SearchResult[] = [
     title: "Servicasdgsdagista infor säsong",
     description:
       "Checklistan for genomgång av cyklar info vår- och sommarsäsong.",
-    category: "Handböcker",
+    category: "Kommunikation",
     URL: YoutubeURL,
   },
   {
