@@ -66,14 +66,12 @@ const ImportantDate = () => {
     getImportantDate()
       .then((result) => {
         if (result && result.length > 0) {
-          console.log("✅ Viktiga datum från backend:", result); // ← lägg till
           setDates(result);
-          console.debug("Hämtade viktiga datum från API:", result);
           setIsSignedIn(true);
         }
       })
       .catch(() => {
-        console.error("Användare inte inloggad");
+        //Not sure we need to catch anything here, but if the API call fails, we can just keep showing the mock data and not set the user as signed in.
       });
   }, []);
 

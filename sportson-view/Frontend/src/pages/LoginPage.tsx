@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { authService } from '../services/AuthService';
+import { useUser } from '../context/UserContext';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { refreshUser } = useUser();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await authService.login(username, password);
+      await refreshUser();
       navigate('/');
     } catch (err) {
       setError('Invalid credentials');
