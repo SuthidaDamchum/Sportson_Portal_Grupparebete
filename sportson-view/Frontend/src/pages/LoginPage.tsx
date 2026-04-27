@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { authService } from '../services/AuthService';
+import { useUser } from '../context/UserContext';
 import './LoginPage.css';
 
 const LoginPage = () => {
@@ -10,6 +11,7 @@ const LoginPage = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { refreshUser } = useUser();
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
@@ -17,6 +19,7 @@ const LoginPage = () => {
 
     try {
       await authService.login(username, password);
+      await refreshUser();
       navigate('/');
     } catch (err) {
       setError('Invalid credentials');

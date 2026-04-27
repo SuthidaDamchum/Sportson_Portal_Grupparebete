@@ -1,29 +1,21 @@
 import { NavLink } from "react-router";
 import "./Header.css";
-import { getUserData } from "../../services/UserService";
-import type { UserType } from "../../types/UserType";
+import { useUser } from "../../context/UserContext";
 import { routePaths } from "../../services/RouteService";
 import sportssonLogo from "../../assets/logos/SportsonLogo.png";
-import { useEffect, useState } from "react";
+import { authService } from "../../services/AuthService";
 
 const Header = () => {
   const capitalize = (str: string) =>
     str[0].toLocaleUpperCase("sv-SE") + str.slice(1);
 
-  const [user, setUser] = useState<UserType | null>(null);
+  const { user, setUser } = useUser();
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const data = await getUserData();
-        setUser(data);
-      } catch {
-        setUser(null);
-      }
-    };
-
-    fetchUser();
-  }, []);
+  const handleLogout = async () => {
+    authService.logout();
+    setUser(null);
+    location.reload(); 
+  };
 
   return (
     <header className="header">
@@ -35,28 +27,19 @@ const Header = () => {
           </NavLink>
 
           <div>
-            <button
-              type="button"
-              className="store-button"
-              id="header-store-button"
-            >
+            <div className="store-button" id="header-store-button">
               {!user ? (
                 <p>Ej inloggad</p>
               ) : (
                 <>
                   <h2>{capitalize(user.username)}</h2>
                   <h3>Butik: {user.store}</h3>
+                  <button onClick={handleLogout} className="logout-button">
+                    Logga ut
+                  </button>
                 </>
               )}
-            </button>
-
-            <ul role="menu" id="header-user-menu">
-              <li>
-                <button type="button" role="menuitem" id="header-logout-button">
-                  Logga ut
-                </button>
-              </li>
-            </ul>
+            </div>
           </div>
         </div>
 
@@ -64,7 +47,6 @@ const Header = () => {
           <li>
             <NavLink to={routePaths.login}>Login</NavLink>
           </li>
-
           <li>
             <NavLink to={routePaths.news} id="header-news-link">
               Nyheter

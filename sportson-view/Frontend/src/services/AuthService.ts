@@ -33,7 +33,6 @@ export const authService = {
   logout: (): void => {
     localStorage.removeItem('token');
   },
-
   getToken: (): string | null => {
     return localStorage.getItem('token');
   },

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './SupportPage.css';
-import emailjs from '@emailjs/browser';
+import { supportService } from '../services/SupportService';
 import { getUserData } from "../services/UserService";
 import type { UserType } from "../types/UserType";
 
@@ -81,39 +81,39 @@ const SupportPage = () => {
   };
 
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validateForm()) {
       return;
     }
 
-    emailjs.send(
-      "service_wjjx8qh",
-      "template_ckjywh9",
-      {
-        from_name: name,
-        from_email: email,
-        department: department,
-        message: message,
-        to_email: departmentEmails[department],
-        department_name: department
-      },
-      "4qDKbbtSPS3-VqLTl"
-    ).then(() => {
-      alert("Ditt meddelande har skickats!");
-      setName("");
-      setEmail("");
-      setDepartment("");
-      setMessage("");
-      setError("");
-    }).catch(() => {
-      setError("Något gick fel, försök igen.");
-    });
+    try {
+          await supportService.sendSupportMessage({
+            name,
+            store: user?.store ?? "Okänd",
+            fromEmail: email,
+            department,
+            message
+          });
+          
+          setDepartment("");
+          setMessage("");
+          setError("");
+
+          if (!user) {
+            setName("");
+            setEmail("");
+          }
+          setError("Ditt meddelande har skickats!");
+        } catch (err) {
+          setError('Oväntat fel inträffade: ' + (err instanceof Error ? err.message : ''));
+        }
   };
 
   return (
     <div className="support-wrapper">
-      <h1>Support</h1>
       <div className="support-form">
+        <h1>Support</h1>
+        <h3>Kontaktformulär för {user?.store || "allmänna"}</h3>
         <input
           id="support-name-input"
           type="text"
@@ -157,21 +157,9 @@ const SupportPage = () => {
         </button>
 
         {error && (
-          <textarea
-            readOnly
-            value={error}
-            className="messageArea"
-            style={{
-              color: '#f0c000',
-              textAlign: 'center',
-              maxWidth: '100%',
-              minHeight: '25px',
-              maxHeight: '35px',
-              backgroundColor: '#1a1a1a',
-              marginTop: '5px',
-              resize: 'none'
-            }}
-          />
+          <p className="support-error">
+            {error}
+          </p>
         )}
       </div>
     </div>
