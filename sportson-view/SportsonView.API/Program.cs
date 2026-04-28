@@ -73,7 +73,8 @@ builder.Services.AddScoped<IImportantDatesService, ImportantDateService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<FileService>();
-
+builder.Services.AddScoped<ISupportService, SupportService>();
+builder.Services.AddScoped<ISupportRepository, SupportRepository>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

@@ -56,8 +56,6 @@ const ImportantDate = () => {
       time: "07.00 - 12.00",
     },
   ];
-
-
   const [dates, setDates] = useState<ImportantDateDto[]>(mockData);
   //Ingenting bör visas fören användaren är inloggad, så jag har lagt till en state för det också.
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -77,8 +75,8 @@ const ImportantDate = () => {
 
   const months = Array.from(new Set(dates.map((d) => d.month)));
 
-if (isSignedIn) {
-  return (
+  if (isSignedIn) {
+    return (
       <div className="compact-side-container">
         <div className="side-header">
           <h2>Viktiga datum</h2>
