@@ -1,8 +1,7 @@
 import type { SearchResult } from "../types/SearchType";
 
 // Temporär mockdata nedfanför
-
-const YoutubeURL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+const YoutubeURL = "https://www.youtube.com/watch?v=fg2gLapBFow";
 const PdfURL =
   "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
 

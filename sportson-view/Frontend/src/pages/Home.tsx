@@ -5,7 +5,7 @@ import doggeImage from "../assets/images/DoggeMedCykel.webp";
 import bikersImage from "../assets/images/Bikers.jpg";
 import bikeStoreImage from "../assets/images/BikeStore.webp";
 import downhillBike from "../assets/images/downhillBike.webp";
-import bikeImage from "../assets/images/genericbike.webp";
+import bikeImage from "../assets/images/MountainBikeImage.jpg";
 import "./Home.css";
 import ImportantDate from "../pages/ImportantDate";
 
@@ -27,8 +27,8 @@ const heroSlides: HeroSlide[] = [
   },
   {
     id: 2,
-    title: "Dogges cykelkampanj",
-    description: "Cykeln på köpet!!!",
+    title: "Dogge Doggelitos vårkampanj",
+    description: "Cykeln på köpet!",
     imageUrl: doggeImage,
   },
   {
@@ -39,7 +39,7 @@ const heroSlides: HeroSlide[] = [
   },
   {
     id: 4,
-    title: "Downhill cykelkampanj",
+    title: "Kampanj",
     description: "Downhill Bike rea",
     imageUrl: downhillBike,
   },
@@ -75,7 +75,10 @@ const Home = () => {
         >
           {heroSlides.map((slide) => (
             <SwiperSlide key={slide.id}>
-              <article className="home-hero-card" id={`home-hero-slide-${slide.id}`}>
+              <article
+                className="home-hero-card"
+                id={`home-hero-slide-${slide.id}`}
+              >
                 <img className="home-hero-image" src={slide.imageUrl} />
                 <div className="home-hero-overlay" />
                 <div className="home-hero-content">

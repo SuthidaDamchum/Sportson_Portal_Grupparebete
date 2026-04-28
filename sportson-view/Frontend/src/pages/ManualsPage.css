@@ -195,6 +195,10 @@
   transition: background 0.12s;
 }
 
+.result-row-clickable {
+  cursor: pointer;
+}
+
 .result-row:last-child {
   border-bottom: none;
 }
@@ -244,6 +248,63 @@
   text-decoration: none;
 }
 
+.row-action-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.manuals-video-panel {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.manuals-video-frame-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000000;
+}
+
+.manuals-video-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.manuals-video-close {
+  margin-top: 10px;
+  border: 1px solid #d6d6d6;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #ff0033;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background-color 0.15s,
+    color 0.15s;
+}
+
+.manuals-video-close:hover {
+  border-color: #ffcc00;
+  background: #fffbea;
+  color: #222222;
+}
+
 .manuals-type-logo {
   display: inline-flex;
   align-items: center;
@@ -255,7 +316,7 @@
 }
 
 .manuals-type-logo-yt {
-  color: #e52d27;
+  color: #ff0033;
 }
 
 .manuals-type-logo-yt > span:last-child {
