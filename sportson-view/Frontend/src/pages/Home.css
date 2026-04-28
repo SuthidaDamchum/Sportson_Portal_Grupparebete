@@ -37,7 +37,7 @@
 .home-hero-card {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 6.5;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -109,6 +109,13 @@
 .home-hero-swiper .swiper-button-next::after {
   font-size: 20px;
   font-weight: 700;
+}
+
+.home-bottom {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  align-items: flex-start;
 }
 
 @media (hover: hover) and (pointer: fine) {

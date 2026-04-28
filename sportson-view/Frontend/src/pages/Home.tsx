@@ -8,6 +8,8 @@ import downhillBike from "../assets/images/downhillBike.webp";
 import bikeImage from "../assets/images/genericbike.webp";
 import "./Home.css";
 import ImportantDate from "../pages/ImportantDate";
+import HomeArticles from "../pages/HomeArticles";
+import { useUser } from "../context/UserContext";
 
 //Temporär mockdata!
 
@@ -52,6 +54,9 @@ const heroSlides: HeroSlide[] = [
 ];
 
 const Home = () => {
+  const { user } = useUser();
+
+  if (!user) return null;
   return (
     <>
       <section className="home-hero" id="home-hero-section">
@@ -75,7 +80,10 @@ const Home = () => {
         >
           {heroSlides.map((slide) => (
             <SwiperSlide key={slide.id}>
-              <article className="home-hero-card" id={`home-hero-slide-${slide.id}`}>
+              <article
+                className="home-hero-card"
+                id={`home-hero-slide-${slide.id}`}
+              >
                 <img className="home-hero-image" src={slide.imageUrl} />
                 <div className="home-hero-overlay" />
                 <div className="home-hero-content">
@@ -87,10 +95,10 @@ const Home = () => {
           ))}
         </Swiper>
       </section>
-      <div className="layout-wrapper">
-        <div className="right-side-pusher">
-          <ImportantDate />
-        </div>
+
+      <div className="home-bottom">
+        <HomeArticles />
+        <ImportantDate />
       </div>
     </>
   );

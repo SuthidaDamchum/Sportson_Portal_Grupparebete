@@ -56,7 +56,7 @@ const OrderCentralPage = () => {
           )}
 
           <button className="order-submit-btn">Hämta Order via ordernummer</button>
-          <div className="order-last-updated">Senast ändring i systemet: <span>2020-11-23 11:54:24</span></div>
+    
         </div>
 
         <div className="order-results-card">
