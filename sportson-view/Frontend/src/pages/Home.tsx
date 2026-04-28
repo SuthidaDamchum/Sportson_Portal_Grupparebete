@@ -25,31 +25,36 @@ const heroSlides: HeroSlide[] = [
     id: 1,
     title: "Kampanj",
     description: "Mountain bike rea",
-    imageUrl: bikeImage,
+    imageUrl:
+      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/Bikers.jpg",
   },
   {
     id: 2,
     title: "Dogge Doggelitos vårkampanj",
     description: "Cykeln på köpet!",
-    imageUrl: doggeImage,
+    imageUrl:
+      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/DoggeMedCykel.webp",
   },
   {
     id: 3,
     title: "Nyheter",
     description: "Nyheter i butik",
-    imageUrl: bikeStoreImage,
+    imageUrl:
+      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/BikeStore.webp",
   },
   {
     id: 4,
     title: "Kampanj",
     description: "Downhill Bike rea",
-    imageUrl: downhillBike,
+    imageUrl:
+      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/downhillBike.webp",
   },
   {
     id: 5,
     title: "Begränsat erbjudande",
     description: "Vårservice kampanjer",
-    imageUrl: bikersImage,
+    imageUrl:
+      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/Bikers.jpg",
   },
 ];
 
