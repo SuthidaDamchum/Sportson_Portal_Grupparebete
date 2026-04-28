@@ -1,4 +1,6 @@
 import type { SearchResult } from "../types/SearchType";
+import { authService } from "./AuthService";
+import axios from "axios";
 
 // Temporär mockdata nedfanför
 const YoutubeURL = "https://www.youtube.com/watch?v=fg2gLapBFow";
@@ -171,6 +173,30 @@ const mockSearchResults: SearchResult[] = [
   },
 ];
 
+// 1. Deklarera ManualResponse här
+export type ManualResponse = {
+  manuals: SearchResult[];
+};
+
 export const getSearchResults = async (): Promise<SearchResult[]> => {
-  return mockSearchResults;
+  try {
+    const token = authService.getToken();
+
+    // Nu kommer TypeScript hitta ManualResponse
+    const response = await axios.get<ManualResponse>("/api/Manual", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    // Om din backend returnerar objektet direkt, använd:
+    return response.data.manuals || [];
+  } catch (error) {
+    console.warn(
+      "Kunde inte nå Manual API (proxy till 5001), använder mockdata:",
+      error,
+    );
+    // Returnera din mockdata-variabel här (se till att den heter mockSearchResults)
+    return mockSearchResults;
+  }
 };
