@@ -54,7 +54,7 @@ const heroSlides: HeroSlide[] = [
     title: "Begränsat erbjudande",
     description: "Vårservice kampanjer",
     imageUrl:
-      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/Bikers.jpg",
+      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/MountainBikeImage.jpg",
   },
 ];
 
