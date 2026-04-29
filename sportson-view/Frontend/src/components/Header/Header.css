@@ -8,8 +8,7 @@ h2,
 h3 {
   margin: 0;
   padding: 0;
-  font-family: "Arial", sans-serif;
-  color: #fff;
+  color: #ffffff;
   font-size: 1rem;
 }
 
@@ -20,6 +19,7 @@ h3 {
   gap: 24px;
   padding: 0 20px;
   min-height: 78px;
+  flex-wrap: nowrap;
 }
 
 .header-nav > div {
@@ -43,14 +43,15 @@ h3 {
 }
 
 .header-nav > div > a span {
-  font-size: 2.45rem;
+  font-size: clamp(1.6rem, 2.6vw, 2.45rem);
   line-height: 1;
   font-weight: 700;
   color: #fff;
 }
 
-.header-nav > div > div {
+.store-menu {
   position: relative;
+  padding-bottom: 8px;
 }
 
 .store-button {
@@ -66,17 +67,20 @@ h3 {
 [role="menu"] {
   display: none;
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   right: 0;
   margin: 0;
   padding: 6px;
   list-style: none;
   background: #1a1a1a;
   border: 1px solid #444;
+  border-radius: 10px;
+  min-width: 140px;
+  z-index: 10;
 }
 
-.store-button:hover + [role="menu"],
-[role="menu"]:hover {
+.store-menu:hover [role="menu"],
+.store-menu:focus-within [role="menu"] {
   display: block;
 }
 
@@ -87,6 +91,19 @@ h3 {
   color: #fff;
   text-align: left;
   padding: 8px 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.logout-button {
+  font: inherit;
+  border-radius: 8px;
+  background: #2a2a2a;
+}
+
+.logout-button:hover {
+  background: #3a3a3a;
+  color: #ffcc00;
 }
 
 .nav-links {
@@ -96,8 +113,11 @@ h3 {
   display: flex;
   align-self: stretch;
   align-items: stretch;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: clamp(4px, 1.2vw, 8px);
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
 
 .nav-links li {
@@ -116,7 +136,7 @@ h3 {
   border-radius: 0;
   text-decoration: none;
   font-weight: 800;
-  font-size: 1.02rem;
+  font-size: clamp(0.86rem, 1.1vw, 1.02rem);
   text-transform: uppercase;
   letter-spacing: 0.03em;
   line-height: 1;

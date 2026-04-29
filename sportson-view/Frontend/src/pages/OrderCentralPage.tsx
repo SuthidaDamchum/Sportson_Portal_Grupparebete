@@ -5,21 +5,38 @@ const OrderCentralPage = () => {
   const [selected, setSelected] = useState("ordernummer");
   const [filterOpen, setFilterOpen] = useState(false);
 
-  const tabs = ["Hantera Order", "Förmånscykel", "Webbordrar", "Avtalskunder", "Click & Collect Leverantörer"];
+  const tabs = [
+    "Hantera Order",
+    "Förmånscykel",
+    "Webbordrar",
+    "Avtalskunder",
+    "Click & Collect Leverantörer",
+  ];
   const radioOptions = [
     { id: "ordernummer", label: "Ordernummer" },
-    { id: "faktura", label: "Fakturanummer (Nutid)" },
+    { id: "faktura", label: "Fakturanummer" },
     { id: "ramnummer", label: "Ramnummer" },
   ];
-  const filterFields = ["Butik", "Datum från", "Datum till", "Orderstatus", "Kundnamn", "Leverantör"];
+  const filterFields = [
+    "Butik",
+    "Datum från",
+    "Datum till",
+    "Orderstatus",
+    "Kundnamn",
+    "Leverantör",
+  ];
 
   return (
     <div className="order-page">
       <div className="order-tabs">
         {tabs.map((tab) => (
-          <div key={tab} className={`order-tab ${tab === "Hantera Order" ? "active" : ""}`}>
+          <button
+            key={tab}
+            type="button"
+            className={`category-btn order-tab ${tab === "Hantera Order" ? "active" : ""}`}
+          >
             {tab}
-          </div>
+          </button>
         ))}
       </div>
 
@@ -27,11 +44,19 @@ const OrderCentralPage = () => {
         <div className="order-search-card">
           <div className="order-search-label">Sök efter en order</div>
 
-          <input className="order-search-input" type="text" placeholder="Ange ordernummer, fakturanummer eller ramnummer…" />
+          <input
+            className="order-search-input"
+            type="text"
+            placeholder="Ange ordernummer, fakturanummer eller ramnummer…"
+          />
 
           <div className="order-radio-group">
             {radioOptions.map(({ id, label }) => (
-              <div key={id} className={`order-radio ${selected === id ? "active" : ""}`} onClick={() => setSelected(id)}>
+              <div
+                key={id}
+                className={`order-radio ${selected === id ? "active" : ""}`}
+                onClick={() => setSelected(id)}
+              >
                 <div className="order-radio-dot">
                   {selected === id && <div className="order-radio-inner" />}
                 </div>
@@ -40,7 +65,10 @@ const OrderCentralPage = () => {
             ))}
           </div>
 
-          <div className="order-filter-toggle" onClick={() => setFilterOpen(!filterOpen)}>
+          <div
+            className="order-filter-toggle"
+            onClick={() => setFilterOpen(!filterOpen)}
+          >
             {filterOpen ? "－ Stäng filter" : "＋ Öppna filter"}
           </div>
 
@@ -55,12 +83,15 @@ const OrderCentralPage = () => {
             </div>
           )}
 
-          <button className="order-submit-btn">Hämta Order via ordernummer</button>
-    
+          <button className="order-submit-btn">
+            Hämta Order via ordernummer
+          </button>
         </div>
 
         <div className="order-results-card">
-          <div className="order-results-empty">Orderuppgifter visas här efter sökning</div>
+          <div className="order-results-empty">
+            Orderuppgifter visas här efter sökning
+          </div>
         </div>
       </div>
     </div>

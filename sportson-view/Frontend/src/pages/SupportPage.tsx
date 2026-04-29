@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
-import './SupportPage.css';
-import { supportService } from '../services/SupportService';
+import { useEffect, useState } from "react";
+import "./SupportPage.css";
+import { supportService } from "../services/SupportService";
 import { getUserData } from "../services/UserService";
 import type { UserType } from "../types/UserType";
 
 // Placeholder email
 const departmentEmails: Record<string, string> = {
-  "IT": "kevin.spehling@iths.se",
-  "Marknadsföring": "kevin.spehling@iths.se",
-  "Inköp": "kevin.spehling@iths.se",
-  "Övrigt": "kevin.spehling@iths.se"
+  IT: "kevin.spehling@iths.se",
+  Marknadsföring: "kevin.spehling@iths.se",
+  Inköp: "kevin.spehling@iths.se",
+  Övrigt: "kevin.spehling@iths.se",
 };
 
 const SupportPage = () => {
@@ -21,27 +21,27 @@ const SupportPage = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const faqs = [
-  {
-    question: "Hur skapar jag ett supportärende?",
-    answer:
-      "Fyll i formuläret ovan med namn, e-post, avdelning och ditt meddelande. Klicka sedan på Skicka."
-  },
-  {
-    question: "Vilken avdelning ska jag välja?",
-    answer:
-      "Välj den avdelning som bäst passar ditt ärende. Om du är osäker kan du välja Övrigt."
-  },
-  {
-    question: "Vad händer efter att jag skickat in ett ärende?",
-    answer:
-      "Ditt meddelande skickas till rätt avdelning, och du får hjälp så snart som möjligt."
-  },
-  {
-    question: "Vad gör jag om jag inte får något svar?",
-    answer:
-      "Om du inte får svar kan du skicka in ett nytt ärende eller kontakta ansvarig avdelning direkt."
-  }
-];
+    {
+      question: "Hur skapar jag ett supportärende?",
+      answer:
+        "Fyll i formuläret ovan med namn, e-post, avdelning och ditt meddelande. Klicka sedan på Skicka.",
+    },
+    {
+      question: "Vilken avdelning ska jag välja?",
+      answer:
+        "Välj den avdelning som bäst passar ditt ärende. Om du är osäker kan du välja Övrigt.",
+    },
+    {
+      question: "Vad händer efter att jag skickat in ett ärende?",
+      answer:
+        "Ditt meddelande skickas till rätt avdelning, och du får hjälp så snart som möjligt.",
+    },
+    {
+      question: "Vad gör jag om jag inte får något svar?",
+      answer:
+        "Om du inte får svar kan du skicka in ett nytt ärende eller kontakta ansvarig avdelning direkt.",
+    },
+  ];
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,63}$/;
   const [user, setUser] = useState<UserType | null>(null);
@@ -49,20 +49,20 @@ const SupportPage = () => {
   const capitalize = (str: string) =>
     str[0].toLocaleUpperCase("sv-SE") + str.slice(1);
 
-    useEffect(() => {
-      const fetchUser = async () => {
-        try {
-          const data = await getUserData();
-          setUser(data);
-          setName(capitalize(data.username));
-          setEmail(data.email);  
-        } catch {
-          setUser(null);
-        }
-      };
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const data = await getUserData();
+        setUser(data);
+        setName(capitalize(data.username));
+        setEmail(data.email);
+      } catch {
+        setUser(null);
+      }
+    };
 
-      fetchUser();
-    }, []);
+    fetchUser();
+  }, []);
   const validateForm = (): boolean => {
     setError("");
 
@@ -104,33 +104,34 @@ const SupportPage = () => {
     return true;
   };
 
-
   const handleSubmit = async () => {
     if (!validateForm()) {
       return;
     }
 
     try {
-          await supportService.sendSupportMessage({
-            name,
-            store: user?.store ?? "Okänd",
-            fromEmail: email,
-            department,
-            message
-          });
-          
-          setDepartment("");
-          setMessage("");
-          setError("");
+      await supportService.sendSupportMessage({
+        name,
+        store: user?.store ?? "Okänd",
+        fromEmail: email,
+        department,
+        message,
+      });
 
-          if (!user) {
-            setName("");
-            setEmail("");
-          }
-          setError("Ditt meddelande har skickats!");
-        } catch (err) {
-          setError('Oväntat fel inträffade: ' + (err instanceof Error ? err.message : ''));
-        }
+      setDepartment("");
+      setMessage("");
+      setError("");
+
+      if (!user) {
+        setName("");
+        setEmail("");
+      }
+      setError("Ditt meddelande har skickats!");
+    } catch (err) {
+      setError(
+        "Oväntat fel inträffade: " + (err instanceof Error ? err.message : ""),
+      );
+    }
   };
 
   return (
@@ -163,7 +164,9 @@ const SupportPage = () => {
         >
           <option value="">Välj avdelning</option>
           {Object.keys(departmentEmails).map((dept) => (
-            <option key={dept} value={dept}>{dept}</option>
+            <option key={dept} value={dept}>
+              {dept}
+            </option>
           ))}
         </select>
 
@@ -175,41 +178,36 @@ const SupportPage = () => {
           onChange={(e) => setMessage(e.target.value)}
         />
 
-        <button id="support-submit-button" 
-                onClick={handleSubmit}>
-                Skicka
+        <button id="support-submit-button" onClick={handleSubmit}>
+          Skicka
         </button>
 
-        {error && (
-          <p className="support-error">
-            {error}
-          </p>
-        )}
-     <section className="faq-section">
-  <h2>Vanliga frågor</h2>
+        {error && <p className="support-error">{error}</p>}
+        <section className="faq-section">
+          <h2>Vanliga frågor</h2>
 
-  <div className="faq-list">
-    {faqs.map((faq, index) => (
-      <div className="faq-item" key={index}>
-        <button
-          className="faq-question"
-          onClick={() => setOpenFaq(openFaq === index ? null : index)}
-        >
-          <span>{openFaq === index ? "−" : "+"}</span>
-          {faq.question}
-        </button>
+          <div className="faq-list">
+            {faqs.map((faq, index) => (
+              <div className="faq-item" key={index}>
+                <button
+                  className="faq-question"
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                >
+                  <span>{openFaq === index ? "−" : "+"}</span>
+                  {faq.question}
+                </button>
 
-        {openFaq === index && (
-          <div className="faq-answer">
-            <p>{faq.answer}</p>
+                {openFaq === index && (
+                  <div className="faq-answer">
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
-        )}
+        </section>
       </div>
-    ))}
-  </div>
-</section>
-      </div>
-          </div>
+    </div>
   );
 };
 
