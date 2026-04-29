@@ -11,7 +11,7 @@ const SearchBar = () => {
         type="search"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Sök efter PDF-manualer & YouTube guider"
+        placeholder="Sök"
       />
     </section>
   );

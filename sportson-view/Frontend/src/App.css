@@ -2,7 +2,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  
 }
 
 html,
@@ -13,8 +12,19 @@ body,
   padding: 0;
 }
 
+:root {
+  --font-base: "Inter", "Helvetica Neue";
+
+  --font-header: "Times New Roman", sans-serif;
+}
+
 body {
   min-width: 320px;
+  font-family: var(--font-base);
+}
+
+.font-header {
+  font-family: var(--font-header);
 }
 
 .layout-wrapper {

@@ -59,7 +59,7 @@ const Home = () => {
   if (!user) return null;
   return (
     <>
-      <section className="home-hero" id="home-hero-section">
+      <section className="home-hero font-header" id="home-hero-section">
         <Swiper
           className="home-hero-swiper"
           id="home-hero-swiper"

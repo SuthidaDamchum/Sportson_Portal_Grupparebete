@@ -1,7 +1,7 @@
 .contacts-page {
   min-height: 100vh;
-  background: #111111;
-  color: white;
+  background: #f7f7f7;
+  color: #111111;
   padding: 40px 24px;
 }
 
@@ -10,36 +10,9 @@
   margin: 0 auto 32px;
 }
 
-.contacts-header h1 {
-  font-size: 42px;
-  margin-bottom: 12px;
-}
-
 .contacts-header p {
-  color: #cfcfcf;
+  color: #111111;
   font-size: 16px;
-}
-
-.contacts-search-input {
-  display: block;
-  width: 100%;
-  max-width: 520px;
-  margin: 0 auto 40px;
-  padding: 14px 18px;
-  border-radius: 999px;
-  border: 1px solid #2f2f2f;
-  background: #181818;
-  color: white;
-  font-size: 15px;
-  outline: none;
-}
-
-.contacts-search-input::placeholder {
-  color: #8d8d8d;
-}
-
-.contacts-search-input:focus {
-  border-color: #facc15;
 }
 
 .contacts-grid {
@@ -68,7 +41,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #facc15;
+  background: #ffcc00;
   color: #111111;
   display: flex;
   align-items: center;
@@ -94,41 +67,36 @@
 }
 
 .contact-info a {
-  color: #facc15;
+  color: #ffcc00;
   text-decoration: none;
-}
-
-.contact-info a:hover {
-  text-decoration: underline;
 }
 
 .contact-button {
   margin-top: 20px;
   padding: 10px 16px;
   border-radius: 999px;
-  border: 1px solid #facc15;
+  border: 1px solid #ffcc00;
   background: transparent;
-  color: #facc15;
+  color: #ffcc00;
   cursor: pointer;
   font-size: 14px;
 }
 
 .contact-button:hover {
-  background: #facc15;
+  background: #ffcc00;
   color: #111111;
 }
 .contacts-footer {
   max-width: 1200px;
   margin: 80px auto 0;
   padding-top: 40px;
-  border-top: 1px solid #2a2a2a;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 48px;
 }
 
 .footer-column h3 {
-  color: #facc15;
+  color: #111111;
   font-size: 16px;
   margin-bottom: 20px;
 }
@@ -141,13 +109,9 @@
 
 .footer-column li {
   margin-bottom: 14px;
-  color: #f5f5f5;
+  color: #111111;
   font-size: 16px;
   cursor: pointer;
-}
-
-.footer-column li:hover {
-  color: #facc15;
 }
 
 @media (max-width: 900px) {

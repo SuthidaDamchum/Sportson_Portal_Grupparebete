@@ -18,7 +18,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header">
+    <header className="header font-header">
       <nav className="header-nav" id="header-navigation">
         <div>
           <NavLink to={routePaths.home} id="header-home-link">
@@ -45,9 +45,9 @@ const Header = () => {
 
         <ul className="nav-links">
           {!user && (
-          <li>
-            <NavLink to={routePaths.login}>Login</NavLink>
-          </li>
+            <li>
+              <NavLink to={routePaths.login}>Login</NavLink>
+            </li>
           )}
 
           {user && (

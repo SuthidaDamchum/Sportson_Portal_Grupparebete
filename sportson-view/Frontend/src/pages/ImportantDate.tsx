@@ -22,7 +22,7 @@ const ImportantDate = () => {
     },
     {
       id: 3,
-      title: "Kampanj: Cykelhjälmar REA",
+      title: "Möte",
       month: "Maj",
       dateDisplay: "15",
       time: "13.00 - 15.00",
