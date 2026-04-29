@@ -1,5 +1,4 @@
 import "./ContactsPage.css";
-import SearchBar from "../components/SearchBar/Searchbar";
 
 const contacts = [
   {
@@ -127,7 +126,6 @@ const contacts = [
 const Contacts = () => {
   return (
     <div className="contacts-page">
-      <SearchBar />
       <div className="contacts-header">
         <h1>Leverantörskontakter</h1>
         <p>Här kan du hitta kontaktuppgifter till leverantörer och partners.</p>
