@@ -65,6 +65,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<NewsArticleProfile>());
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ImportantDateProfile>());
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ManualProfile>());
 
 builder.Services.AddScoped<INewsArticleService, NewsArticleService>();
 builder.Services.AddScoped<INewsArticleRepository, NewsArticleRepository>();
@@ -75,6 +76,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<FileService>();
 builder.Services.AddScoped<ISupportService, SupportService>();
 builder.Services.AddScoped<ISupportRepository, SupportRepository>();
+builder.Services.AddScoped<IManualService, ManualService>();
+builder.Services.AddScoped<IManualRepository, ManualRepository>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
