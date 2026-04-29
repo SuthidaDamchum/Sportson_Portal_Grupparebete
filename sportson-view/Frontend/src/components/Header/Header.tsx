@@ -26,7 +26,7 @@ const Header = () => {
             <span>Portalen</span>
           </NavLink>
 
-          <div>
+          <div className="store-menu">
             <div className="store-button" id="header-store-button">
               {!user ? (
                 <p>Ej inloggad</p>
@@ -34,12 +34,22 @@ const Header = () => {
                 <>
                   <h2>{capitalize(user.username)}</h2>
                   <h3>Butik: {user.store}</h3>
-                  <button onClick={handleLogout} className="logout-button">
-                    Logga ut
-                  </button>
                 </>
               )}
             </div>
+            {user && (
+              <ul role="menu" aria-label="User menu">
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className="logout-button"
+                    role="menuitem"
+                  >
+                    Logga ut
+                  </button>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
 

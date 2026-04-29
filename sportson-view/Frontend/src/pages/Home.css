@@ -22,16 +22,16 @@
 }
 
 .home-hero-swiper .swiper-slide {
-  opacity: 0.62;
   transform: scale(0.94);
+  filter: brightness(0.86);
   transition:
     transform 0.32s ease,
-    opacity 0.32s ease;
+    filter 0.32s ease;
 }
 
 .home-hero-swiper .swiper-slide-active {
-  opacity: 1;
   transform: scale(1);
+  filter: brightness(1);
 }
 
 .home-hero-card {
