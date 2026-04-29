@@ -13,8 +13,6 @@ namespace SportsonView.API.Data
         public DbSet<NewsArticle> NewsArticles { get; set; }
         public DbSet<ImportantDate> ImportantDates { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Manual> Manuals {get; set;}
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,7 +20,6 @@ namespace SportsonView.API.Data
             modelBuilder.ApplyConfiguration(new NewsArticleConfiguration());
             modelBuilder.ApplyConfiguration(new ImportantDateConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
-            modelBuilder.ApplyConfiguration(new ManualConfiguration());
         }
     }
 }
