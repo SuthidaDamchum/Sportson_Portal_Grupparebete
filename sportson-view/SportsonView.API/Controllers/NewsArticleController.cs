@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SportsonView.API.Controllers.Response;
 using SportsonView.API.Core.Interfaces;
 using SportsonView.API.Core.Services;
@@ -7,6 +8,7 @@ namespace SportsonView.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class NewsArticleController : ControllerBase
     {
         private readonly INewsArticleService _newsService;

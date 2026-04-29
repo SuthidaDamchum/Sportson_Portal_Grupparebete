@@ -1,11 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay, Navigation } from "swiper/modules";
 import "swiper/swiper-bundle.css";
-import doggeImage from "../assets/images/DoggeMedCykel.webp";
-import bikersImage from "../assets/images/Bikers.jpg";
-import bikeStoreImage from "../assets/images/BikeStore.webp";
-import downhillBike from "../assets/images/downhillBike.webp";
-import bikeImage from "../assets/images/MountainBikeImage.jpg";
 import "./Home.css";
 import ImportantDate from "../pages/ImportantDate";
 import HomeArticles from "../pages/HomeArticles";
