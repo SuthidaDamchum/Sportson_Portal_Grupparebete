@@ -111,6 +111,211 @@ namespace SportsonView.API.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SportsonView.API.Data.Entities.Manual", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Manuals");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Steg-for-steg guide till att byta slang på din cykel.",
+                            Title = "Hur man lagar en punktering",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Verkstad"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Video om hur du ställer in och justerar V-bromsar korrekt.",
+                            Title = "Bromsjustering - V-bromsar",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Kassa"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Guide till regelbunden kedjesmörjning for längre livslängd.",
+                            Title = "Kedjesmörjning och skötsel",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Säljhjälp"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Officiell manual for montering av Shimano 7-växlat nav.",
+                            Title = "Monteringsmanual - Shimano växlar",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Kassa"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Allt du behover veta om att erbjuda formanscyklar.",
+                            Title = "Formanscykel - handbok för arbetsgivare",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Frakt"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "Så väljer du rätt däcktryck for pendling och träning.",
+                            Title = "Snabbguide: däcktryck och ventiler",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Verkstad"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "Checklistan for genomgång av cyklar inför vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Handböcker"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "Checklistan for genomgång av cyklar infor vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Kassa"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Description = "Checklistan for genomgång av cyklar infor vår- och sommarsäsong.",
+                            Title = "Servicechecklista inför säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Frakt"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Description = "Checklistan för genomgång av cyklar infor vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Kommunikation"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Description = "Checklistan för genomgång av cyklar info vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Handböcker"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Description = "Checklistan för genomgang av cyklar infor vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Frakt"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Description = "Checklistan för genomgång av cyklar info vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Handböcker"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Description = "Checklistan för genomgång av cyklar info vår- och sommarsäsong.",
+                            Title = "Servsgfddfg",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Kassa"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Description = "Checklistadsgadsfgav cyklar infor vår- och sommarsäsong.",
+                            Title = "Servidsfggfdadfgr säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Kassa"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Description = "Checklistan for genomgång av cyklar infor vår- och sommarsäsong.",
+                            Title = "Serviasdggdsa infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Kommunikation"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Description = "Checklistan for genomgång av cyklar info vår- och sommarsäsong.",
+                            Title = "Servicasdgsdagista infor säsong",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Kommunikation"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Description = "Checklistan för genomgång av cyklar info vår- och sommarsäsong.",
+                            Title = "Servicasdgsgdng",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Handböcker"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Description = "Checklistan foasdgsgdsginfor vår- och sommarsäsong.",
+                            Title = "Servaasgdgdsdsgsasong",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Kassa"
+                        });
+                });
+
             modelBuilder.Entity("SportsonView.API.Data.Entities.NewsArticle", b =>
                 {
                     b.Property<int>("Id")

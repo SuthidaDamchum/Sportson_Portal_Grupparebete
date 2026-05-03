@@ -6,29 +6,49 @@
 
 .order-tabs {
   display: flex;
+  gap: 8px;
   border-bottom: 1px solid #e8edf1;
   background: white;
-  padding: 0 24px;
+  padding: 14px 24px 15px;
   overflow-x: auto;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
 .order-tab {
-  padding: 14px 18px;
-  font-size: 16px;
+  padding: 6px 16px;
+  border-radius: 99px;
+  border: 1.5px solid #e0e0e0;
+  background: #ffffff;
+  color: #555555;
+  cursor: pointer;
+  font-size: 13px;
   font-weight: 500;
   color: #888;
   border-bottom: 2px solid transparent;
   white-space: nowrap;
-  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background-color 0.15s;
+}
+
+.order-tab:hover {
+  border-color: #ffcc00;
+  color: #222222;
 }
 
 .order-tab.active {
-  color: #1a252f;
-  border-bottom: 2px solid #f5c800;
+  background: #ffcc00;
+  color: #111111;
+  border-color: #ffcc00;
+  font-weight: 600;
 }
 
 .order-content {
   padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .order-search-card {
@@ -45,7 +65,7 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #000000;
-  margin-bottom: 14px;
+  margin-bottom: 22px;
 }
 
 .order-search-input {
@@ -62,7 +82,7 @@
 }
 
 .order-search-input:focus {
-  border-color: #f5c800;
+  border-color: #ffcc00;
 }
 
 .order-radio-group {
@@ -86,7 +106,7 @@
 }
 
 .order-radio.active {
-  border-color: #f5c800;
+  border-color: #ffcc00;
   color: #1a252f;
   background: rgba(245, 200, 0, 0.08);
 }
@@ -103,14 +123,14 @@
 }
 
 .order-radio.active .order-radio-dot {
-  border-color: #f5c800;
+  border-color: #ffcc00;
 }
 
 .order-radio-inner {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #f5c800;
+  background: #ffcc00;
 }
 
 .order-filter-toggle {
@@ -155,10 +175,10 @@
 
 .order-submit-btn {
   width: 100%;
-  background: #f5c800;
+  background: #ffcc00;
   border-radius: 9px;
   padding: 14px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   color: #111;
   border: none;
@@ -168,7 +188,7 @@
 }
 
 .order-submit-btn:hover {
-  background: #e0b800;
+  background: #ffcc00;
 }
 
 .order-last-updated {

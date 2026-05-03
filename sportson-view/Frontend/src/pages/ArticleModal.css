@@ -64,3 +64,10 @@
   line-height: 1.5;
   color: #33414c;
 }
+
+.manuals-chip-active {
+  background: #ffcc00;
+  color: #111111;
+  border-color: #ffcc00;
+  font-weight: 600;
+}

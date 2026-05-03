@@ -12,8 +12,8 @@ using SportsonView.API.Data;
 namespace SportsonView.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260424092829_FixPendingChanges")]
-    partial class FixPendingChanges
+    [Migration("20260428151302_SeedTwentyManuals")]
+    partial class SeedTwentyManuals
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -114,6 +114,211 @@ namespace SportsonView.API.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SportsonView.API.Data.Entities.Manual", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Manuals");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Steg-for-steg guide till att byta slang på din cykel.",
+                            Title = "Hur man lagar en punktering",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Verkstad"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Video om hur du ställer in och justerar V-bromsar korrekt.",
+                            Title = "Bromsjustering - V-bromsar",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Kassa"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Guide till regelbunden kedjesmörjning for längre livslängd.",
+                            Title = "Kedjesmörjning och skötsel",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Säljhjälp"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Officiell manual for montering av Shimano 7-växlat nav.",
+                            Title = "Monteringsmanual - Shimano växlar",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Kassa"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Allt du behover veta om att erbjuda formanscyklar.",
+                            Title = "Formanscykel - handbok för arbetsgivare",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Frakt"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "Så väljer du rätt däcktryck for pendling och träning.",
+                            Title = "Snabbguide: däcktryck och ventiler",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Verkstad"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "Checklistan for genomgång av cyklar inför vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Handböcker"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "Checklistan for genomgång av cyklar infor vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Kassa"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Description = "Checklistan for genomgång av cyklar infor vår- och sommarsäsong.",
+                            Title = "Servicechecklista inför säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Frakt"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Description = "Checklistan för genomgång av cyklar infor vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Kommunikation"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Description = "Checklistan för genomgång av cyklar info vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Handböcker"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Description = "Checklistan för genomgang av cyklar infor vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Frakt"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Description = "Checklistan för genomgång av cyklar info vår- och sommarsäsong.",
+                            Title = "Servicechecklista infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Handböcker"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Description = "Checklistan för genomgång av cyklar info vår- och sommarsäsong.",
+                            Title = "Servsgfddfg",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Kassa"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Description = "Checklistadsgadsfgav cyklar infor vår- och sommarsäsong.",
+                            Title = "Servidsfggfdadfgr säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Kassa"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Description = "Checklistan for genomgång av cyklar infor vår- och sommarsäsong.",
+                            Title = "Serviasdggdsa infor säsong",
+                            Type = "PDF",
+                            Url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                            category = "Kommunikation"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Description = "Checklistan for genomgång av cyklar info vår- och sommarsäsong.",
+                            Title = "Servicasdgsdagista infor säsong",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Kommunikation"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Description = "Checklistan för genomgång av cyklar info vår- och sommarsäsong.",
+                            Title = "Servicasdgsgdng",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Handböcker"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Description = "Checklistan foasdgsgdsginfor vår- och sommarsäsong.",
+                            Title = "Servaasgdgdsdsgsasong",
+                            Type = "Youtube",
+                            Url = "https://www.youtube.com/watch?v=fg2gLapBFow",
+                            category = "Kassa"
+                        });
+                });
+
             modelBuilder.Entity("SportsonView.API.Data.Entities.NewsArticle", b =>
                 {
                     b.Property<int>("Id")
@@ -161,7 +366,7 @@ namespace SportsonView.API.Migrations
                             Category = "IT",
                             Description = "Från måndag krävs tvåfaktorsautentisering för alla anställda. Ladda ner Microsoft Authenticator redan idag.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/It1.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 27),
                             Title = "Uppdatering av intranätet och IT-säkerhet"
                         },
                         new
@@ -172,7 +377,7 @@ namespace SportsonView.API.Migrations
                             Category = "Inköp",
                             Description = "Leveransen av årets elcyklar från Crescent och Monark försenas med två till tre veckor på grund av störningar i fraktkedjan.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Inkop2.webp",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 27),
                             Title = "Leveransförseningar av årets elcyklar"
                         },
                         new
@@ -183,7 +388,7 @@ namespace SportsonView.API.Migrations
                             Category = "Marknad",
                             Description = "Vårkampanjen startar 15 april med TV, radio och sociala medier. Nytt butiksmaterial levereras under veckan.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Marknad3.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 27),
                             Title = "Vårkampanjen 2026 drar äntligen igång!"
                         },
                         new
@@ -194,7 +399,7 @@ namespace SportsonView.API.Migrations
                             Category = "Verkstad",
                             Description = "Samtliga verkstäder har fått ny modern utrustning, inklusive diagnostikverktyg för elcyklar och specialverktyg för Shimano.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Verkstad4.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 27),
                             Title = "Ny verktygspark installerad i samtliga butiker"
                         },
                         new
@@ -205,7 +410,7 @@ namespace SportsonView.API.Migrations
                             Category = "Campaign",
                             Description = "Just nu 20% rabatt på alla elcyklar i lager. Gäller Scott, Specialized, Trek och Crescent så långt lagret räcker.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Kampanj5.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 27),
                             Title = "Vårkampanj: 20% rabatt på alla Elcyklar i lager!"
                         },
                         new
@@ -216,7 +421,7 @@ namespace SportsonView.API.Migrations
                             Category = "Ekonomi",
                             Description = "Sportson redovisar rekordresultat för Q1 2026 med 18% ökad omsättning jämfört med samma period förra året.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Ekonomi6.jpeg",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 27),
                             Title = "Årets resultat överträffar alla förväntningar"
                         },
                         new
@@ -227,7 +432,7 @@ namespace SportsonView.API.Migrations
                             Category = "Ekonomi",
                             Description = "Butikschefer bjuds in till digital budgetgenomgång den 25 april inför höstens planering och Q2-prognos.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Ekonomi7.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 27),
                             Title = "Budgetgenomgång inför hösten 2026"
                         },
                         new
@@ -238,7 +443,7 @@ namespace SportsonView.API.Migrations
                             Category = "Min butik",
                             Description = "Kundundersökningen visar att bemötande och personalkännedom är det kunderna uppskattar mest hos Sportson.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Minbutik8.jpg",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 27),
                             Title = "Min butik: Så ökar vi kundnöjdheten"
                         },
                         new
@@ -249,7 +454,7 @@ namespace SportsonView.API.Migrations
                             Category = "Min butik",
                             Description = "Från 1 maj utökas öppettiderna i alla butiker med förlängda helgöppettider fram till slutet av augusti.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Minbutik9.jpg",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 27),
                             Title = "Nya öppettider inför sommarsäsongen"
                         },
                         new
@@ -260,7 +465,7 @@ namespace SportsonView.API.Migrations
                             Category = "Campaign",
                             Description = "Gratis cykelhjälm värd upp till 599 kr vid köp av valfri elcykel under maj och juni i samtliga butiker.",
                             ImageUrl = "https://sportsonnews.blob.core.windows.net/sportsonnews/Campaign10.png",
-                            PublishedDate = new DateOnly(2026, 4, 24),
+                            PublishedDate = new DateOnly(2026, 4, 27),
                             Title = "Sommarkampanj: Gratis cykelhjälm vid köp av elcykel"
                         });
                 });

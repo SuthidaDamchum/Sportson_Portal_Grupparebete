@@ -1,5 +1,9 @@
 import SearchBar from "../components/SearchBar/Searchbar";
 import "./ManualsPage.css";
+import { useEffect, useState } from "react";
+import { getSearchResults } from "../services/SearchService";
+import { toYouTubeEmbedUrl } from "../services/YouTubeEmbedService";
+import type { SearchResult } from "../types/SearchType";
 
 const categories = [
   "Alla",
@@ -11,27 +15,98 @@ const categories = [
   "Frakt",
 ];
 
-const types = ["Alla", "YouTube", "PDF"];
+const types = ["Alla", "Youtube", "PDF"];
 
 const ManualsPage = () => {
+  const resultsPerPage = 7;
+
+  // States
+  const [manualResults, setManualResults] = useState<SearchResult[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState("Alla");
+  const [selectedType, setSelectedType] = useState("Alla");
+  const [searchTerm, setSearchTerm] = useState(""); // Flyttad hit in
+  const [openYoutubeRowId, setOpenYoutubeId] = useState<number | null>(null);
+
+  // Hämta data
+  useEffect(() => {
+    const fetchManuals = async () => {
+      try {
+        setIsLoading(true);
+        const results = await getSearchResults();
+        setManualResults(results);
+      } catch (error) {
+        console.error("Kunde inte ladda manualer:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    void fetchManuals();
+  }, []);
+
+  // FILTRERING - Här är fixen för sökfunktionen
+  const filteredResults = manualResults.filter((result) => {
+    const matchesCategory =
+      selectedCategory === "Alla" || result.category === selectedCategory;
+    const matchesType = selectedType === "Alla" || result.type === selectedType;
+
+    // Kollar om sökordet finns i titel eller beskrivning
+    const matchesSearch =
+      result.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      result.description.toLowerCase().includes(searchTerm.toLowerCase());
+
+    return matchesCategory && matchesType && matchesSearch;
+  });
+
+  // Nollställ sida vid filterändring eller sökning
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, selectedType, searchTerm]);
+
+  // Paginering logik
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredResults.length / resultsPerPage),
+  );
+  const pageStart = (currentPage - 1) * resultsPerPage;
+  const paginatedResults = filteredResults.slice(
+    pageStart,
+    pageStart + resultsPerPage,
+  );
+
+  const goToPreviousPage = () =>
+    setCurrentPage((prev) => Math.max(1, prev - 1));
+  const goToNextPage = () =>
+    setCurrentPage((prev) => Math.min(totalPages, prev + 1));
+
+  const toggleYoutubeRow = (result: SearchResult) => {
+    if (result.type !== "Youtube") return;
+    setOpenYoutubeId((prev) => (prev === result.id ? null : result.id));
+  };
+
   return (
     <div className="manuals-view">
-      <section className="manuals-controls-panel search-zone">
-        <SearchBar />
-        <section className="manuals-filter-panel" aria-label="Filtrering">
-          <div className="manuals-filter-group manuals-filter-group-category filter-group">
-            <h2 className="manuals-filter-title filter-label">Kategori:</h2>
+      <section className="manuals-controls-panel">
+        <SearchBar onSearch={setSearchTerm} />
+
+        <section className="manuals-filter-panel"></section>
+
+        {/* Filter-panelen bredvid sökfältet */}
+        <section className="manuals-filter-panel">
+          {/* Kategori Filter - lade till klassen manuals-filter-group-category för att din aktiva gula färg ska funka */}
+          <div className="manuals-filter-group manuals-filter-group-category">
+            <h2 className="manuals-filter-title">Kategori:</h2>
             <div className="manuals-chip-row">
-              {categories.map((category, index) => (
+              {categories.map((category) => (
                 <button
                   key={category}
                   type="button"
-                  className={
-                    index === 0
-                      ? "manuals-chip chip manuals-chip-active active"
-                      : "manuals-chip chip"
-                  }
-                  aria-pressed={index === 0}
+                  className={`manuals-chip ${selectedCategory === category ? "active" : ""}`}
+                  onClick={() => {
+                    setSelectedCategory(category);
+                    setSelectedType("Alla");
+                  }}
                 >
                   {category}
                 </button>
@@ -39,19 +114,16 @@ const ManualsPage = () => {
             </div>
           </div>
 
-          <div className="manuals-filter-group manuals-filter-group-type filter-group">
-            <h2 className="manuals-filter-title filter-label">Typ:</h2>
+          {/* Typ Filter - lade till klassen manuals-filter-group-type för att din aktiva svarta färg ska funka */}
+          <div className="manuals-filter-group manuals-filter-group-type">
+            <h2 className="manuals-filter-title">Typ:</h2>
             <div className="manuals-chip-row">
-              {types.map((type, index) => (
+              {types.map((type) => (
                 <button
                   key={type}
                   type="button"
-                  className={
-                    index === 0
-                      ? "manuals-chip chip type manuals-chip-active active"
-                      : "manuals-chip chip type"
-                  }
-                  aria-pressed={index === 0}
+                  className={`manuals-chip ${selectedType === type ? "active" : ""}`}
+                  onClick={() => setSelectedType(type)}
                 >
                   {type}
                 </button>
@@ -61,14 +133,146 @@ const ManualsPage = () => {
         </section>
       </section>
 
-      <section className="manuals-empty-state content-area" aria-live="polite">
-        <div className="manuals-empty-icon empty-icon" aria-hidden="true" />
-        <h3 className="empty-title">
-          Sök bland våra manualer och YouTube-guider
-        </h3>
-        <p className="empty-sub">
-          Skriv in ett sökord ovan för att hitta det du letar efter
-        </p>
+      <section className="content-area">
+        <div className="table-wrap">
+          <div className="result-count">
+            <span>{filteredResults.length} resultat</span>
+            <div className="result-pagination">
+              <button
+                type="button"
+                className="result-page-btn"
+                onClick={goToPreviousPage}
+                disabled={currentPage === 1 || isLoading}
+              >
+                ←
+              </button>
+              <span className="result-page-indicator">
+                {currentPage}/{totalPages}
+              </span>
+              <button
+                type="button"
+                className="result-page-btn"
+                onClick={goToNextPage}
+                disabled={currentPage === totalPages || isLoading}
+              >
+                →
+              </button>
+            </div>
+          </div>
+
+          <div className="col-headers" role="row">
+            <div>TYP</div>
+            <div>NAMN</div>
+            <div>KATEGORI</div>
+          </div>
+
+          {isLoading ? (
+            <div className="loading-state">Hämtar manualer...</div>
+          ) : filteredResults.length === 0 ? (
+            <div className="no-results">Inga manualer matchar din sökning.</div>
+          ) : (
+            paginatedResults.map((result) => {
+              const isYoutube = result.type === "Youtube";
+              const isExpanded = openYoutubeRowId === result.id;
+              const baseEmbedUrl = isYoutube
+                ? toYouTubeEmbedUrl(result.URL)
+                : null;
+              const embedUrl = baseEmbedUrl
+                ? `${baseEmbedUrl}?autoplay=1&rel=0&playsinline=1`
+                : null;
+
+              return (
+                <article
+                  key={result.id}
+                  className={`result-row ${isYoutube ? "result-row-clickable" : ""}`}
+                  onClick={() => {
+                    if (isYoutube) {
+                      toggleYoutubeRow(result);
+                    } else {
+                      window.open(result.URL, "_blank", "noopener,noreferrer");
+                    }
+                  }}
+                >
+                  <div
+                    className={`manuals-type-logo ${isYoutube ? "manuals-type-logo-yt" : "manuals-type-logo-pdf"}`}
+                  >
+                    {isYoutube ? (
+                      <>
+                        <span className="manuals-yt-mark">
+                          <svg viewBox="0 0 10 10">
+                            <path d="M3 2.4 8 5 3 7.6V2.4Z" />
+                          </svg>
+                        </span>
+                        <span>Youtube</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="manuals-pdf-mark">
+                          <svg viewBox="0 0 20 24">
+                            <path
+                              fill="#2563eb"
+                              d="M3 1h9l5 5v17a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Zm8 1.8V7h4.2L11 2.8ZM6.2 18.7h1.2c1.4 0 2.2-.7 2.2-2 0-1.2-.8-1.9-2.2-1.9H6.2v3.9Zm1-3v2h.3c.7 0 1.1-.3 1.1-1s-.4-1-1.1-1h-.3Zm3.2 3h1v-1.4h1.6v-.8h-1.6v-.9h1.7v-.8h-2.7v3.9Zm3.3 0h1c1.3 0 2.1-.7 2.1-2 0-1.2-.8-1.9-2.1-1.9h-1v3.9Zm1-3v2h.1c.7 0 1.1-.3 1.1-1s-.4-1-1.1-1h-.1Z"
+                            />
+                          </svg>
+                        </span>
+                        <span>PDF</span>
+                      </>
+                    )}
+                  </div>
+
+                  <div>
+                    <div className="row-name">{result.title}</div>
+                    <div className="row-desc">{result.description}</div>
+                  </div>
+
+                  <div>
+                    <span className="row-cat">{result.category}</span>
+                  </div>
+
+                  {result.type === "PDF" ? (
+                    <a
+                      className="row-action"
+                      href={result.URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Öppna PDF <span>→</span>
+                    </a>
+                  ) : (
+                    <span className="row-action row-action-btn">
+                      {isExpanded ? "Dölj video" : "Se video"} <span>→</span>
+                    </span>
+                  )}
+
+                  {isExpanded && embedUrl && (
+                    <div
+                      className="manuals-video-panel"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div className="manuals-video-frame-wrap">
+                        <iframe
+                          className="manuals-video-frame"
+                          src={embedUrl}
+                          title={`YouTube video: ${result.title}`}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        className="manuals-video-close"
+                        onClick={() => setOpenYoutubeId(null)}
+                      >
+                        ✕ Stäng
+                      </button>
+                    </div>
+                  )}
+                </article>
+              );
+            })
+          )}
+        </div>
       </section>
     </div>
   );

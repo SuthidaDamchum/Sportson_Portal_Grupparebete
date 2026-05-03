@@ -5,7 +5,7 @@
 namespace SportsonView.API.Migrations
 {
     /// <inheritdoc />
-    public partial class FixPendingChanges : Migration
+    public partial class manualDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -4,7 +4,7 @@ namespace SportsonView.API.Data.Interfaces
 {
     public interface INewsArticleRepository
     {
-        Task<List<NewsArticle>> GetNewsArticlesAsync();
-        
+        Task<List<NewsArticle>> GetNewsArticlesAsync(string? category);
+       
     }
 }

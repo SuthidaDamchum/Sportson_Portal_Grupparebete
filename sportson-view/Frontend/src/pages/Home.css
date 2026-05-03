@@ -1,5 +1,5 @@
 .home-hero {
-  background: linear-gradient(180deg, #eef1f3 0%, #f8f8f8 100%);
+  background: linear-gradient(180deg, #1a1a1a 0%, #ffffff 100%);
   padding: 26px 0 36px;
 }
 
@@ -22,22 +22,22 @@
 }
 
 .home-hero-swiper .swiper-slide {
-  opacity: 0.62;
   transform: scale(0.94);
+  filter: brightness(0.86);
   transition:
     transform 0.32s ease,
-    opacity 0.32s ease;
+    filter 0.32s ease;
 }
 
 .home-hero-swiper .swiper-slide-active {
-  opacity: 1;
   transform: scale(1);
+  filter: brightness(1);
 }
 
 .home-hero-card {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 6.5;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -109,6 +109,13 @@
 .home-hero-swiper .swiper-button-next::after {
   font-size: 20px;
   font-weight: 700;
+}
+
+.home-bottom {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  align-items: flex-start;
 }
 
 @media (hover: hover) and (pointer: fine) {

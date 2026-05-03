@@ -1,0 +1,42 @@
+.article-filter-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  background: white;
+  padding: 14px 24px 15px;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 16px;
+}
+
+.article-filter-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #999999;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+}
+
+.category-btn {
+  padding: 6px 16px;
+  border-radius: 99px;
+  border: 1.5px solid #e0e0e0;
+  background: white;
+  color: #555555;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.category-btn:hover {
+  border-color: #f5c518;
+  color: #222222;
+}
+
+.category-btn.active {
+  background: #f5c518;
+  color: #111111;
+  border-color: #f5c518;
+  font-weight: 600;
+}

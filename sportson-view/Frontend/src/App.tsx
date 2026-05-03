@@ -9,35 +9,63 @@ import OrderCentralPage from "./pages/OrderCentralPage";
 import SupportPage from "./pages/SupportPage";
 import Contacts from "./pages/ContactsPage";
 import LoginPage from "./pages/LoginPage";
-import ProtectedRoute from "./pages/ProtectedRoot";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
-        {/* Login är öppen för alla */}
-        <Route path={routePaths.login} element={<LoginPage />} />
-
+        <Route path={routePaths.login} element={<LoginPage />}></Route>{" "}
         {/* Alla andra routes kräver inloggning */}
-        <Route path={routePaths.home} element={
-          <ProtectedRoute><Home /></ProtectedRoute>
-        } />
-        <Route path={routePaths.news} element={
-          <ProtectedRoute><ArticlePage /></ProtectedRoute>
-        } />
-        <Route path={routePaths.manuals} element={
-          <ProtectedRoute><ManualsPage /></ProtectedRoute>
-        } />
-        <Route path={routePaths.orderCentral} element={
-          <ProtectedRoute><OrderCentralPage /></ProtectedRoute>
-        } />
-        <Route path={routePaths.SupportPage} element={
-          <ProtectedRoute><SupportPage /></ProtectedRoute>
-        } />
-        <Route path={routePaths.contacts} element={
-          <ProtectedRoute><Contacts /></ProtectedRoute>
-        } />
+        <Route
+          path={routePaths.home}
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={routePaths.news}
+          element={
+            <ProtectedRoute>
+              <ArticlePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={routePaths.manuals}
+          element={
+            <ProtectedRoute>
+              <ManualsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={routePaths.orderCentral}
+          element={
+            <ProtectedRoute>
+              <OrderCentralPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={routePaths.SupportPage}
+          element={
+            <ProtectedRoute>
+              <SupportPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={routePaths.contacts}
+          element={
+            <ProtectedRoute>
+              <Contacts />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );

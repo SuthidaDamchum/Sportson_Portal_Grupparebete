@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
-import './SupportPage.css';
-import emailjs from '@emailjs/browser';
+import { useEffect, useState } from "react";
+import "./SupportPage.css";
+import { supportService } from "../services/SupportService";
 import { getUserData } from "../services/UserService";
 import type { UserType } from "../types/UserType";
 
 // Placeholder email
 const departmentEmails: Record<string, string> = {
-  "IT": "kevin.spehling@iths.se",
-  "Marknadsföring": "kevin.spehling@iths.se",
-  "Inköp": "kevin.spehling@iths.se",
-  "Övrigt": "kevin.spehling@iths.se"
+  IT: "kevin.spehling@iths.se",
+  Marknadsföring: "kevin.spehling@iths.se",
+  Inköp: "kevin.spehling@iths.se",
+  Övrigt: "kevin.spehling@iths.se",
 };
 
 const SupportPage = () => {
@@ -18,6 +18,30 @@ const SupportPage = () => {
   const [department, setDepartment] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      question: "Hur skapar jag ett supportärende?",
+      answer:
+        "Fyll i formuläret ovan med namn, e-post, avdelning och ditt meddelande. Klicka sedan på Skicka.",
+    },
+    {
+      question: "Vilken avdelning ska jag välja?",
+      answer:
+        "Välj den avdelning som bäst passar ditt ärende. Om du är osäker kan du välja Övrigt.",
+    },
+    {
+      question: "Vad händer efter att jag skickat in ett ärende?",
+      answer:
+        "Ditt meddelande skickas till rätt avdelning, och du får hjälp så snart som möjligt.",
+    },
+    {
+      question: "Vad gör jag om jag inte får något svar?",
+      answer:
+        "Om du inte får svar kan du skicka in ett nytt ärende eller kontakta ansvarig avdelning direkt.",
+    },
+  ];
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,63}$/;
   const [user, setUser] = useState<UserType | null>(null);
@@ -25,20 +49,20 @@ const SupportPage = () => {
   const capitalize = (str: string) =>
     str[0].toLocaleUpperCase("sv-SE") + str.slice(1);
 
-    useEffect(() => {
-      const fetchUser = async () => {
-        try {
-          const data = await getUserData();
-          setUser(data);
-          setName(capitalize(data.username));
-          setEmail(data.email);  
-        } catch {
-          setUser(null);
-        }
-      };
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const data = await getUserData();
+        setUser(data);
+        setName(capitalize(data.username));
+        setEmail(data.email);
+      } catch {
+        setUser(null);
+      }
+    };
 
-      fetchUser();
-    }, []);
+    fetchUser();
+  }, []);
   const validateForm = (): boolean => {
     setError("");
 
@@ -80,40 +104,41 @@ const SupportPage = () => {
     return true;
   };
 
-
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validateForm()) {
       return;
     }
 
-    emailjs.send(
-      "service_wjjx8qh",
-      "template_ckjywh9",
-      {
-        from_name: name,
-        from_email: email,
-        department: department,
-        message: message,
-        to_email: departmentEmails[department],
-        department_name: department
-      },
-      "4qDKbbtSPS3-VqLTl"
-    ).then(() => {
-      alert("Ditt meddelande har skickats!");
-      setName("");
-      setEmail("");
+    try {
+      await supportService.sendSupportMessage({
+        name,
+        store: user?.store ?? "Okänd",
+        fromEmail: email,
+        department,
+        message,
+      });
+
       setDepartment("");
       setMessage("");
       setError("");
-    }).catch(() => {
-      setError("Något gick fel, försök igen.");
-    });
+
+      if (!user) {
+        setName("");
+        setEmail("");
+      }
+      setError("Ditt meddelande har skickats!");
+    } catch (err) {
+      setError(
+        "Oväntat fel inträffade: " + (err instanceof Error ? err.message : ""),
+      );
+    }
   };
 
   return (
     <div className="support-wrapper">
-      <h1>Support</h1>
       <div className="support-form">
+        <h1>Support</h1>
+        <h3>Kontaktformulär för {user?.store || "allmänna"}</h3>
         <input
           id="support-name-input"
           type="text"
@@ -139,7 +164,9 @@ const SupportPage = () => {
         >
           <option value="">Välj avdelning</option>
           {Object.keys(departmentEmails).map((dept) => (
-            <option key={dept} value={dept}>{dept}</option>
+            <option key={dept} value={dept}>
+              {dept}
+            </option>
           ))}
         </select>
 
@@ -151,28 +178,34 @@ const SupportPage = () => {
           onChange={(e) => setMessage(e.target.value)}
         />
 
-        <button id="support-submit-button" 
-                onClick={handleSubmit}>
-                Skicka
+        <button id="support-submit-button" onClick={handleSubmit}>
+          Skicka
         </button>
 
-        {error && (
-          <textarea
-            readOnly
-            value={error}
-            className="messageArea"
-            style={{
-              color: '#f0c000',
-              textAlign: 'center',
-              maxWidth: '100%',
-              minHeight: '25px',
-              maxHeight: '35px',
-              backgroundColor: '#1a1a1a',
-              marginTop: '5px',
-              resize: 'none'
-            }}
-          />
-        )}
+        {error && <p className="support-error">{error}</p>}
+        <section className="faq-section">
+          <h2>Vanliga frågor</h2>
+
+          <div className="faq-list">
+            {faqs.map((faq, index) => (
+              <div className="faq-item" key={index}>
+                <button
+                  className="faq-question"
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                >
+                  <span>{openFaq === index ? "−" : "+"}</span>
+                  {faq.question}
+                </button>
+
+                {openFaq === index && (
+                  <div className="faq-answer">
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

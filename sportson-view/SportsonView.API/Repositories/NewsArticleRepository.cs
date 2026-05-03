@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SportsonView.API.Data;
-using SportsonView.API.Data.Configurations;
 using SportsonView.API.Data.Entities;
 using SportsonView.API.Data.Interfaces;
 
@@ -13,11 +12,16 @@ namespace SportsonView.API.Repositories
         {
             _context = context;
         }
-        public async Task<List<NewsArticle>> GetNewsArticlesAsync()
+        public async Task<List<NewsArticle>> GetNewsArticlesAsync(string? category)
         {
-            return await _context.NewsArticles.ToListAsync();
+            Console.WriteLine($"Category filter: {category}");
+
+            return await _context.NewsArticles
+                .Where(na => string.IsNullOrEmpty(category) || na.Category == category)
+                .ToListAsync();
+
         }
-      
+       
     }
 }
 

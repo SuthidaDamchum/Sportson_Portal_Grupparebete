@@ -5,7 +5,7 @@ namespace SportsonView.API.Core.Interfaces
     public interface INewsArticleService
 
     {
-        Task<List<NewsArticleDto>> GetNewsArticlesAsync();
+        Task<List<NewsArticleDto>> GetNewsArticlesAsync(string? category);
     }
 }
 

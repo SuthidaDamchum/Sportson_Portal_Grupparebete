@@ -22,7 +22,7 @@ const ImportantDate = () => {
     },
     {
       id: 3,
-      title: "Kampanj: Cykelhjälmar REA",
+      title: "Möte",
       month: "Maj",
       dateDisplay: "15",
       time: "13.00 - 15.00",
@@ -56,8 +56,6 @@ const ImportantDate = () => {
       time: "07.00 - 12.00",
     },
   ];
-
-
   const [dates, setDates] = useState<ImportantDateDto[]>(mockData);
   //Ingenting bör visas fören användaren är inloggad, så jag har lagt till en state för det också.
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -66,21 +64,19 @@ const ImportantDate = () => {
     getImportantDate()
       .then((result) => {
         if (result && result.length > 0) {
-          console.log("✅ Viktiga datum från backend:", result); // ← lägg till
           setDates(result);
-          console.debug("Hämtade viktiga datum från API:", result);
           setIsSignedIn(true);
         }
       })
       .catch(() => {
-        console.error("Användare inte inloggad");
+        //Not sure we need to catch anything here, but if the API call fails, we can just keep showing the mock data and not set the user as signed in.
       });
   }, []);
 
   const months = Array.from(new Set(dates.map((d) => d.month)));
 
-if (isSignedIn) {
-  return (
+  if (isSignedIn) {
+    return (
       <div className="compact-side-container">
         <div className="side-header">
           <h2>Viktiga datum</h2>

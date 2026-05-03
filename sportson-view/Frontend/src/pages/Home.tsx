@@ -1,13 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay, Navigation } from "swiper/modules";
 import "swiper/swiper-bundle.css";
-import doggeImage from "../assets/images/DoggeMedCykel.webp";
-import bikersImage from "../assets/images/Bikers.jpg";
-import bikeStoreImage from "../assets/images/BikeStore.webp";
-import downhillBike from "../assets/images/downhillBike.webp";
-import bikeImage from "../assets/images/genericbike.webp";
 import "./Home.css";
 import ImportantDate from "../pages/ImportantDate";
+import HomeArticles from "../pages/HomeArticles";
+import { useUser } from "../context/UserContext";
 
 //Temporär mockdata!
 
@@ -23,38 +20,46 @@ const heroSlides: HeroSlide[] = [
     id: 1,
     title: "Kampanj",
     description: "Mountain bike rea",
-    imageUrl: bikeImage,
+    imageUrl:
+      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/Bikers.jpg",
   },
   {
     id: 2,
-    title: "Dogges cykelkampanj",
-    description: "Cykeln på köpet!!!",
-    imageUrl: doggeImage,
+    title: "Dogge Doggelitos vårkampanj",
+    description: "Cykeln på köpet!",
+    imageUrl:
+      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/DoggeMedCykel.webp",
   },
   {
     id: 3,
     title: "Nyheter",
     description: "Nyheter i butik",
-    imageUrl: bikeStoreImage,
+    imageUrl:
+      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/BikeStore.webp",
   },
   {
     id: 4,
-    title: "Downhill cykelkampanj",
+    title: "Kampanj",
     description: "Downhill Bike rea",
-    imageUrl: downhillBike,
+    imageUrl:
+      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/downhillBike.webp",
   },
   {
     id: 5,
     title: "Begränsat erbjudande",
     description: "Vårservice kampanjer",
-    imageUrl: bikersImage,
+    imageUrl:
+      "https://sportsonnews.blob.core.windows.net/sportsonheroslider/MountainBikeImage.jpg",
   },
 ];
 
 const Home = () => {
+  const { user } = useUser();
+
+  if (!user) return null;
   return (
     <>
-      <section className="home-hero" id="home-hero-section">
+      <section className="home-hero font-header" id="home-hero-section">
         <Swiper
           className="home-hero-swiper"
           id="home-hero-swiper"
@@ -75,7 +80,10 @@ const Home = () => {
         >
           {heroSlides.map((slide) => (
             <SwiperSlide key={slide.id}>
-              <article className="home-hero-card" id={`home-hero-slide-${slide.id}`}>
+              <article
+                className="home-hero-card"
+                id={`home-hero-slide-${slide.id}`}
+              >
                 <img className="home-hero-image" src={slide.imageUrl} />
                 <div className="home-hero-overlay" />
                 <div className="home-hero-content">
@@ -87,10 +95,10 @@ const Home = () => {
           ))}
         </Swiper>
       </section>
-      <div className="layout-wrapper">
-        <div className="right-side-pusher">
-          <ImportantDate />
-        </div>
+
+      <div className="home-bottom">
+        <HomeArticles />
+        <ImportantDate />
       </div>
     </>
   );

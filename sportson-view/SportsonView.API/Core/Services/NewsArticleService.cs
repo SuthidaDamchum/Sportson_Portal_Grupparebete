@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.ComponentModel;
+using AutoMapper;
 using SportsonView.API.Core.Interfaces;
 using SportsonView.API.Data.Entities;
 using SportsonView.API.Data.Interfaces;
@@ -18,12 +19,11 @@ namespace SportsonView.API.Core.Services
             _newsRepo = newsRepo;
         }
 
-        public async Task<List<NewsArticleDto>> GetNewsArticlesAsync()
+        public async Task<List<NewsArticleDto>> GetNewsArticlesAsync(string? category)
         {
-            var newsarticles = await _newsRepo.GetNewsArticlesAsync();
+            var newsarticles = await _newsRepo.GetNewsArticlesAsync(category);
             return _mapper.Map<List<NewsArticleDto>>(newsarticles);
         }
-
     }
 }
 

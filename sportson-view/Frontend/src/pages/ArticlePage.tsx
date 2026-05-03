@@ -3,6 +3,7 @@ import ArticleCard from "../components/Card/ArticleCard/ArticleCard";
 import type { Article } from "../types/ArticleType";
 import { getArticle } from "../services/ArticleService";
 import ArticleModal from "./ArticleModal";
+import "./ArticlePage.css";
 
 const placeholderArticles: Article[] = [
   {
@@ -129,6 +130,13 @@ const placeholderArticles: Article[] = [
 const ArticlePage = () => {
   const [articles, setArticles] = useState<Article[]>(placeholderArticles);
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("Alla");
+
+  const categories = ["Alla", ...new Set(articles.map((a) => a.category))];
+  const filteredArticles =
+    selectedCategory === "Alla"
+      ? articles
+      : articles.filter((a) => a.category === selectedCategory);
 
   useEffect(() => {
     getArticle()
@@ -146,15 +154,30 @@ const ArticlePage = () => {
   }, []);
 
   return (
-    <div className="view" style={{ padding: "28px" }}>
+    <div className="view">
+      <div className="article-filter-bar">
+        <span className="article-filter-label">Kategori:</span>
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setSelectedCategory(cat)}
+            className={`category-btn ${selectedCategory === cat ? "active" : ""}`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
       <div
         style={{
+          padding: "28px",
           display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
+          gridTemplateColumns: "repeat(4, 1fr)",
           gap: "16px",
+          alignItems: "stretch",
         }}
       >
-        {articles.map((article) => (
+        {filteredArticles.map((article) => (
           <ArticleCard
             key={article.id}
             article={article}
