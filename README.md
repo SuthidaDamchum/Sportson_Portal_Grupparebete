@@ -49,3 +49,23 @@ Kommunikation var avgörande jag synkade hela tiden med frontend-utvecklarna om 
 Det här projektet har gett mig mycket erfarenhet både tekniskt och som lagspelare. Jag tar med mig kunskaper inom agilt arbetssätt, API-utveckling, Azure, Git och vikten av kommunikation i ett team.
 
 Det som överraskade mig mest är att jag blev mer och mer nyfiken på hur saker fungerar. Jag kunde sitta långa dagar utan att titta på klockan – det känns som ett bra tecken på att jag har hittat något jag verkligen tycker om. 
+
+## Screenshots
+
+### Login Page
+![Login Page](sportson-view/Frontend/src/assets/images/Loginpage.png)
+
+### Landing Page
+![Landing Page](sportson-view/Frontend/src/assets/images/Landingpage.png)
+
+### News Page
+![News Page](sportson-view/Frontend/src/assets/images/Newspage.png)
+
+### Order Central Page
+![Order Central Page](sportson-view/Frontend/src/assets/images/Ordercentral%20page.png)
+
+### Support Page
+![Support Page](sportson-view/Frontend/src/assets/images/Supportpage.png)
+
+### Azure DevOps
+![Azure DevOps](sportson-view/Frontend/src/assets/images/AzureDevops.png)
