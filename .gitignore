@@ -55,3 +55,9 @@ appsettings.Production.json
 bin/
 
 obj/
+
+bin/
+
+obj/
+
+.vs/
