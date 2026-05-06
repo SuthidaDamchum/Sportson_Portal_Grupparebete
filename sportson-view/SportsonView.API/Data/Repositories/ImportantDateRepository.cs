@@ -3,7 +3,7 @@ using SportsonView.API.Data;
 using SportsonView.API.Data.Entities;
 using SportsonView.API.Data.Interfaces;
 
-namespace SportsonView.API.Repositories
+namespace SportsonView.API.Data.Repositories
 {
     public class ImportantDateRepository : IImportantDateRepository
     {

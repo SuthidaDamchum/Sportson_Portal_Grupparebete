@@ -3,7 +3,7 @@ using SportsonView.API.Data.Interfaces;
 using SportsonView.API.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace SportsonView.API.Repositories
+namespace SportsonView.API.Data.Repositories
 {
     public class UserRepository : IUserRepository
     {

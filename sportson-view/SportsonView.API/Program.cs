@@ -9,8 +9,8 @@ using SportsonView.API.Core.Services;
 using SportsonView.API.Data;
 using SportsonView.API.Data.Entities;
 using SportsonView.API.Data.Interfaces;
+using SportsonView.API.Data.Repositories;
 using SportsonView.API.Profiles;
-using SportsonView.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,8 +62,13 @@ if (!builder.Environment.IsDevelopment())
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-
+    options.UseSqlServer(connectionString, sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(10),
+            errorNumbersToAdd: null);
+    }));
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<NewsArticleProfile>());
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ImportantDateProfile>());
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ManualProfile>());
