@@ -1,12 +1,3 @@
-R4K1MX3N8M
-
-LS8ZQUHG1X
-
-wss://6vtou7e4re.execute-api.eu-central-1.amazonaws.com/prod/
-
-arn:aws:bedrock:eu-central-1:774667856616:agent/R4K1MX3N8M
-
-
 # Sportson Portal – Grupparbete Reflektion
 
 ## Om projektet
