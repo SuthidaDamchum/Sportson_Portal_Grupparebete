@@ -48,3 +48,10 @@ _ReSharper*/
 
 # Azure
 *.azurePubxml
+appsettings.Development.json
+
+appsettings.Production.json
+
+bin/
+
+obj/
